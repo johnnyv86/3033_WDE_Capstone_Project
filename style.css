@@ -134,3 +134,46 @@ body {
 .active {
     background-color: #8FB38F;
 }
+
+/* =============================
+    HOME/MAIN PAGE
+============================= */
+.b1-video {
+    width: 100%;
+    padding: 0;
+    background: black;
+    overflow: hidden;
+    border: none;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.mainVid {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+.daily-title {
+    width: 100%;
+    text-align: center;
+    color: lightblue;
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.b2-promo {
+    display: flex;
+    flex: 1 1 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 15px;
+    gap: 10px;
+    background-color: #2c2c2c;
+}
+
+.b2-promo img {
+    max-width: 275px;
+    height: auto;
+}
