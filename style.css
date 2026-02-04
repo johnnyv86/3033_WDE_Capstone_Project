@@ -1,0 +1,136 @@
+/* =============================
+    GLOBAL RESET & BODY
+============================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #222;
+    color: #ccc;
+    font-family: Arial, Helvetica, sans-serif;   
+    padding: 20px;
+}
+
+.business-img {
+    width: 225px;
+    height: 225px;
+    object-fit: cover;
+    border: 3px solid white;
+}
+
+#main-container {
+    max-width: 1200px;
+    margin: 0;
+    background-color: #1a1a1a;
+    padding: 15px;
+    border: 1px solid #444;
+}
+
+#section1 {
+    display: flex;
+    flex-wrap: wrap;
+    border: 4px solid white;
+    gap: 10px;
+    padding: 10px;
+}
+
+.box {
+    padding: 15px;
+    background-color: #2c2c2c;
+    border: white;
+    margin-bottom: 5px;
+}
+
+.b0-business {
+    display: flex;
+    flex: 3 1 450px;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.header-text {
+    flex: 1;
+}
+
+.businessName {
+    color: white;
+    font-size: 3.5em;
+}
+
+.businessSlogan {
+    color: lightblue;
+    font-size: 2.3em;
+    margin-bottom: 15px;
+}
+
+.businessInfo-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: start;
+    width: 100%;
+    gap: 30px;
+    margin-top: 15px;
+}
+
+.businessInfo {
+    text-align: center;
+}
+
+.businessInfo h3 {
+    text-align: center;
+    margin-bottom: 5px;
+}
+.businessInfo p {
+    text-align: center;
+    margin-bottom: 5px;
+}
+.businessInfo a {
+    color: #8FB38F;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.businessInfo a:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+/* =============================
+    NAVIGATION BAR
+============================= */
+.mainNav {
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    padding: 0;
+    font-size: 1.2 sans-serif;
+    overflow: hidden;
+    background-color: #333;
+    border: 1px solid #8FB38F;
+    font-weight: bold;
+}
+
+.mainNav li {
+    flex: 1;
+    list-style: none; /* removes bullet points on list */
+    border-left: 1px solid #bbb;
+    border-right: 1px solid #bbb;
+}
+
+.mainNav li a {
+    display: block;
+    width: 100%;
+    color: white;
+    text-align: center;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+.active {
+    background-color: #8FB38F;
+}
