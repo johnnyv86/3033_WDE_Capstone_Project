@@ -329,7 +329,7 @@ textarea {
 
 
 /* =============================
-    MENU PAGE
+    MENU PAGE - MAIN DRINK
 ============================= */
 
 .main-menu-flex {
@@ -421,7 +421,43 @@ textarea {
 
 
 
-box b3-teaCat1
+/* =============================
+    MENU PAGE - SIDE SIZE
+============================= */
+#section3 {
+    border: 4px solild white;
+    gap: 10px;
+    padding: 10px;
+}
+
+.content-col {
+    flex: 1;
+    min-width: 250px;
+}
+
+.b5-sizes {
+    flex: 1;
+    min-width: 250px;
+}
+
+.size-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+.size-table th {
+    font-weight: bold;
+    background-color: #444;
+    color: white;
+}
+
+.size-table th, .size-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
 
 
 
