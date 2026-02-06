@@ -584,6 +584,21 @@ textarea {
     text-align: center;
 }
 
+.drinkSizes {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    width: 100;
+    gap: 30px;
+}
+
+
+
+orderTitle
+order-size
+
+.size-table
+
 topType
 
 description
