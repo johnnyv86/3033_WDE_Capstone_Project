@@ -538,8 +538,54 @@ textarea {
 }
 
 
+/* =============================
+    ORDER PAGE - Ordering Steps
+============================= */
+
+.orderTitle {
+    font-size: 2.0em;
+    color: white;
+    border-bottom: 2px solid #555;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.easyOrdering {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    width: 100%;
+    gap: 30px;
+}
+
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+.order-table th {
+    font-size: 1.3em;
+    font-weight: bold;
+    background-color: #8fb38f;
+    color: white;
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.order-table td {
+    font-size: 1.1em;
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
 topType
-.separator
+
 description
 
 
