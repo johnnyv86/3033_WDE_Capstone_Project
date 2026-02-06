@@ -491,6 +491,25 @@ textarea {
 }
 
 
+/* =============================
+    MENU PAGE - TOPPINGS
+============================= */
+.b7-toppings {
+    flex: 1;
+    min-width: 250px;
+}
+
+.topType h3 {
+    color: white;
+    
+}
+topType
+.separator
+description
+topCol
+topping-item
+toopImage
+
 
 @media (max-width: 768px) {
     .main-menu-flex {
