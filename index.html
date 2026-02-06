@@ -75,6 +75,54 @@
                     <img src="media/Study-Hall-Saturday.jpg" alt="Study Hall Saturday">
                     <img src="media/Self-Care-Sunday.jpg" alt="Self-Care Sunday">
                 </div>
+
+                <div class="getUpdates">
+                    <fieldset>
+                        <h2 class="animatedHeader" style="text-align: center;">Get Notified About Our Promotions!</h2>
+                        <form action="#">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="promoFirstName">First Name:</label>
+                                    <input type="text" name="promoFirstName" id="promoFirstName" placeholder="Jane" required>
+                                    <br>
+                                </div>
+                                <div class="from-group">
+                                    <label for="promoLastName">Last Name:</label>
+                                    <input type="text" name="promoLastName" id="promoLastName" placeholder="Doe" required>
+                                    <br>
+                                </div>
+                            </div>
+
+                            <div form-row>
+                                <div class="from-group">
+                                    <label for="favTea">Favorite Tea Type:</label>
+                                    <select name="favTea" id="favTea" required>
+                                        <option value="" disabled selected>-- Please choose an option --</option>
+                                        <option value="Milk Teas">Milk Teas</option>
+                                        <option value="Slush Teas">Slush Teas</option>
+                                        <option value="Punchy Teas">Punchy Teas</option>
+                                        <option value="Match Teas">Match Teas</option>
+                                        <option value="Classic Teas">Classic Teas</option>
+                                        <option value="Yogurts">Yogurts</option>
+                                        <option value="Espresso">Espresso</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="promoEmail">Enter your email address:</label>
+                                    <input type="email" name="promoEmail" id="promoEmail" placeholder="janedoe@outlook.com" required>
+                                </div>
+                            </div>
+                            <div class="form-group inline-checkboxes">
+                                <input type="checkbox" name="promoAgree" id="promoAgree" required>
+                                <label for="promoAgree">I agree to receiving recurring autosent emails from Per Scholas Tea at the email address provided above and understand that my concent is not a condition of purchase.</label>
+                            </div>
+
+                            <button type="submit" class="submitBtn">Notify Me!</button>
+
+                        </form>
+                    </fieldset>
+
+                </div>
             </main>
         </div>
     </body>
