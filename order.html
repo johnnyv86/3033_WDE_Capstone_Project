@@ -671,17 +671,30 @@
                                     <p id="cartEmptyMsg">No drinks in cart.</p>
                                     <ul id="cartItems"></ul>
                                     <p id="cartTotal">Total: $0.00</p>
+
+                                    <hr class="section-hr">
+
+                                    <form Id="orderForm">
+                                        <h3 style="color: white; margin-bottom: 10px;">Complete Your Order</h3>
+                                        <div class="form-group">
+                                            <label for="orderName">Name:</label>
+                                            <input type="text" id="orderName" placeholder="Name for the order" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="orderContact">Phone:</label>
+                                            <input type ="tel" id="orderContact" placeholder="123-456-7890" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="emailInput">Email:</label>
+                                            <input type="email" id="emailInput" placeholder="Enter email for receipt" required>
+                                        </div>
+                                        <button type="submit" class="SubmitBtn">Submit Order</button>
+                                        <button id="clearCartBtn">Clear Cart</button>
+                                    </form>
+                                    
                                 </div>
                             </fieldset>
-
-
                     </fieldset>
-                </fieldset>
-            
-            
-            
-            
-            
             
             </main>
 

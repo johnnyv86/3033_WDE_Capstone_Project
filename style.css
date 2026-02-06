@@ -615,7 +615,7 @@ textarea {
     margin-top: 20px;
 }
 
-#clearSelectionBtn {
+#clearSelectionBtn, #clearCartBtn {
     padding: 10px 20px;
     background-color: #e74c3c;
     color: white;
@@ -626,7 +626,7 @@ textarea {
     transition:0.3s;
 }
 
-#clearSelectionBtn:hover {
+#clearSelectionBtn:hover, #clearCartBtn:hover {
     background-color: #c0392b;
 }
 
