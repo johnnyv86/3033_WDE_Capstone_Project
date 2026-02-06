@@ -14,6 +14,14 @@ body {
     padding: 20px;
 }
 
+fieldset {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #252525;
+
+}
+
 #main-container {
     max-width: 1200px;
     margin: 0;
@@ -29,6 +37,10 @@ body {
     height: 1px;
     background-color: #444;
     margin: 15px 0;
+}
+
+.full-width-hr {
+    width: 100@;
 }
 
 .business-img {
@@ -201,7 +213,7 @@ body {
 }
 
 /* =============================
-    GET UPDATES MAIN PAGE
+    FORM - GET UPDATES MAIN PAGE 
 ============================= */
 .getUpdates {
     max-width: 100%;
@@ -212,6 +224,18 @@ body {
     border-radius: 5px;
     border-color: white;
 }
+
+.getUpates h2 {
+    margin: 0;
+    padding-bottom: 5px;
+    padding-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.75em;
+    font-weight: bold;
+    color: white;
+    text-align: left;
+}
+
 .animatedHeader label {
     text-align: center;
 }
@@ -271,7 +295,9 @@ textarea {
     resize: vertical;
 }
 
-
+/* =============================
+    BUTTONS 
+============================= */
 
 .submitBtn, button {
     background-color: #8FB38F;
@@ -298,25 +324,10 @@ textarea {
     100% {transform: rotate(0deg);}
 }
 
-fieldset {
-    border: 1px solid #ccc;
-    padding: 15px;
-    margin-bottom: 20px;
-    background-color: #252525;
-
-}
 
 
-.getUpates h2 {
-    margin: 0;
-    padding-bottom: 5px;
-    padding-top: 0;
-    margin-bottom: 10px;
-    font-size: 1.75em;
-    font-weight: bold;
-    color: white;
-    text-align: left;
-}
+
+
 /* =============================
     MENU PAGE
 ============================= */
@@ -348,8 +359,8 @@ fieldset {
 }
 
 .drinkImage {
-    width: 110px;
-    height: 110px;
+    width: 75px;
+    height: 75px;
     object-fit: cover;
     border-radius: 15px;
     grid-column: 1;
@@ -361,13 +372,14 @@ fieldset {
 .teaDes {
     display: grid;
     grid-template-columns: 120px 1fr;
-    column-gap: 20px;
-    align-items: center;background-color: #333;
+    column-gap: 0px;
+    align-items: center;
+    background-color: #333;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
     align-items: start;
-    justify-self: center;
+
 }
 
 .teaDes h3 {
@@ -402,7 +414,6 @@ fieldset {
     margin-bottom: 0;
     font-size: 1.1em;
     color: #ccc;
-
     text-align: left;
 
 }
