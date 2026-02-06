@@ -359,8 +359,8 @@ textarea {
 }
 
 .drinkImage {
-    width: 75px;
-    height: 75px;
+    width: 110px;
+    height: 110px;
     object-fit: cover;
     border-radius: 15px;
     grid-column: 1;
