@@ -686,6 +686,18 @@ textarea {
     object-fit: cover;
     border-radius: 5px;
     margin-top: 10px;
+    padding: 8px;
+    padding-top: 0;
+    margin-top: 10px;
+}
+
+.radio-group {
+    justify-content: space-between;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 

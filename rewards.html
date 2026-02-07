@@ -93,7 +93,197 @@
                     </section>
                 </form>
 
-                
+                <form action="#">
+                    <fieldset>
+                        <legend style="text-align: center">Personal Information</legend>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name:</label>
+                                <input type="text" name="firstName" id="firstName" placeholder="Jane" required>
+                                <br>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name:</label>
+                                <input type="text" name="lastName" id="lastName" placeholder="Doe" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="Birthday">Birthday:</label>
+                                <input type="date" name="Birthday" id="Birthday" required><br>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ContactNumber">Contact Number:</label>
+                                <input type="tel" name="ContactNumber" id="ContactNumber" placeholder="(###) ###-####" required><br>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="Email">Email:</label>
+                                <input type="email" name="Email" id="Email" placeholder="janedoe@outlook.com" required><br>
+		                    </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend style="text-align: center;">Mailing Address</legend>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="StAddress">Street Address:</label>
+                                <input type="text" name="StAddress" id="StAddress" placeholder="123 Main St." required><br>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="City">City:</label>
+                                <input type="text" name="City" id="City" placeholder="Miami" required><br>
+                            </div>
+                            <div class="form-group">
+                                <label for="StatePro">State/Province:</label>
+                                <input type="text" name="StatePro" id="StatePro" placeholder="FL" required><br>
+                            </div>
+			            </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="ZipCode">Zip Code:</label>
+                                <input type="number" name="ZipCode" id="ZipCode" placeholder="33136" required><br>
+                            </div>
+                                
+                            <div class="form-group">
+                                <label for="Country">Country:</label>
+                                <input type="text" name="Country" id="Country" placeholder="USA" required><br>
+                            </div>
+                        </div>
+                    </fieldset>	
+
+                    <fieldset>
+                        <legend style="text-align: center;">Tea Preference</legend>
+                        <div class"form-row">
+                        <div class="form-group">
+                            <label for="teaPreference">Whats your type?</label>
+                            <select name="teaPreference" id="teaPreference">
+                                <option value="" disabled selected>-- Please choose an option --</option>
+                                <option value="CLASSIC TEAS">CLASSIC TEAS</option>
+                                <option value="SLUSH TEAS">SLUSH TEAS</option>
+                                <option value="PUNCHY TEAS">PUNCHY TEAS</option>
+                                <option value="MILK TEAS">MILK TEAS</option>
+                                <option value="MATCHA TEAS">MATCHA TEAS</option>
+                                <option value="YOGURTS">YOGURTS</option>
+                                <option value="COFFEE">COFFEE</option>
+                            </select>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend style="text-align: center;">Sweetness Level</legend>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="sweetness" style="text-align: center; display:block;">Select Your Level of Sweetness</label>
+                                <div class="radio-group">
+                                    <div style="flex: 1;">
+                                        <input type="radio" name="sweetness" id="sweet0" value="0%" style="margin-bottom: 5px;"><br>
+                                        <label for="sweet0">0%</label>
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <input type="radio" name="sweetness" id="sweet25" value="25%" style="margin-bottom: 5px;"><br>
+                                        <label for="sweet25">25%</label>
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <input type="radio" name="sweetness" id="sweet50" value="50%" style="margin-bottom: 5px;"><br>
+                                        <label for="sweet50">50%</label> 
+                                    </div>
+                                    <div style="flex: 1;">				     
+                                        <input type="radio" name="sweetness" id="sweet75" value="75%" style="margin-bottom: 5px;"><br>
+                                        <label for="sweet75">75%</label>
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <input type="radio" name="sweetness" id="sweet100" value="100%" style="margin-bottom: 5px;"><br>
+                                        <label for="sweet100">100%</label>
+                                    </div>
+                                </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend style="text-align: center;">Favorite Toppings</legend>
+                            <div class="form-group">
+                                <label for="topping" style="text-align: center; display:block;">Select all of your FAVS!</label>
+                                <div class="radio-group">
+                                    <div style="flex: 1;">
+                                        <input type="checkbox" name="topping" id="top_boba" value="Classic Boba" style="margin-bottom: 5px;"><br>
+                                        <label for="top_boba">Classic Boba</label>
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <input type="checkbox" name="topping" id="top_sug_boba" value="Brown Sugar Boba" style="margin-bottom: 5px;"><br>								            
+                                        <label for="top_sug_boba">Brown Sugar Boba</label>
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <input type="checkbox" name="topping" id="top_pop_boba" value="Popping Boba" style="margin-bottom: 5px;"><br>     
+                                        <label for="top_pop_boba">Popping Boba</label>
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <input type="checkbox" name="topping" id="top_jelly" value="Jelly" style="margin-bottom: 5px;"><br>
+                                        <label for="top_jelly">Jelly</label>
+                                    </div>
+                                </div>
+                            </div>	
+                        </fieldset>
+
+                        <fieldset>
+                            <legend style="text-align: center;">Account Setup</legend>
+                            <div class="form-group">
+                                <label for="DeUsername">Choose Username:</label>
+                                    <input type="text" name="DeUsername" id="DeUsername" required>
+                            </div>
+
+                            <div class="form-row">
+                            <div class="form-group">
+                                <label for="DePassword">Choose Password:</label>
+                                    <input type="password" name="DePassword" id="DePassword" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="RePassword">Reenter Password:</label>
+                            <input type="password" name="RePassword" id="RePassword" required>
+                            </div>
+                            </div>
+                        </fieldset>
+
+                        <hr class="section-hr">
+
+                        <fieldset>
+                            <div class="form-group" class="inline-checkboxes" style="align-items: center; display: block">
+                                <input type="checkbox" name="PromoEmail" id="PromoEmail">
+                                    <label for="PromoEmail">I agree to receiving recurring autosent emails from Per Scholas Tea at the email address provided above and understand that my concent is not a condition of purchase.</label><br> 
+                                <input type="checkbox" name="TermAgre" id="TermAgre">
+                                    <label for="TermAgre">I have read and agree to the Per Scholas Tea Rewards Program, the Privacy Pollicy, and Terms of Service..</label>
+					        </div>
+  
+	
+		        
+                            <div class="form-group">
+                                <input type="reset" class="ClearBtn" value="Clear Form">
+                                <input type="submit" class="SubmitBtn" value="Join Club">
+                            </div>
+                        </fieldset>
+
+                        
+
+                    </fieldset>
+
+                    </fieldset>
+
+
+
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+
+
             </main>
 
 
