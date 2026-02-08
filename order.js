@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // DRINK FILTERING LOGIC
     const filterButtons = document.querySelectorAll("#drinkFilters .filterBtn");
-    const drinkGroups = document.querySelectorAll("fieldset[data-type");
+    const drinkGroups = document.querySelectorAll("fieldset[data-type]");
 
     filterButtons.forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const cartEmptyMsg = document.getElementById("cartEmptyMsg");
     const cartTotalEl = document.getElementById("cartTotal");
 
-    let cartData = JSON.parse(localStorage.getItem("perScholasTeaCart")) ||[];
+    let cartData = JSON.parse(localStorage.getItem("perScholasTeaCart")) || [];
 
     let cartTotal = 0;
     let currentSelection = null;
@@ -46,9 +46,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentToppings = [];
 
     const selectButtons = document.querySelectorAll(".teaDes .selectDrinkBtn");
-    const sizeRows = document.querySelectorAll(".size-row")
+    const sizeRows = document.querySelectorAll(".size-row");
     const sweetnessCards = document.querySelectorAll(".sweetness-card");
-    const toppingItems = document.querySelectorAll(".topping-item")
+    const toppingItems = document.querySelectorAll(".topping-item");
 
 
 // HELPER: RENDER CART & SAVE TO STORAGE
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         cartData.forEach((item, index) => {
             const li = document.createElement("li");
-            const toppingString = item.toppings.length > 0
+            const toppingsString = item.toppings.length > 0
                 ? ` + ${item.toppings.join(", ")}`
                 : "";
 
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 ${item.size},
                 ${item.sweetness},
                 ${toppingsString} - $${item.price.toFixed(2)}`
-            li.classList.add("cart-item")
+            li.classList.add("cart-items")
 
     // 2. APPEND to FRAGMENT instead of cartList
             fragment.appendChild(li);
@@ -101,16 +101,15 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!currentSelection) return;
 
         const toppingsCost = currentToppings.length * TOPPING_PRICE;
-        currentSelection.price = currentBasePrice +currentSizePrice + toppingsCost;
+        currentSelection.price = currentBasePrice + currentSizePrice + toppingsCost;
     }
-
 
 // DRINK SELECTION LISTENER
     selectButtons.forEach((btn) => {
         btn.addEventListener("click", () => {
             const drinkCard = btn.closest(".teaDes");
 
-            const nameEl = drinkCard.querySelector("teaType");
+            const nameEl = drinkCard.querySelector(".teaType");
             const priceEl = drinkCard.querySelector(".price");
 
             const drinkName = nameEl
@@ -130,12 +129,12 @@ document.addEventListener("DOMContentLoaded", () => {
             currentToppings = [];
 
         // RESET BUTTON FOR NEW SELECTION
-            addToCartBtn.textContent = "Add to Cart"
+            addToCartBtn.textContent = "Add to Cart";
 
         // RESET VISUAL
             sizeRows.forEach(row => row.classList.remove("active"));
             sweetnessCards.forEach(card => card.classList.remove("active"));
-            toppingItems.forEach(item.classList.remove("active"));
+            toppingItems.forEach(item => item.classList.remove("active"));
 
         // SET INITIAL SELECTION OBJECT
             currentSelection = { name: drinkName, price: currentBasePrice };
@@ -151,13 +150,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 .forEach((card) => card.classList.remove("selectedDrink"));
             drinkCard.classList.add("selectedDrink");
 
-
         // SCROLL LOGIC TO DRINK SIZE AFTER SELECT CLICKED
-            const sizeSection = document.getElementById("size-section");
+            const sizeSection = document.getElementById("order-size");
             if (sizeSection) {
                 sizeSection.scrollIntoView({ behavior: "smooth" });
             } else {
-                console.error("ID 'size-section' not found in HTML");
+                console.error("ID 'order-size' not found in HTML");
             }
         });
     });
@@ -185,13 +183,12 @@ document.addEventListener("DOMContentLoaded", () => {
             updateDisplay();
 
         // SCROLL LOGIC: SIZE TO SWEETNESS LEVEL
-            const sweetnessSection = document.getElementById("sweetness-section");
+            const sweetnessSection = document.getElementById("order-sweetness");
             if (sweetnessSection) {
                 sweetnessSection.scrollIntoView({ behavior: "smooth" });
             }
         });
     });
-    
     
 // SWEETNESS SECTION LISTENER
     sweetnessCards.forEach(card => {
@@ -211,11 +208,10 @@ document.addEventListener("DOMContentLoaded", () => {
             updateDisplay();
 
     // SCROLL LOGIC: SWEETNESS to TOPPING
-            const toppingSection = document.getElementById("toppings-section");
-            if (toppingSection) toppingSection.scrollIntoView({ behavior: "smooth" });
+            const toppingsSection = document.getElementById("toppings-section");
+            if (toppingsSection) toppingsSection.scrollIntoView({ behavior: "smooth" });
         });
     });
-
 
 // TOPPING LISTENER
     toppingItems.forEach (item => {
@@ -235,7 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (item.classList.contains("active")) {
                 currentToppings.push(toppingName);
             } else {
-                currentToppings = currentToppings.filter(t => t !== toppingSection);
+                currentToppings = currentToppings.filter(t => t !== toppingName);
             }
 
             recalculateTotal();
@@ -262,18 +258,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p><strong>Size:</strong> ${currentSizeName} ${costTotal}</p>
                 <p><strong>Sweetness:</strong> ${currentSweetness}</p>
                 <p><strong>Toppings:</strong> ${toppingsText}</p>
-                <p><strong>Total:</strong> ${currentSelection.price.toFixed(2)}</p>
+                <p><strong>Total:</strong> $${currentSelection.price.toFixed(2)}</p>
             `;
         }
     }
 
-
+    // ADD TO CART LISTENER
     addToCartBtn.addEventListener("click", () => {
 
     // MODE ONE: ADD ANOTHER DRINK!    
         if (!currentSelection) {
-            const drinkSelection = document.getElementById("drinkFilters");
-            if(drinkSection) {
+            const drinkSection = document.getElementById("drinkFilters");
+            if (drinkSection) {
                 drinkSection.scrollIntoView({ behavior: "smooth" });
             }
             return;
@@ -291,8 +287,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
     // 2. ADD ITEM TO MASTER DATA LIST
-        cartData.push(newItemm);
-
+        cartData.push(newItem);
 
     // 3. SAVE & UPDATE SCREEN
         renderCart();
@@ -301,22 +296,19 @@ document.addEventListener("DOMContentLoaded", () => {
         addToCartBtn.textContent = "Add another drink!";
         addToCartBtn.disabled = true;
 
-
     // 5. RESET ALL PREVIOUS SELECTED ITEMS
         currentSelection = null;
         currentBasePrice = 0;
         currentSizePrice = 0;
-        currentSizeName = "Small"
-        currentSweetness = "0%"
+        currentSizeName = "Small";
+        currentSweetness = "0%";
         currentToppings = [];
 
     // 6. RESET ALL VISUAL 
         document.querySelectorAll(".teaDes").forEach(card => card.classList.remove("active"));
-        sizeRows.forEach(row.classList.remove("active"));
-        sweetnessCards.forEach(card.classList.remove("active"));
+        sizeRows.forEach(row => row.classList.remove("active"));
+        sweetnessCards.forEach(card => card.classList.remove("active"));
         toppingItems.forEach(item => item.classList.remove("active"));
-
-
 
     // 7. RESET SELECTION SUMMARY DISPLAY
         selectedDetails.innerHTML = `
@@ -325,7 +317,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
 // CLEAR SELECTION SUMMARY SECTION LISTENER
-    const clearBtn = document.getElementById("clearSelectionBtn")
+    const clearBtn = document.getElementById("clearSelectionBtn");
 
     clearBtn.addEventListener("click", () => {
     
@@ -333,22 +325,20 @@ document.addEventListener("DOMContentLoaded", () => {
         currentSelection = null;
         currentBasePrice = 0;
         currentSizePrice = 0;
-        currentSizeName = "Small"
-        currentSweetness = "0%"
+        currentSizeName = "Small";
+        currentSweetness = "0%";
         currentToppings = [];
-
 
     // 2. RESET VISUAL DISPLAY
         document.querySelectorAll(".teaDes").forEach(card => card.classList.remove("active"));
         sizeRows.forEach(row => row.classList.remove("active"));
-        sweetnessCards.forEach(card = card.classList.remove("active"));
+        sweetnessCards.forEach(card => card.classList.remove("active"));
         toppingItems.forEach(item => item.classList.remove("active"));
 
     // 3. RESET TEXT AND BUTTON FUNCTIONALITY
-        selectedDetails.innerHTML = "<p>No drink selected yet.</p>"
+        selectedDetails.innerHTML = "<p>No drink selected yet.</p>";
         addToCartBtn.textContent = "Add to Cart!";
-        addToCartBtn.disabled = true;
-
+        addToCartBtn.disable = true;
 
     // 4. SCROLL LOGIC: SCROLL BACK TO TOP - DRINK FILTER SECTION
         const drinkSelection = document.getElementById("drinkFilters");
@@ -356,7 +346,6 @@ document.addEventListener("DOMContentLoaded", () => {
             drinkSelection.scrollIntoView({ behavior: "smooth" });
         }
     });
-
 
 // CLEAR CART LISTENER
     const clearCartBtn = document.getElementById("clearCartBtn");
@@ -369,7 +358,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 2. UPDATE USER INTERFACE & STROAGE
         renderCart();
 
-        alert("Cart has been cleared!")
+        alert("Cart has been cleared!");
     });
 
 // FROM LISTENER
@@ -416,7 +405,6 @@ document.addEventListener("DOMContentLoaded", () => {
             orderName.style.border = "1px solid #555";
             orderContact.style.border = "1px solid #555";
             orderEmail.style.border = "1px solid #555";
-
 
     // 5. CLEAR CART
             const clearCartBtn = document.getElementById("clearCartBtn");
