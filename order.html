@@ -12,34 +12,27 @@
         <div id="main-container">
             <header id="section1">
                 <div class="box b0-business">
-                    <img 
-                        src="media/BusinessLogo.jpg" 
-                        alt="Per Scholas Tea Business Logo" 
-                        class="business-img">
-
+                    <img src="media/BusinessLogo.jpg" alt="Per Scholas Tea Business Logo" class="business-img">
                     <div class="header-text">
                         <h1 class="businessName">PER SCHOLAS TEA</h1>
                         <p class="businessSlogan">Brewing the Future</p>
-                        
                         <hr class="section-hr">
-                        
                         <div class="businessInfo-container">
                             <div class="businessInfo">
                                 <h3>Business Hours:</h3>
                                 <p>Monday - Sunday</p>
                                 <p>12pm - 12am</p>
                             </div>
-
                             <div class="businessInfo">
                                 <h3>Phone Number:</h3>
-                                <p>(305) 515-9041</p>
-                                <a href="tel:+3055159041">Click to call!</a>
-                            </div>
+                                <p>(305) 515 - 9041</p>
+                                <a href="tel:+13055159041">Click to call!</a>
 
+                            </div>
                             <div class="businessInfo">
                                 <h3>Business Address:</h3>
-                                <p>701 S. Miami Ave. Miami, FL 33130</p>
-                                <a target="_blank" href="https://www.google.com/maps/place/701+S+Miami+Ave,+Miami,+FL+33130/@25.7677508,-80.1930238,17z/data=!3m2!4b1!5s0x88d9b6836267f089:0x7a21e136f64186b3!4m6!3m5!1s0x88d9b68358bc319b:0xc8e4fd34c80144!8m2!3d25.7677508!4d-80.1930238!16s%2Fg%2F11s_vfv631?entry=ttu&g_ep=EgoyMDI2MDIwMS4wIKXMDSoASAFQAw%3D%3D">Click for Directions!</a>
+                               <p>701 S. Miami Ave., Miami, FL 33130</p>
+                                <a target="_blank" href="https://www.google.com/maps/search/?api=1&query=701+S.+Miami+Ave.+Miami,+FL+33130">Click for Directions!</a>
                             </div>
                         </div>
                     </div>
@@ -48,11 +41,11 @@
 
             <hr class="section-hr">
 
-            <nav>
+            <nav aria-label="Main navigation">
                 <ul class="mainNav">
                     <li><a href="index.html">HOME</a></li>
                     <li><a href="menu.html">MENU</a></li>
-                    <li><a class="active" href="order.html">ORDER</a></li>
+                    <li><a class="active" href="order.html" aria-current="page">ORDER</a></li>
                     <li><a href="rewards.html">REWARDS</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
                 </ul>
@@ -647,7 +640,7 @@
                                 </div>
 
                                     <button id="addToCartBtn" disabled>Add to Cart</button>
-                                    <button id="clearSelectionBtn">Clear Selection</button>
+                                    <button type="reset" class="clearSelectionBtn" onclick="return confirm('Are you sure you want to clear all form data?')">Clear Selection!</button>
                                 </div>
                             </fieldset>
 
@@ -663,25 +656,34 @@
                                     <form id="orderForm">
                                         <h3 style="color: white; margin-bottom: 10px;">Complete Your Order</h3>
                                         <div class="form-group">
-                                            <label for="orderName">Name:</label>
+                                            <label for="orderName">Name for the order. <span aria-label="required" class="required">*</span></label>
                                             <input type="text" id="orderName" placeholder="Name for the order" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="orderContact">Phone:</label>
+                                            <label for="orderContact">Contact number. <span aria-label="required" class="required">*</span></label>
                                             <input type ="tel" id="orderContact" placeholder="123-456-7890" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="contactEmail">Email:</label>
-                                            <input type="email" id="contactEmail" placeholder="Enter email for receipt" required>
+                                            <label for="orderEmail">Email address for receipt. <span aria-label="required" class="required">*</span></label>
+                                            <input type="email" id="orderEmail" placeholder="Enter email for receipt" required>
                                         </div>
                                         <button type="submit" id="submitBtn">Submit Order</button>
-                                        <button id="clearCartBtn">Clear Cart</button>
+                                        <button type="reset" class="clearCartBtn" onclick="return confirm('Are you sure you want to clear all form data?')">Clear Cart!</button>
                                     </form>     
                                 </div>
                             </fieldset>
                     </fieldset>
             </main>
+            <hr class="section-hr">
+            <footer>
+                <div class="footer-content">
+                    <p class="copyright">&copy; <span id="currentYear"></span> Per Scholas Tea. All rights reserved.</p>
+                </div>
+            </footer>
         </div>
         <script src="order.js" defer></script>
+        <script>
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        </script>
+        
     </body>
-</html>

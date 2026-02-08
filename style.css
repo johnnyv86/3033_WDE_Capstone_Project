@@ -30,6 +30,11 @@ legend {
     padding: 0 5px;
 }
 
+.required {
+    color: red;
+    font-weight: bold;
+}
+
 #main-container {
     max-width: 1200px;
     margin: 0;
@@ -245,6 +250,10 @@ legend {
     text-align: left;
 }
 
+.animatedHeader {
+    text-align: center;
+}
+
 .animatedHeader label {
     text-align: center;
 }
@@ -308,7 +317,7 @@ textarea {
     BUTTONS 
 ============================= */
 
-.promoSubmitBtn, .selectDrinkBtn, .filterBtn {
+.promoSubmitBtn, .selectDrinkBtn, .filterBtn, .submitBtn {
     background-color: #8FB38F;
     color: white;
     padding: 10px 20px;
@@ -320,13 +329,13 @@ textarea {
     margin-top: 15px;
 }
 
-.promoSubmitBtn:hover, .selectDrinkBtn:hover, .filterBtn:hover {
+.promoSubmitBtn:hover, .selectDrinkBtn:hover, .filterBtn:hover, .submitBtn:hover {
     transform: scale(1.05);
     background-color: #555;
     border-color: 1px #45A049;
 }
 
-.promoClearBtn {
+.promoClearBtn, .clearSelectionBtn, .clearCartBtn {
     padding: 10px 20px;
     background-color: #e74c3c;
     color: white;
@@ -338,7 +347,7 @@ textarea {
     margin-top: 15px;
 }
 
-.promoClearBtn:hover {
+.promoClearBtn:hover, .clearSelectionBtn:hover, .clearCartBtn:hover {
     transform: scale(1.05);
     background-color: #c0392b;
 }
@@ -461,6 +470,7 @@ textarea {
 .b5-sizes {
     flex: 1;
     min-width: 250px;
+    border: 4px solid white;
 }
 
 .size-table {
@@ -486,9 +496,10 @@ textarea {
 /* =============================
     MENU PAGE - SWEETNESS LVL
 ============================= */
-.b6-sweetness {
+.b6-sweeetness {
     flex: 1;
     min-width: 250px;
+    border: 4px solid white;
 }
 
 .sweet-container{
@@ -520,6 +531,7 @@ textarea {
 .b7-toppings {
     flex: 1;
     min-width: 250px;
+    border: 4px solid white;
 }
 
 .topType h3 {
@@ -810,20 +822,11 @@ textarea {
 .button-container {
     display: flex;
 }
-addToCartBtn
 
-selectedDrinkSection
-selectedDrinkDetails
 
-orderTitle
-order-size
-
-.size-table
-
-topType
-
-description
-
+.copyright {
+    text-align: center;
+}
 
 
 

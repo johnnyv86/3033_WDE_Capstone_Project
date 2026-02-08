@@ -394,6 +394,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             if (!emailValue.includes("@") || emailValue.length < 5) {
+                event.preventDefault();
                 alert("Please enter a valid email address.")
                 orderEmail.style.border = "2px solid red";
                 return;
@@ -414,4 +415,5 @@ document.addEventListener("DOMContentLoaded", () => {
             event.preventDefault();
         });
     }
+    
 });

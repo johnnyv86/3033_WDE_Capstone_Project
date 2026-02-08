@@ -10,7 +10,7 @@
 
     <body>
         <div id="main-container">
-            <header>
+            <header id="section1">
                 <div class="box b0-business">
                     <img src="media/BusinessLogo.jpg" alt="Per Scholas Tea Business Logo" class="business-img">
                     <div class="header-text">
@@ -26,12 +26,13 @@
                             <div class="businessInfo">
                                 <h3>Phone Number:</h3>
                                 <p>(305) 515 - 9041</p>
-                                <a href="tel:+3055159041">Click to call!</a>
+                                <a href="tel:+13055159041">Click to call!</a>
+
                             </div>
                             <div class="businessInfo">
                                 <h3>Business Address:</h3>
-                                <p>701 S. Miami Ave. Miami, FL 33130</p>
-                                <a target="_blank" href="https://www.google.com/maps/place/701+S+Miami+Ave,+Miami,+FL+33130/@25.7677508,-80.1930238,17z/data=!3m2!4b1!5s0x88d9b6836267f089:0x7a21e136f64186b3!4m6!3m5!1s0x88d9b68358bc319b:0xc8e4fd34c80144!8m2!3d25.7677508!4d-80.1930238!16s%2Fg%2F11s_vfv631?entry=ttu&g_ep=EgoyMDI2MDIwMS4wIKXMDSoASAFQAw%3D%3D">Click for Directions!</a>
+                                <p>701 S. Miami Ave., Miami, FL 33130</p>
+                                <a target="_blank" href="https://www.google.com/maps/search/?api=1&query=701+S.+Miami+Ave.+Miami,+FL+33130">Click for Directions!</a>
                             </div>
                         </div>
                     </div>
@@ -40,13 +41,13 @@
 
             <hr class="section-hr">
 
-            <nav>
+            <nav aria-label="Main navigation">
                 <ul class="mainNav">
                     <li><a href="index.html">HOME</a></li>
                     <li><a href="menu.html">MENU</a></li>
                     <li><a href="order.html">ORDER</a></li>
                     <li><a href="rewards.html">REWARDS</a></li>
-                    <li><a class="active" href="contact.html">CONTACT</a></li>
+                    <li><a class="active" href="contact.html" aria-current="page">CONTACT</a></li>
                 </ul>
             </nav>
 
@@ -60,7 +61,7 @@
                             <legend>Your Details</legend>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="firstName">First Name:</label>
+                                    <label for="firstName">First Name <span aria-label="required" class="required">*</span></label>
                                     <input 
                                         type="text"
                                         name="firstName"
@@ -69,7 +70,7 @@
                                         required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="lastName">Last Name:</label>
+                                    <label for="lastName">Last Name <span aria-label="required" class="required">*</span></label>
                                     <input 
                                         type="text"
                                         name="lastName"
@@ -81,7 +82,7 @@
 
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="contactNumber">Contact Number:</label>
+                                    <label for="contactNumber">Contact Number <span aria-label="required" class="required">*</span></label>
                                     <input 
                                         type="tel" 
                                         name="contactNumber" 
@@ -89,7 +90,7 @@
                                         placeholder="(###) ###-####">
                                 </div>
                                 <div class="form-group">
-                                    <label for="contactEmail">Email Address:</label>
+                                    <label for="contactEmail">Email Address <span aria-label="required" class="required">*</span></label>
                                     <input 
                                         type="email"
                                         name="contactEmail"
@@ -124,7 +125,7 @@
                         <fieldset>
                             <legend>Feedback & Reason</legend>
                             <div class="form-group">
-                                <label for="contactReason">Reason for contact:</label>
+                                <label for="contactReason">Reason for contact <span aria-label="required" class="required">*</span></label>
                                 <select name="contactReason" id="contactReason" required>
                                     <option value="" disabled selected>-- Select an option --</option>
                                     <option value="orderIssue">Order Issue</option>
@@ -137,7 +138,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="feedback">Feedback:</label>
+                                <label for="feedback">Feedback <span aria-label="required" class="required">*</span></label>
                                 <textarea 
                                     name="feedback"
                                     id="feedback"
@@ -150,7 +151,7 @@
                         <fieldset>
                             <legend>How should we contact you?</legend>
                             <div class="form-group">
-                                <div class="radio-group1">
+                                <div class="radio-group1" required>
                                     <div>
                                         <input type="radio" name="byPhone" id="byPhone" value="phone">
                                         <label for="byPhone">By Phone</label>
@@ -170,17 +171,24 @@
                         <div class="form-group">
                             <div class="button-container">
                             <button type="submit" class="submitBtn">Submit Feedback</button>
-                            <button id="clearCartBtn">Clear Form</button>
+                            <button type="reset" class="promoClearBtn" onclick="return confirm('Are you sure you want to clear all form data?')">Clear Form!</button>
+
                             </div>
                         </div>
 
                     </form>
                 </fieldset>
             </div>
-
-
-
+            <hr class="section-hr">
+            <footer>
+                <div class="footer-content">
+                    <p class="copyright">&copy; <span id="currentYear"></span> Per Scholas Tea. All rights reserved.</p>
+                </div>
+            </footer>
         </div>
+        <script>
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        </script>
     </body>
 </html>
 

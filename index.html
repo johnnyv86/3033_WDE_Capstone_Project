@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
 
     <body>
         <div id="main-container">
-            <header>
+            <header id="section1">
                 <div class="box b0-business">
                     <img src="media/BusinessLogo.jpg" alt="Per Scholas Tea Business Logo" class="business-img">
                     <div class="header-text">
@@ -26,12 +26,12 @@
                             <div class="businessInfo">
                                 <h3>Phone Number:</h3>
                                 <p>(305) 515 - 9041</p>
-                                <a href="tel:+3055159041">Click to call!</a>
+                                <a href="tel:+1-305-515-9041">Click to call!</a>
                             </div>
                             <div class="businessInfo">
                                 <h3>Business Address:</h3>
-                                <p>701 S. Miami Ave. Miami, FL 33130</p>
-                                <a target="_blank" href="https://www.google.com/maps/place/701+S+Miami+Ave,+Miami,+FL+33130/@25.7677508,-80.1930238,17z/data=!3m2!4b1!5s0x88d9b6836267f089:0x7a21e136f64186b3!4m6!3m5!1s0x88d9b68358bc319b:0xc8e4fd34c80144!8m2!3d25.7677508!4d-80.1930238!16s%2Fg%2F11s_vfv631?entry=ttu&g_ep=EgoyMDI2MDIwMS4wIKXMDSoASAFQAw%3D%3D">Click for Directions!</a>
+                                <p>701 S. Miami Ave., Miami, FL 33130</p>
+                                <a target="_blank" href="https://www.google.com/maps/search/?api=1&query=701+S.+Miami+Ave.+Miami,+FL+33130">Click for Directions!</a>
                             </div>
                         </div>
                     </div>
@@ -40,9 +40,9 @@
 
             <hr class="section-hr">
 
-            <nav>
+            <nav aria-label="Main navigation">
                 <ul class="mainNav">
-                    <li><a class="active" href="index.html">HOME</a></li>
+                    <li><a class="active" href="index.html" aria-current="page">HOME</a></li>
                     <li><a href="menu.html">MENU</a></li>
                     <li><a href="order.html">ORDER</a></li>
                     <li><a href="rewards.html">REWARDS</a></li>
@@ -79,14 +79,15 @@
                 <hr class="section-hr">
 
                 <div class="contactContainer">
-                <fieldset>
-                    <h2 class="animatedHeader" style="text-align: center;">Get Notified About Our Promotions!</h2>
-                    <form action="#">
+
+                    <h2 class="animatedHeader">Get Notified About Our Promotions!</h2>
+                    <form action="#" method="POST" onsubmit="alert('Form submitted successfully!'); return false;">
+
                         <fieldset>
                             <legend>Your Details</legend>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="promoFirstName">First Name:</label>
+                                    <label for="promoFirstName">First Name <span aria-label="required" class="required">*</span></label>
                                     <input 
                                         type="text"
                                         name="promoFirstName"
@@ -95,7 +96,7 @@
                                         required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="promoLastName">Last Name:</label>
+                                    <label for="promoLastName">Last Name <span aria-label="required" class="required">*</span></label>
                                     <input 
                                         type="text"
                                         name="promoLastName"
@@ -106,14 +107,14 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="from-group">
-                                    <label for="favTea">Favorite Tea Type:</label>
+                                <div class="form-group">
+                                    <label for="favTea">Favorite Tea Type <span aria-label="required" class="required">*</span></label>
                                     <select name="favTea" id="favTea" required>
                                         <option value="" disabled selected>-- Please choose an option --</option>
                                         <option value="Milk Teas">Milk Teas</option>
                                         <option value="Slush Teas">Slush Teas</option>
                                         <option value="Punchy Teas">Punchy Teas</option>
-                                        <option value="Match Teas">Match Teas</option>
+                                        <option value="Matcha Teas">Matcha Teas</option>
                                         <option value="Classic Teas">Classic Teas</option>
                                         <option value="Yogurts">Yogurts</option>
                                         <option value="Espresso">Espresso</option>
@@ -121,11 +122,13 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="birthDate">Birthday:</label>
+                                    <label for="birthDate">Birthday <span aria-label="required" class="required">*</span></label>
                                     <input 
                                         type="date" 
                                         name="birthDate" 
                                         id="birthDate"
+                                        min="1900-01-01"
+                                        max="2026-02-08"
                                         required>
                                 </div>
                                 
@@ -133,15 +136,18 @@
 
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="contactNumber">Contact Number:</label>
+                                    <label for="contactNumber">Contact Number <span aria-label="required" class="required">*</span></label>
                                     <input 
                                         type="tel" 
                                         name="contactNumber" 
                                         id="contactNumber"
-                                        placeholder="(###) ###-####">
+                                        pattern="^\([0-9]{3}\)\s[0-9]{3}-[0-9]{4}$"
+                                        placeholder="(123) 456-7890"
+                                        title="Please enter a valid 10-digit phone number (e.g., (123) 456-7890, 123-456-7890, or 123.456.7890)"
+                                        required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="promoEmail">Email Address:</label>
+                                    <label for="promoEmail">Email Address <span aria-label="required" class="required">*</span></label>
                                     <input 
                                         type="email"
                                         name="promoEmail"
@@ -153,18 +159,29 @@
            
                             <div class="form-group inline-checkboxes">
                                 <input type="checkbox" name="promoAgree" id="promoAgree" required>
-                                <label for="promoAgree">I agree to receiving recurring autosent emails from Per Scholas Tea at the email address provided above and understand that my concent is not a condition of purchase.</label>
+                                <label for="promoAgree">I agree to receiving recurring autosent emails from Per Scholas Tea at the email address provided above and understand that my consent is not a condition of purchase.</label>
                             </div>
 
                             <button type="submit" class="promoSubmitBtn">Notify Me!</button>
-                            <button type="reset" class="promoClearBtn">Clear Form!</button>
+                            <button type="reset" class="promoClearBtn" onclick="return confirm('Are you sure you want to clear all form data?')">Clear Form!</button>
 
-                        </form>
-                                     </fieldset>
-                    </fieldset>
-
+                        </fieldset>
+                    </form>
                 </div>
             </main>
+            <hr class="section-hr">
+            <footer>
+                <div class="footer-content">
+                    <p class="copyright">&copy; <span id="currentYear"></span> Per Scholas Tea. All rights reserved.</p>
+                    
+                </div>
+            </footer>
         </div>
+        <script src="order.js" defer></script>
+        <script>
+            document.getElementById('birthDate').max = new Date().toISOString().split('T')[0];
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        </script>
+
     </body>
 </html>
