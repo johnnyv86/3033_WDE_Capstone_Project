@@ -70,7 +70,6 @@ legend {
     background-color: var(--color-bg-dark);
     border: 1px solid var(--color-border-light);
     color: var(--color-text-primary);
-    font-family: Arial, Helvetica, sans-serif;
     padding: 15px;
 }
 
@@ -339,7 +338,7 @@ textarea {
     BUTTONS 
 ============================= */
 
-.selectDrinkBtn, .filterBtn, .submitBtn, .addToCartBtn {
+.selectDrinkBtn, .filterBtn, .submitBtn, #addToCartBtn {
     background-color: var(--color-primary);
     color: white;
     padding: 10px 20px;
@@ -351,14 +350,15 @@ textarea {
     margin-top: 15px;
 }
 
-.selectDrinkBtn:hover, .filterBtn:hover, .submitBtn:hover, .addToCartBtn:hover {
+#selectDrinkBtn:hover, .filterBtn:hover, .submitBtn:hover, #addToCartBtn:hover {
     transform: scale(1.05);
     background-color: var(--color-border-medium);
     border: 1px solid #45A049;
 }
 
 
-.clearBtn, .clearSelectionBtn, .clearCartBtn {
+
+.clearBtn, #clearSelectionBtn, #clearCartBtn {
     padding: 10px 20px;
     background-color: var(--color-danger);
     color: white;
@@ -370,12 +370,31 @@ textarea {
     margin-top: 15px;
 }
 
-.clearBtn:hover, .clearSelectionBtn:hover, .clearCartBtn:hover {
+.clearBtn:hover, #clearSelectionBtn:hover, #clearCartBtn:hover {
     transform: scale(1.05);
     background-color: var(--color-danger-hover);
     border: 1px solid var(--color-danger-hover);
 }
 
+.btn:hover,
+.btn:focus {
+    transform: scale(1.05);
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.topping-item:hover,
+.topping-item:focus {
+    transform: scale(1.05);
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.size-row:hover,
+.size-row:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: -2px;
+}
 
 @keyframes wiggle {
     0% {transform: rotate(0deg);}

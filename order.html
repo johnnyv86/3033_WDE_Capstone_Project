@@ -640,8 +640,8 @@
                                     <p>No drink selected yet.</p>
                                 </div>
 
-                                    <button class="addToCartBtn" disabled>Add to Cart</button>
-                                    <button type="reset" class="clearSelectionBtn" onclick="return confirm('Are you sure you want to clear all form data?')">Clear Selection!</button>
+                                    <button id="addToCartBtn" disabled>Add to Cart</button>
+                                    <button type="reset" id="clearSelectionBtn" onclick="return confirm('Are you sure you want to clear all form data?')">Clear Selection!</button>
                                
                             </fieldset>
 
@@ -669,7 +669,7 @@
                                             <input type="email" id="orderEmail" placeholder="Enter email for receipt" required>
                                         </div>
                                         <button type="submit" class="submitBtn">Submit Order</button>
-                                        <button type="reset" class="clearCartBtn" onclick="return confirm('Are you sure you want to clear all form data?')">Clear Cart!</button>
+                                        <button type="reset" id="clearCartBtn" onclick="return confirm('Are you sure you want to clear all form data?')">Clear Cart!</button>
                                     </form>     
                                 </div>
                             </fieldset>
