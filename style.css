@@ -381,6 +381,8 @@ textarea {
     outline-offset: 2px;
 }
 
+.selectDrinkBtn:hover,
+.selectDrinkBtn:focus,
 .teaDes:hover,
 .teaDes:focus,
 .sweetness-card:hover,
@@ -395,7 +397,7 @@ textarea {
     outline-offset: 2px;
 } 
 
-.topping-item, .teaDes, .sweetness-card, .size-row {
+.topping-item, .teaDes, .selectDrinkBtn, .sweetness-card, .size-row {
     transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -451,7 +453,7 @@ textarea {
 
 
 
-.teaDes, .menuTea {
+ .selectDrinkBtn, .menuTea {
     display: grid;
     grid-template-columns: 120px 1fr;
     column-gap: 0px;
@@ -463,7 +465,7 @@ textarea {
     align-items: start;
 }
 
-.teaDes h3, .menuTea h3 {
+.teaDes h3, .selectDrinkBtn h3, .menuTea h3 {
     display: flex;
     justify-content: space-between;
     grid-column: 2;
