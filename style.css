@@ -339,7 +339,7 @@ textarea {
     BUTTONS 
 ============================= */
 
-.selectDrinkBtn, .filterBtn, .submitBtn, #addToCartBtn {
+#selectDrinkBtn, .filterBtn, .submitBtn, #addToCartBtn {
     background-color: var(--color-primary);
     color: white;
     padding: 10px 20px;
@@ -356,6 +356,7 @@ textarea {
     background-color: var(--color-border-medium);
     border: 1px solid #45A049;
 }
+
 
 
 
@@ -376,11 +377,7 @@ textarea {
     background-color: var(--color-danger-hover);
     border: 1px solid var(--color-danger-hover);
 }
-.btn {
-    transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
-}
-
-.topping-item {
+.btn, .topping-item, .teaDes, .sweetness-card, .size-row {
     transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -405,12 +402,6 @@ textarea {
     outline-offset: 2px;
 }
 
-.bar-outer:hover,
-.bar-outer:focus {
-    transform: scale(1.05);
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-}
 
 .topping-item:hover,
 .topping-item:focus {
