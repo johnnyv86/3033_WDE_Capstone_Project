@@ -29,6 +29,7 @@
     /* Buttons */
     --color-danger: #e74c3c;
     --color-danger-hover: #c0392b;
+    --color-link: #A5D6A5;
 }
 
 * {
@@ -154,7 +155,7 @@ legend {
     margin-bottom: 5px;
 }
 .businessInfo a {
-    color: var(--color-primary);
+    color: var(--color-link);
     text-decoration: none;
     font-weight: bold;
 }
@@ -375,9 +376,37 @@ textarea {
     background-color: var(--color-danger-hover);
     border: 1px solid var(--color-danger-hover);
 }
+.btn {
+    transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.topping-item {
+    transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.teaDes:hover,
+.teaDes:focus {
+    transform: scale(1.01);
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
 
 .btn:hover,
 .btn:focus {
+    transform: scale(1.05);
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.sweetness-card:hover,
+.sweetness-card:focus {
+    transform: scale(1.05);
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.bar-outer:hover,
+.bar-outer:focus {
     transform: scale(1.05);
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
@@ -392,8 +421,9 @@ textarea {
 
 .size-row:hover,
 .size-row:focus {
+    transform: scale(1.01);
     outline: 2px solid var(--color-primary);
-    outline-offset: -2px;
+    outline-offset: 2px;
 }
 
 @keyframes wiggle {
@@ -447,7 +477,8 @@ textarea {
 }
 
 
-.teaDes {
+
+.teaDes, .menuTea {
     display: grid;
     grid-template-columns: 120px 1fr;
     column-gap: 0px;
@@ -459,7 +490,7 @@ textarea {
     align-items: start;
 }
 
-.teaDes h3 {
+.teaDes h3, .menuTea h3 {
     display: flex;
     justify-content: space-between;
     grid-column: 2;
@@ -543,7 +574,8 @@ textarea {
     margin-bottom: 20px;
     color: var(--color-text-primary);
 }
-.bar-outer {
+
+.bar-outer, .menu-outer-bar {
     height: 20px;
     background-color: var(--color-border-light);
     border-radius: 10px;
@@ -559,6 +591,7 @@ textarea {
     font-size: 0.8rem;
     background-color: var(--color-primary);
 }
+
 
 
 /* =============================
@@ -585,7 +618,7 @@ textarea {
     padding: 0;
 }
 
-.topping-item {
+.topping-item, .menu-topping-item {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -603,7 +636,7 @@ textarea {
     background-color: rgba(143, 179, 143, 0.1);
 }
 
-.topping-item h4 {
+.topping-item h4, .menu-topping-item h4 {
     color: var(--color-primary);
     font-size: 1em;
     margin: 0;
@@ -663,7 +696,7 @@ textarea {
     background-color: var(--color-primary);
     color: var(--color-border-white);
     border: 1px solid var(--color-border-table);
-    padding: 8px;
+    padding: 0;
     text-align: center;
 }
 
@@ -774,9 +807,13 @@ textarea {
 /* =============================
     JAVASCRIPT 
 ============================= */
+.size-header {
+    border: 2px solid var(--color-border-light);
+}
+
 .size-row {
     cursor: pointer;
-    border: 2px solid;
+    border: 2px solid var(--color-border-light);
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
@@ -827,8 +864,50 @@ textarea {
    MEDIA QUERIES
 ============================= */
 
+/* Small phones */
+@media (max-width: 480px) {
+    .businessName {
+        font-size: 2em; /* Down from 3.5em */
+    }
+    
+    .businessInfo-container {
+        grid-template-columns: 1fr; /* Stack vertically */
+    }
+    
+    .business-img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .mainNav {
+        flex-direction: column;
+    }
+    
+    .mainNav li {
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid var(--color-border-gray);
+    }
+}
+
+/* Tablets */
 @media (max-width: 768px) {
+    .businessInfo-container {
+        grid-template-columns: 1fr 1fr; /* 2 columns instead of 3 */
+    }
+    
     .main-menu-flex {
         flex-direction: column;
+    }
+    
+    .topCol {
+        grid-template-columns: 1fr; /* Stack toppings */
+    }
+}
+
+/* Large tablets/small desktops */
+@media (max-width: 1024px) {
+    .drinkSizes {
+        grid-template-columns: 1fr; /* Stack instead of 3 columns */
     }
 }
