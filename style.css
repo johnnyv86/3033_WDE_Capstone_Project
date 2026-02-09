@@ -66,7 +66,7 @@ legend {
 
 #main-container {
     max-width: 1200px;
-    margin: 0;
+    margin: 0 auto;
     background-color: var(--color-bg-dark);
     border: 1px solid var(--color-border-light);
     color: var(--color-text-primary);
@@ -322,8 +322,7 @@ input[type="time"],
 
 select, textarea {
     width: 100%;
-    padding: 8px;
-    padding-top: 0;
+    padding: 6px 8px;
     margin-top: 10px;
     border: 1px solid var(--color-border-medium);
     background-color: var(--color-text-light);
