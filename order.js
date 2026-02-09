@@ -312,7 +312,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 7. RESET SELECTION SUMMARY DISPLAY
         selectedDetails.innerHTML = `
-            <p style="color: #8FB38F; font-weight: bold;">Drink added to cart!</p>
+            <p style="color: var(--color-primary); font-weight: bold;">Drink added to cart!</p>
             <p>Select another drink below.</p>`;
         });
 
@@ -338,7 +338,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 3. RESET TEXT AND BUTTON FUNCTIONALITY
         selectedDetails.innerHTML = "<p>No drink selected yet.</p>";
         addToCartBtn.textContent = "Add to Cart!";
-        addToCartBtn.disable = true;
+        addToCartBtn.disabled = true;
 
     // 4. SCROLL LOGIC: SCROLL BACK TO TOP - DRINK FILTER SECTION
         const drinkSelection = document.getElementById("drinkFilters");
@@ -367,8 +367,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const orderContact = document.getElementById("orderContact");
     const orderEmail = document.getElementById("orderEmail");
 
+    
+
     if(orderForm) {
         orderForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            
 
     // 1. GET CURRENT ORDER FORM VALUES
             const nameValue = orderName.value.trim();
@@ -414,6 +419,4 @@ document.addEventListener("DOMContentLoaded", () => {
             orderForm.reset();
             event.preventDefault();
         });
-    }
-    
-});
+    }});
