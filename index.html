@@ -31,7 +31,7 @@
                             <div class="businessInfo">
                                 <h3>Business Address:</h3>
                                 <p>701 S. Miami Ave., Miami, FL 33130</p>
-                                <a target="_blank" href="https://www.google.com/maps/search/?api=1&query=701+S.+Miami+Ave.+Miami,+FL+33130">Click for Directions!</a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=701+S.+Miami+Ave.+Miami,+FL+33130">Click for Directions!</a>
                             </div>
                         </div>
                     </div>
@@ -81,8 +81,7 @@
                 <div class="contactContainer">
 
                     <h2 class="animatedHeader">Get Notified About Our Promotions!</h2>
-                    <form action="#" method="POST" onsubmit="alert('Form submitted successfully!'); return false;">
-
+                    <form class="getUpdates" id="promoForm">
                         <fieldset>
                             <legend>Your Details</legend>
                             <div class="form-row">
@@ -93,6 +92,7 @@
                                         name="promoFirstName"
                                         id="promoFirstName"
                                         placeholder="John"
+                                        autocomplete="given-name"
                                         required>
                                 </div>
                                 <div class="form-group">
@@ -102,6 +102,7 @@
                                         name="promoLastName"
                                         id="promoLastName"
                                         placeholder="Doe"
+                                        autocomplete="family-name"
                                         required>
                                 </div>
                             </div>
@@ -128,7 +129,7 @@
                                         name="birthDate" 
                                         id="birthDate"
                                         min="1900-01-01"
-                                        max="2026-02-08"
+                                        autocomplete="bday"
                                         required>
                                 </div>
                                 
@@ -141,9 +142,8 @@
                                         type="tel" 
                                         name="contactNumber" 
                                         id="contactNumber"
-                                        pattern="^\([0-9]{3}\)\s[0-9]{3}-[0-9]{4}$"
                                         placeholder="(123) 456-7890"
-                                        title="Please enter a valid 10-digit phone number (e.g., (123) 456-7890, 123-456-7890, or 123.456.7890)"
+                                        autocomplete="tel"
                                         required>
                                 </div>
                                 <div class="form-group">
@@ -153,6 +153,7 @@
                                         name="promoEmail"
                                         id="promoEmail"
                                         placeholder="johndoe@domain.com"
+                                        autocomplete="email"
                                         required>
                                 </div>
                             </div>
@@ -163,7 +164,8 @@
                             </div>
                             <div class="button-container">
                             <button type="submit" class="btn btn-submit">Notify Me!</button>
-                            <button type="reset" class="btn btn-clear" onclick="return confirm('Are you sure you want to clear all form data?')">Clear Form!</button>
+                            <button type="reset" class="btn btn-clear" id="clearFormBtn">Clear Form!</button>
+                            
                         </div>
                         </fieldset>
                     </form>
@@ -177,11 +179,7 @@
                 </div>
             </footer>
         </div>
-        <script src="order.js" defer></script>
-        <script>
-            document.getElementById('birthDate').max = new Date().toISOString().split('T')[0];
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
-        </script>
-
+        <script src="index.js" defer></script>
+        
     </body>
 </html>

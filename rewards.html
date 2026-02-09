@@ -32,7 +32,7 @@
                             <div class="businessInfo">
                                 <h3>Business Address:</h3>
                                 <p>701 S. Miami Ave., Miami, FL 33130</p>
-                                <a target="_blank" href="https://www.google.com/maps/search/?api=1&query=701+S.+Miami+Ave.+Miami,+FL+33130">Click for Directions!</a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=701+S.+Miami+Ave.+Miami,+FL+33130">Click for Directions!</a>
                             </div>
                         </div>
                     </div>
@@ -99,32 +99,61 @@
                         <legend style="text-align: center">Personal Information</legend>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="firstName">First Name:</label>
-                                <input type="text" name="firstName" id="firstName" placeholder="Jane" required>
+                                <label for="firstName">First Name <span aria-label="required" class="required">*</span></label>
+                                <input 
+                                    type="text" 
+                                    name="firstName" 
+                                    id="firstName" 
+                                    placeholder="Jane" 
+                                    autocomplete="given-name"
+                                    required>
                                 <br>
                             </div>
                             <div class="form-group">
-                                <label for="lastName">Last Name:</label>
-                                <input type="text" name="lastName" id="lastName" placeholder="Doe" required>
+                                <label for="lastName">Last Name <span aria-label="required" class="required">*</span></label>
+                                <input 
+                                    type="text" 
+                                    name="lastName" 
+                                    id="lastName" 
+                                    placeholder="Doe"
+                                    autocomplete="family-name" 
+                                    required>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="Birthday">Birthday:</label>
-                                <input type="date" name="Birthday" id="Birthday" required><br>
+                                <label for="Birthday">Birthday <span aria-label="required" class="required">*</span></label>
+                                <input 
+                                    type="date" 
+                                    name="Birthday" 
+                                    id="Birthday"
+                                    autocomplete="bday" 
+                                    required><br>
                             </div>
 
                             <div class="form-group">
-                                <label for="ContactNumber">Contact Number:</label>
-                                <input type="tel" name="ContactNumber" id="ContactNumber" placeholder="(###) ###-####" required><br>
+                                <label for="ContactNumber">Contact Number <span aria-label="required" class="required">*</span></label>
+                                <input 
+                                    type="tel" 
+                                    name="ContactNumber" 
+                                    id="ContactNumber" 
+                                    placeholder="(###) ###-####"
+                                    autocomplete="tel" 
+                                    required><br>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="Email">Email:</label>
-                                <input type="email" name="Email" id="Email" placeholder="janedoe@outlook.com" required><br>
+                                <label for="Email">Email <span aria-label="required" class="required">*</span></label>
+                                <input 
+                                    type="email" 
+                                    name="Email" 
+                                    id="Email" 
+                                    placeholder="janedoe@outlook.com"
+                                    autocomplete="email" 
+                                    required><br>
 		                    </div>
                         </div>
                     </fieldset>
@@ -133,30 +162,55 @@
                         <legend style="text-align: center;">Mailing Address</legend>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="StAddress">Street Address:</label>
-                                <input type="text" name="StAddress" id="StAddress" placeholder="123 Main St." required><br>
+                                <label for="StAddress">Street Address</label>
+                                <input 
+                                    type="text" 
+                                    name="StAddress" 
+                                    id="StAddress" 
+                                    placeholder="123 Main St."
+                                    autocomplete="address-level1"><br>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="City">City:</label>
-                                <input type="text" name="City" id="City" placeholder="Miami" required><br>
+                                <label for="City">City</label>
+                                <input 
+                                    type="text" 
+                                    name="City" 
+                                    id="City" 
+                                    placeholder="Miami"
+                                    autocomplete="address-level2"><br>
                             </div>
                             <div class="form-group">
-                                <label for="StatePro">State/Province:</label>
-                                <input type="text" name="StatePro" id="StatePro" placeholder="FL" required><br>
+                                <label for="StatePro">State/Province</label>
+                                <input 
+                                    type="text" 
+                                    name="StatePro" 
+                                    id="StatePro" 
+                                    placeholder="FL"
+                                    autocomplete="address-level3"><br>
                             </div>
 			            </div>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="ZipCode">Zip Code:</label>
-                                <input type="number" name="ZipCode" id="ZipCode" placeholder="33136" required><br>
+                                <label for="ZipCode">Zip Code</label>
+                                <input 
+                                    type="number" 
+                                    name="ZipCode" 
+                                    id="ZipCode" 
+                                    placeholder="33136"
+                                    autocomplete="postal-code"><br>
                             </div>
                                 
                             <div class="form-group">
                                 <label for="Country">Country:</label>
-                                <input type="text" name="Country" id="Country" placeholder="USA" required><br>
+                                <input 
+                                    type="text" 
+                                    name="Country" 
+                                    id="Country" 
+                                    placeholder="USA"
+                                    autocomplete="country" ><br>
                             </div>
                         </div>
                     </fieldset>	
@@ -165,7 +219,7 @@
                         <legend style="text-align: center;">Tea Preference</legend>
                         <div class"form-row">
                         <div class="form-group">
-                            <label for="teaPreference">Whats your type?</label>
+                            <label for="teaPreference">Whats your type? <span aria-label="required" class="required">*</span></label>
                             <select name="teaPreference" id="teaPreference">
                                 <option value="" disabled selected>-- Please choose an option --</option>
                                 <option value="CLASSIC TEAS">CLASSIC TEAS</option>
@@ -183,7 +237,7 @@
                         <legend style="text-align: center;">Sweetness Level</legend>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="sweetness" style="text-align: center; display:block;">Select Your Level of Sweetness</label>
+                                <label for="sweetness" style="text-align: center; display:block;">Select Your Level of Sweetness <span aria-label="required" class="required">*</span></label>
                                 <div class="radio-group">
                                     <div style="flex: 1;">
                                         <input type="radio" name="sweetness" id="sweet0" value="0%" style="margin-bottom: 5px;"><br>
@@ -211,8 +265,12 @@
                         <fieldset>
                             <legend style="text-align: center;">Favorite Toppings</legend>
                             <div class="form-group">
-                                <label for="topping" style="text-align: center; display:block;">Select all of your FAVS!</label>
+                                <label for="topping" style="text-align: center; display:block;">Select all of your FAVS! <span aria-label="required" class="required">*</span></label>
                                 <div class="radio-group">
+                                    <div style="flex: 1;">
+                                        <input type="checkbox" name="topping" id="top_boba" value="No Toppings" style="margin-bottom: 5px;"><br>
+                                        <label for="top_boba">No Toppings</label>
+                                    </div>
                                     <div style="flex: 1;">
                                         <input type="checkbox" name="topping" id="top_boba" value="Classic Boba" style="margin-bottom: 5px;"><br>
                                         <label for="top_boba">Classic Boba</label>
@@ -236,18 +294,18 @@
                         <fieldset>
                             <legend style="text-align: center;">Account Setup</legend>
                             <div class="form-group">
-                                <label for="DeUsername">Choose Username:</label>
+                                <label for="DeUsername">Choose Username <span aria-label="required" class="required">*</span></label>
                                     <input type="text" name="DeUsername" id="DeUsername" required>
                             </div>
 
                             <div class="form-row">
                             <div class="form-group">
-                                <label for="DePassword">Choose Password:</label>
+                                <label for="DePassword">Choose Password <span aria-label="required" class="required">*</span></label>
                                     <input type="password" name="DePassword" id="DePassword" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="RePassword">Reenter Password:</label>
+                                <label for="RePassword">Reenter Password <span aria-label="required" class="required">*</span></label>
                             <input type="password" name="RePassword" id="RePassword" required>
                             </div>
                             </div>
@@ -258,9 +316,9 @@
                         <fieldset>
                             <div class="form-group" class="inline-checkboxes" style="align-items: center; display: block">
                                 <input type="checkbox" name="PromoEmail" id="PromoEmail">
-                                    <label for="PromoEmail">I agree to receiving recurring autosent emails from Per Scholas Tea at the email address provided above and understand that my concent is not a condition of purchase.</label><br> 
+                                    <label for="PromoEmail">I agree to receiving recurring autosent emails from Per Scholas Tea at the email address provided above and understand that my concent is not a condition of purchase. <span aria-label="required" class="required">*</span></label><br> 
                                 <input type="checkbox" name="TermAgre" id="TermAgre">
-                                    <label for="TermAgre">I have read and agree to the Per Scholas Tea Rewards Program, the Privacy Policy, and Terms of Service..</label>
+                                    <label for="TermAgre">I have read and agree to the Per Scholas Tea Rewards Program, the Privacy Policy, and Terms of Service. <span aria-label="required" class="required">*</span></label>
 					        </div>
   
 	
