@@ -147,13 +147,9 @@ legend {
 }
 
 .businessInfo h3 {
-    text-align: center;
     margin-bottom: 5px;
 }
-.businessInfo p {
-    text-align: center;
-    margin-bottom: 5px;
-}
+
 .businessInfo a {
     color: var(--color-link);
     text-decoration: none;
@@ -254,12 +250,12 @@ legend {
 ============================= */
 .getUpdates {
     max-width: 100%;
-    margin: 0 auto ;
+    margin: 0 auto;
     padding: 0;
     text-align: left;
     color: white;
+    border: 1px solid var(--color-border-white);
     border-radius: 5px;
-    border-color: var(--color-border-white);
 }
 
 .getUpdates h2 {
@@ -287,9 +283,7 @@ legend {
     color: var(--color-primary-hover);
 }
 
-.form-group {
-    margin-bottom: 15px;
-}
+
 
 .form-group label {
     margin: 0;
@@ -308,9 +302,14 @@ legend {
     width: 100%;
 }
 
+.form-group {
+    margin-bottom: 15px;
+}
+
 .form-row, .form-group {
     flex: 1;
 }
+
 
 input[type="text"],
 input[type="email"],
@@ -319,8 +318,8 @@ input[type="date"],
 input[type="password"],
 input[type="number"],
 input[type="time"],
-
-select, textarea {
+select, 
+textarea {
     width: 100%;
     padding: 6px 8px;
     margin-top: 10px;
@@ -359,8 +358,14 @@ textarea {
 .selectDrinkBtn:hover,
 .selectDrinkBtn:focus,
 .btn-submit:hover,
-.btn-submit:focus {
-    transform: scale(1.05);
+.btn-submit:focus,
+.sweetness-card:hover,
+.sweetness-card:focus,
+.topping-item:hover,
+.topping-item:focus,
+.size-row:hover,
+.size-row:focus {
+    transform: scale(1.01);
     background-color: var(--color-border-medium);
     border: 1px solid #45A049;
     outline: 2px solid var(--color-primary);
@@ -368,7 +373,7 @@ textarea {
 }
 
 .btn-clear {
-    background-color: var(--color-danger);;
+    background-color: var(--color-danger);
     color: white;
 }
 
@@ -381,25 +386,19 @@ textarea {
     outline-offset: 2px;
 }
 
-.selectDrinkBtn:hover,
-.selectDrinkBtn:focus,
-.teaDes:hover,
-.teaDes:focus,
-.sweetness-card:hover,
-.sweetness-card:focus,
-.topping-item:hover,
-.topping-item:focus,
-.size-row:hover,
-.size-row:focus {
-    transform: scale(1.01);
-    background-color: var(--color-border-medium);
-    border-color: var(--color-primary);
-    outline-offset: 2px;
-} 
+
 
 .topping-item, .teaDes, .selectDrinkBtn, .sweetness-card, .size-row {
     transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
+
+.button-container {
+    display: flex;
+    gap: 15px;
+    justify-content: left;
+    margin-top: 20px;
+}
+
 
 @keyframes wiggle {
     0% {transform: rotate(0deg);}
@@ -462,15 +461,14 @@ textarea {
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
-    align-items: start;
 }
 
-.teaDes h3, .selectDrinkBtn h3, .menuTea h3 {
+.teaDes h3, .menuTea h3 {
     display: flex;
     justify-content: space-between;
+    align-items: center; /* Add this for vertical alignment */
     grid-column: 2;
     margin: 0;
-    margin-bottom: 0;
     font-size: 1.1em;
     color: var(--color-primary);
 }
@@ -632,6 +630,14 @@ textarea {
 /* =============================
     ORDER PAGE - Ordering Steps
 ============================= */
+#drinkFilters {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+} 
+
 .drinkDes1 {
     justify-content: space-between;
     grid-column: 2;
@@ -707,21 +713,9 @@ textarea {
 
 }
 
-#drinkFilters {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 25px;
-}
 
 
-.button-container {
-    display: flex;
-    gap: 15px;
-    justify-content: left;
-    margin-top: 20px;
-}
+
 
 
 
@@ -838,12 +832,9 @@ textarea {
     border-bottom: 1px solid var(--color-border-light);
 }
 
-
 .copyright {
     text-align: center;
 }
-
-/* Main styles here */
 
 /* =============================
    MEDIA QUERIES
