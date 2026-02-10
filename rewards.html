@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,7 +54,6 @@
             <hr class="section-hr">
 
             <main>
-                <form action="#">
                     <section style="text-align: center;" class="rewards-info">
                         <h1>No Brainer Reward!</h1>
 			            <h5>Join TODAY to Earn points on every sip!</h5>
@@ -92,11 +91,12 @@
                             </div>
                         </div>
                     </section>
-                </form>
+
 
                 <form action="#">
                     <fieldset>
-                        <legend style="text-align: center">Personal Information</legend>
+                        <section class="rewards-info">
+                        <legend class="legend-center">Personal Information</legend>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="firstName">First Name <span aria-label="required" class="required">*</span></label>
@@ -107,7 +107,6 @@
                                     placeholder="Jane" 
                                     autocomplete="given-name"
                                     required>
-                                <br>
                             </div>
                             <div class="form-group">
                                 <label for="lastName">Last Name <span aria-label="required" class="required">*</span></label>
@@ -123,104 +122,108 @@
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="Birthday">Birthday <span aria-label="required" class="required">*</span></label>
+                                <label for="birthday">Birthday <span aria-label="required" class="required">*</span></label>
                                 <input 
                                     type="date" 
-                                    name="Birthday" 
-                                    id="Birthday"
+                                    name="birthday" 
+                                    id="birthday"
                                     autocomplete="bday" 
-                                    required><br>
+                                    required>
                             </div>
 
                             <div class="form-group">
-                                <label for="ContactNumber">Contact Number <span aria-label="required" class="required">*</span></label>
+                                <label for="contactNumber">Contact Number <span aria-label="required" class="required">*</span></label>
                                 <input 
                                     type="tel" 
-                                    name="ContactNumber" 
-                                    id="ContactNumber" 
+                                    name="contactNumber" 
+                                    id="contactNumber" 
                                     placeholder="(###) ###-####"
                                     autocomplete="tel" 
-                                    required><br>
+                                    required>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="Email">Email <span aria-label="required" class="required">*</span></label>
+                                <label for="email">Email <span aria-label="required" class="required">*</span></label>
                                 <input 
                                     type="email" 
-                                    name="Email" 
-                                    id="Email" 
+                                    name="email" 
+                                    id="email" 
                                     placeholder="janedoe@outlook.com"
                                     autocomplete="email" 
-                                    required><br>
+                                    required>
 		                    </div>
                         </div>
+                        </section>
                     </fieldset>
 
                     <fieldset>
-                        <legend style="text-align: center;">Mailing Address</legend>
+                        <section class="rewards-info">
+                        <legend class="legend-center">Mailing Address</legend>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="StAddress">Street Address</label>
+                                <label for="stAddress">Street Address</label>
                                 <input 
                                     type="text" 
-                                    name="StAddress" 
-                                    id="StAddress" 
+                                    name="stAddress" 
+                                    id="stAddress" 
                                     placeholder="123 Main St."
-                                    autocomplete="address-level1"><br>
+                                    autocomplete="street-address">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="City">City</label>
+                                <label for="city">City</label>
                                 <input 
                                     type="text" 
-                                    name="City" 
-                                    id="City" 
+                                    name="city" 
+                                    id="city" 
                                     placeholder="Miami"
-                                    autocomplete="address-level2"><br>
+                                    autocomplete="address-level2">
                             </div>
                             <div class="form-group">
-                                <label for="StatePro">State/Province</label>
+                                <label for="statePro">State/Province</label>
                                 <input 
                                     type="text" 
-                                    name="StatePro" 
-                                    id="StatePro" 
+                                    name="statePro" 
+                                    id="statePro" 
                                     placeholder="FL"
-                                    autocomplete="address-level3"><br>
+                                    autocomplete="address-level1">
                             </div>
 			            </div>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="ZipCode">Zip Code</label>
+                                <label for="zipCode">Zip Code</label>
                                 <input 
                                     type="number" 
-                                    name="ZipCode" 
-                                    id="ZipCode" 
+                                    name="zipCode" 
+                                    id="zipCode" 
                                     placeholder="33136"
-                                    autocomplete="postal-code"><br>
+                                    autocomplete="postal-code">
                             </div>
                                 
                             <div class="form-group">
-                                <label for="Country">Country:</label>
+                                <label for="country">Country:</label>
                                 <input 
                                     type="text" 
-                                    name="Country" 
-                                    id="Country" 
+                                    name="country" 
+                                    id="country" 
                                     placeholder="USA"
-                                    autocomplete="country" ><br>
+                                    autocomplete="country">
                             </div>
                         </div>
+                        </section>
                     </fieldset>	
 
                     <fieldset>
-                        <legend style="text-align: center;">Tea Preference</legend>
-                        <div class"form-row">
+                        <section class="reward-info">
+                        <legend class="legend-center">Tea Preference</legend>
+                        <div class="form-row">
                         <div class="form-group">
-                            <label for="teaPreference">Whats your type? <span aria-label="required" class="required">*</span></label>
-                            <select name="teaPreference" id="teaPreference">
+                            <label for="teaPreference">Whatsyour type? <span aria-label="required" class="required">*</span></label>
+                            <select name="teaPreference" id="teaPreference" requied>
                                 <option value="" disabled selected>-- Please choose an option --</option>
                                 <option value="CLASSIC TEAS">CLASSIC TEAS</option>
                                 <option value="SLUSH TEAS">SLUSH TEAS</option>
@@ -231,116 +234,118 @@
                                 <option value="COFFEE">COFFEE</option>
                             </select>
                         </div>
+                        </div>
+                        </section>
                     </fieldset>
 
                     <fieldset>
-                        <legend style="text-align: center;">Sweetness Level</legend>
+                        <section class="reward-info">
+                        <legend class="legend-center">Sweetness Preference</legend>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="sweetness" style="text-align: center; display:block;">Select Your Level of Sweetness <span aria-label="required" class="required">*</span></label>
                                 <div class="radio-group">
                                     <div style="flex: 1;">
-                                        <input type="radio" name="sweetness" id="sweet0" value="0%" style="margin-bottom: 5px;"><br>
+                                        <input type="radio" name="sweetness" id="sweet0" value="0%" style="margin-bottom: 5px;" requied>
                                         <label for="sweet0">0%</label>
                                     </div>
                                     <div style="flex: 1;">
-                                        <input type="radio" name="sweetness" id="sweet25" value="25%" style="margin-bottom: 5px;"><br>
+                                        <input type="radio" name="sweetness" id="sweet25" value="25%" style="margin-bottom: 5px;" requied>
                                         <label for="sweet25">25%</label>
                                     </div>
                                     <div style="flex: 1;">
-                                        <input type="radio" name="sweetness" id="sweet50" value="50%" style="margin-bottom: 5px;"><br>
+                                        <input type="radio" name="sweetness" id="sweet50" value="50%" style="margin-bottom: 5px;" requied>
                                         <label for="sweet50">50%</label> 
                                     </div>
                                     <div style="flex: 1;">				     
-                                        <input type="radio" name="sweetness" id="sweet75" value="75%" style="margin-bottom: 5px;"><br>
+                                        <input type="radio" name="sweetness" id="sweet75" value="75%" style="margin-bottom: 5px;" requied>
                                         <label for="sweet75">75%</label>
                                     </div>
                                     <div style="flex: 1;">
-                                        <input type="radio" name="sweetness" id="sweet100" value="100%" style="margin-bottom: 5px;"><br>
+                                        <input type="radio" name="sweetness" id="sweet100" value="100%" style="margin-bottom: 5px;" requied>
                                         <label for="sweet100">100%</label>
                                     </div>
                                 </div>
-                        </fieldset>
+                            </div>
+                        </div>
+                    </section>
+                    </fieldset>
 
-                        <fieldset>
-                            <legend style="text-align: center;">Favorite Toppings</legend>
-                            <div class="form-group">
-                                <label for="topping" style="text-align: center; display:block;">Select all of your FAVS! <span aria-label="required" class="required">*</span></label>
-                                <div class="radio-group">
-                                    <div style="flex: 1;">
-                                        <input type="checkbox" name="topping" id="top_boba" value="No Toppings" style="margin-bottom: 5px;"><br>
-                                        <label for="top_boba">No Toppings</label>
-                                    </div>
-                                    <div style="flex: 1;">
-                                        <input type="checkbox" name="topping" id="top_boba" value="Classic Boba" style="margin-bottom: 5px;"><br>
-                                        <label for="top_boba">Classic Boba</label>
-                                    </div>
-                                    <div style="flex: 1;">
-                                        <input type="checkbox" name="topping" id="top_sug_boba" value="Brown Sugar Boba" style="margin-bottom: 5px;"><br>								            
-                                        <label for="top_sug_boba">Brown Sugar Boba</label>
-                                    </div>
-                                    <div style="flex: 1;">
-                                        <input type="checkbox" name="topping" id="top_pop_boba" value="Popping Boba" style="margin-bottom: 5px;"><br>     
-                                        <label for="top_pop_boba">Popping Boba</label>
-                                    </div>
-                                    <div style="flex: 1;">
-                                        <input type="checkbox" name="topping" id="top_jelly" value="Jelly" style="margin-bottom: 5px;"><br>
-                                        <label for="top_jelly">Jelly</label>
-                                    </div>
+                    <fieldset>
+                        <section class="reward-info">
+                        <legend class="legend-center">Toppings Preference</legend>
+                        <div class="form-group">
+                            <div class="radio-group">
+                                <div style="flex: 1;">
+                                    <input type="checkbox" name="topping" id="no_boba" value="No Toppings" style="margin-bottom: 5px;">
+                                    <label for="no_boba">No Toppings</label>
                                 </div>
-                            </div>	
-                        </fieldset>
+                                <div style="flex: 1;">
+                                    <input type="checkbox" name="topping" id="top_boba" value="Classic Boba" style="margin-bottom: 5px;">
+                                    <label for="top_boba">Classic Boba</label>
+                                </div>
+                                <div style="flex: 1;">
+                                    <input type="checkbox" name="topping" id="top_sug_boba" value="Brown Sugar Boba" style="margin-bottom: 5px;">							            
+                                    <label for="top_sug_boba">Brown Sugar Boba</label>
+                                </div>
+                                <div style="flex: 1;">
+                                    <input type="checkbox" name="topping" id="top_pop_boba" value="Popping Boba" style="margin-bottom: 5px;">
+                                    <label for="top_pop_boba">Popping Boba</label>
+                                </div>
+                                <div style="flex: 1;">
+                                    <input type="checkbox" name="topping" id="top_jelly" value="Jelly" style="margin-bottom: 5px;">
+                                    <label for="top_jelly">Jelly</label>
+                                </div>
+                            </div>
+                        </div>
+                        </section>	
+                    </fieldset>
 
-                        <fieldset>
-                            <legend style="text-align: center;">Account Setup</legend>
+                    <fieldset>
+                        <section class="reward-info">
+                        <legend class="legend-center">Account Setup</legend>
+                        <div class="form-group">
+                            <label for="deUsername">Choose Username <span aria-label="required" class="required">*</span></label>
+                            <input type="text" name="deUsername" id="deUsername" required>
+                        </div>
+
+                        <div class="form-row">
                             <div class="form-group">
-                                <label for="DeUsername">Choose Username <span aria-label="required" class="required">*</span></label>
-                                    <input type="text" name="DeUsername" id="DeUsername" required>
-                            </div>
-
-                            <div class="form-row">
-                            <div class="form-group">
-                                <label for="DePassword">Choose Password <span aria-label="required" class="required">*</span></label>
-                                    <input type="password" name="DePassword" id="DePassword" required>
+                                <label for="dePassword">Choose Password <span aria-label="required" class="required">*</span></label>
+                                <input type="password" name="dePassword" id="dePassword" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="RePassword">Reenter Password <span aria-label="required" class="required">*</span></label>
-                            <input type="password" name="RePassword" id="RePassword" required>
+                                <label for="rePassword">Reenter Password <span aria-label="required" class="required">*</span></label>
+                                <input type="password" name="rePassword" id="rePassword" required>
                             </div>
-                            </div>
-                        </fieldset>
+                        </div>
+                        </section>
+                    </fieldset>
 
-                        <hr class="section-hr">
+                    <hr class="section-hr">
 
-                        <fieldset>
-                            <div class="form-group" class="inline-checkboxes" style="align-items: center; display: block">
-                                <input type="checkbox" name="PromoEmail" id="PromoEmail">
-                                    <label for="PromoEmail">I agree to receiving recurring autosent emails from Per Scholas Tea at the email address provided above and understand that my concent is not a condition of purchase. <span aria-label="required" class="required">*</span></label><br> 
-                                <input type="checkbox" name="TermAgre" id="TermAgre">
-                                    <label for="TermAgre">I have read and agree to the Per Scholas Tea Rewards Program, the Privacy Policy, and Terms of Service. <span aria-label="required" class="required">*</span></label>
-					        </div>
+                    <fieldset>
+                        <div class="form-group" class="inline-checkboxes" style="align-items: center; display: block">
+                            <input type="checkbox" name="PromoEmail" id="PromoEmail">
+                            <label for="PromoEmail">I agree to receiving recurring autosent emails from Per Scholas Tea at the email address provided above and understand that my concent is not a condition of purchase. <span aria-label="required" class="required">*</span></label><br> 
+                            <input type="checkbox" name="TermAgre" id="TermAgre">
+                            <label for="TermAgre">I have read and agree to the Per Scholas Tea Rewards Program, the Privacy Policy, and Terms of Service. <span aria-label="required" class="required">*</span></label>
+					    </div>
+                    </fieldset>
+                </form>
+            </main>
   
 	
 		        
-                            <div class="form-group">
-                                <div class="button-container">
+                        <div class="form-group">
+                            <div class="button-container">
                                 <input type="submit" class="btn btn-submit" value="Join Club">
                                 <input type="reset" class="btn btn-clear" value="Clear Form">
-                            </div>
-                            </div>
-                        </fieldset>
-
-                        
-
-                    </fieldset>
-
-                    </fieldset>
                             </div>
                         </div>
                     </fieldset>
                 </form>
-            </main>
+
             <hr class="section-hr">
             <footer>
                 <div class="footer-content">
@@ -348,8 +353,7 @@
                 </div>
             </footer>
         </div>
-        <script>
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
-        </script>
+        <script src="menu.js" defer></script>
+        
     </body>
 </html>

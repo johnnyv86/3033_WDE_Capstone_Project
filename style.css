@@ -513,6 +513,18 @@ textarea {
     text-align: center;
 }
 
+.giphy-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.giphy-embed {
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 10px;
+    border: 0;
+    display: block;
+}
 
 /* =============================
     MENU PAGE - SWEETNESS LVL
@@ -546,8 +558,25 @@ textarea {
     background-color: var(--color-primary);
 }
 
+.bar-0 {
+    width: 0%;
+}
 
+.bar-25 {
+    width: 25%;
+}
 
+.bar-50 {
+    width: 50%;
+}
+
+.bar-75 {
+    width: 75%;
+}
+
+.bar-100 {
+    width: 100%;
+}
 /* =============================
     MENU PAGE - TOPPINGS
 ============================= */
@@ -694,15 +723,20 @@ textarea {
 
 }
 
-
-
-
-
-
-
 /* =============================
     REWARDS PAGE
 ============================= */
+.legend-center {
+    text-align: center;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    color: var(--color-link);
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.rewards-info {
+    text-align: left;
+}
 .rewards-info h1 {
     margin: 0;
     padding-bottom: 5px;
@@ -762,6 +796,7 @@ textarea {
     align-items: center;
     gap: 10px;
 }
+
 
 
 /* =============================
