@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,8 +54,7 @@
             <hr class="section-hr">
 
             <div class="contactContainer">
-                <fieldset>
-                    <h2 class="animatedHeader" style="text-align: center;">We Want to Hear From You! 💬</h2>
+                    <h2 class="animatedHeader">We Want to Hear From You! 💬</h2>
                     <form action="#">
                         <fieldset>
                             <legend>Your Details</legend>
@@ -87,7 +86,8 @@
                                         type="tel" 
                                         name="contactNumber" 
                                         id="contactNumber"
-                                        placeholder="(###) ###-####">
+                                        placeholder="(###) ###-####"
+                                        required>
                                 </div>
                                 <div class="form-group">
                                     <label for="contactEmail">Email Address <span aria-label="required" class="required">*</span></label>
@@ -151,17 +151,17 @@
                         <fieldset>
                             <legend>How should we contact you?</legend>
                             <div class="form-group">
-                                <div class="radio-group1" required>
+                                <div class="radio-group">
                                     <div>
-                                        <input type="radio" name="byPhone" id="byPhone" value="phone">
+                                        <input type="radio" name="contactMethod" id="byPhone" value="phone" required>
                                         <label for="byPhone">By Phone</label>
                                     </div>
                                     <div>
-                                        <input type="radio" name="byEmail" id="byEmail" value="email">
+                                        <input type="radio" name="contactMethod" id="byEmail" value="email">
                                         <label for="byEmail">By Email</label>
                                     </div>
                                     <div>
-                                        <input type="radio" name="noContact" id="noContact">
+                                        <input type="radio" name="contactMethod" id="noContact" value="none">
                                         <label for="noContact">Please don't contact me!</label>
                                     </div>
                                 </div>
@@ -177,7 +177,6 @@
                         </div>
 
                     </form>
-                </fieldset>
             </div>
             <hr class="section-hr">
             <footer>

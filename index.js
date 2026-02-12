@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// ===== HELPER FUNCTIONS =====\
+// ===== HELPER FUNCTIONS =====
 
 /**  
  * Auto-formats phone number to (XXX) XXX-XXXX as user types

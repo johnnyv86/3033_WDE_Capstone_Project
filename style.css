@@ -267,9 +267,9 @@ legend {
 
 .form-group label {
     margin: 0;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     padding-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 1em;
     font-weight: bold;
     color: white;
@@ -284,9 +284,6 @@ legend {
 
 .form-group {
     margin-bottom: 15px;
-}
-
-.form-row, .form-group {
     flex: 1;
 }
 
@@ -330,7 +327,20 @@ textarea {
 
 .btn-submit, .filterBtn, .selectDrinkBtn {
     background-color: var(--color-primary);
-    color: white;
+}
+
+
+.btn-clear {
+    background-color: var(--color-danger);
+}
+
+.btn-clear:hover,
+.btn-clear:focus {
+    transform: scale(1.05);
+    background-color:  var(--color-border-medium);
+    border: 1px solid var(--color-danger-hover);
+    outline: 2px solid var(--color-danger);
+    outline-offset: 2px;
 }
 
 .filterBtn:hover,
@@ -352,19 +362,7 @@ textarea {
     outline-offset: 2px;
 }
 
-.btn-clear {
-    background-color: var(--color-danger);
-    color: white;
-}
 
-.btn-clear:hover,
-.btn-clear:focus {
-    transform: scale(1.05);
-    background-color:  var(--color-border-medium);
-    border: 1px solid var(--color-danger-hover);
-    outline: 2px solid var(--color-danger);
-    outline-offset: 2px;
-}
 
 
 
@@ -375,7 +373,7 @@ textarea {
 .button-container {
     display: flex;
     gap: 15px;
-    justify-content: left;
+    justify-content: flex-start;
     margin-top: 20px;
 }
 
