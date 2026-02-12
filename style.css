@@ -394,6 +394,7 @@ textarea {
 ============================= */
 
 .main-menu-flex {
+    flex-wrap: wrap;
     display: flex;
     gap: 20px;
 }
@@ -453,6 +454,7 @@ textarea {
     grid-row: 1 / span 2;
     align-self: center;
 }
+
 
 
 
@@ -684,7 +686,7 @@ textarea {
     text-align: left;
 }
 
-.orderTitle {
+.orderTitle, .cartTitle {
     font-size: 2.0em;
     color: white;
     border-bottom: 2px solid var(--color-border-medium);
@@ -748,6 +750,15 @@ textarea {
     border-bottom: 1px solid var(--color-border-light);
 
 }
+
+.teaDes.selectedDrink {
+    border: 3px solid rgba(143, 179, 143, 0.1);
+    background-color: rgba(143, 179, 143, 0.1);
+    box-shadow: 0 0 10px rgba(143, 179, 143, 0.1);
+}
+
+
+
 
 /* =============================
     REWARDS PAGE
@@ -851,6 +862,8 @@ textarea {
 }
 
 .sweetness-card {
+    flex: 1;
+    min-width: 150px;
     cursor: pointer;
     transition: transform 0.3s ease, background-color 0.3s ease;
     border: 2px solid transparent;
@@ -862,7 +875,7 @@ textarea {
     border-radius: 8px;
 }
 
-#cart {
+#cart, .orderSection, #selectedDrinkDetails {
     margin-top: 10px;
     padding: 10px;
     background-color: var(--color-bg-darker);

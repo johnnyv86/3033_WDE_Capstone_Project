@@ -100,7 +100,7 @@
                     <fieldset data-type="CLASSIC TEAS">
                         <legend>CLASSIC TEAS</legend>
                                 <article class="teaDes">
-                                    <div class="selectDrinkBtn" tabindex="0" role="button">
+                                    <button class="selectDrinkBtn" type="button">
                                     <img 
                                         class="drinkImage" 
                                         src="media/ClassicGreenTea.jpg" 
@@ -111,7 +111,7 @@
                                         <p>Refreshing jasmine green Tea sweetened with cane sugar.</p>
                                         <p>Vegan-Friendly</p>
                                     </div>
-                                    </div>
+                                    </button>
                                 </article>
                                 <article class="teaDes">
                                     <div class="selectDrinkBtn" tabindex="0" role="button">
@@ -445,7 +445,7 @@
                                                 <td>12oz</td>
                                                 <td>$0.00</td>
                                             </tr>
-                                            <tr class="size-row" data-price="0.75">
+                                            <tr class="size-row" data-price="0.50">
                                                 <td>MEDIUM</td>
                                                 <td>16oz</td>
                                                 <td>$0.50</td>
@@ -473,39 +473,39 @@
 
                             <hr class="section-hr">
 
-                            <fieldset>
-                                <h2 class="orderTitle" id="order-sweetness">SWEEETNESS LEVEL</h2>
-                                <div class="main-menu-flex" style="flex-wrap: wrap;">
+                            <fieldset >
+                                <h2 class="orderTitle" id="order-sweetness">SWEETNESS LEVEL</h2>
+                                <div class="main-menu-flex">
 
-                                    <fieldset class="sweetness-card" style="flex: 1; min-width: 150px;" data-level="0%">
+                                    <fieldset class="sweetness-card" data-level="0%">
                                         <legend>0% Sweetness</legend>
                                         <div class="bar-outer">
                                             <div class="bar-inner" style="width: 0%;">0%</div>
                                         </div>
                                     </fieldset>
 
-                                    <fieldset class="sweetness-card" style="flex: 1; min-width: 150px;" data-level="25%">
+                                    <fieldset class="sweetness-card" data-level="25%">
                                         <legend>25% Sweetness</legend>
                                         <div class="bar-outer">
                                             <div class="bar-inner" style="width: 25%;">25%</div>
                                         </div>
                                     </fieldset>
 
-                                    <fieldset class="sweetness-card" style="flex: 1; min-width: 150px;" data-level="50%">
+                                    <fieldset class="sweetness-card" data-level="50%">
                                         <legend>50% Sweetness</legend>
                                         <div class="bar-outer">
                                             <div class="bar-inner" style="width: 50%;">50%</div>
                                         </div>
                                     </fieldset>
 
-                                    <fieldset class="sweetness-card" style="flex: 1; min-width: 150px;" data-level="75%">
+                                    <fieldset class="sweetness-card" data-level="75%">
                                         <legend>75% Sweetness</legend>
                                         <div class="bar-outer">
                                             <div class="bar-inner" style="width: 75%;">75%</div>
                                         </div>
                                     </fieldset>
                                 
-                                    <fieldset class="sweetness-card" style="flex: 1; min-width: 150px;" data-level="100%">
+                                    <fieldset class="sweetness-card" data-level="100%">
                                         <legend>Full Sweetness</legend>
                                         <div class="bar-outer">
                                             <div class="bar-inner" style="width: 100%;">100%</div>
@@ -675,11 +675,13 @@
                                     <ul id="cartItems"></ul>
                                     <hr class="section-hr">
                                     <p id="cartTotal">Total: $0.00</p>
+                                    </div>
 
                                     <hr class="section-hr">
 
                                     <form id="orderForm">
                                         <h3 style="color: white; margin-bottom: 10px;">Complete Your Order</h3>
+                                        <div class="orderSection">
                                         <div class="form-group">
                                             <label for="orderName">Name for the order. <span aria-label="required" class="required">*</span></label>
                                             <input 
@@ -710,10 +712,11 @@
                                         <hr class="section-hr">
                                         <p><span class="required">*</span> indicates required field</p>
                                         <div class="button-container">
-                                        <button type="submit" class="btn btn-submit" id="submitCartBtn">Submit Order</button>
-                                        <button type="reset" class="btn btn-clear" id="clearCartBtn" onclick="return confirm('Are you sure you want to clear all form data?')">Clear Cart!</button>
+                                        <button type="submit" class="btn btn-submit" id="submitOrderBtn">Submit Order</button>
+                                        <button type="reset" class="btn btn-clear" id="clearOrderBtn" onclick="return confirm('Are you sure you want to clear all form data?')">Clear Cart!</button>
                                         </div>
-                                    </form>     
+                                    </form>
+                                    </div>     
                                 </div>
                             </fieldset>
                     </fieldset>
