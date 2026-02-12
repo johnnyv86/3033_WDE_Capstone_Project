@@ -882,13 +882,13 @@ textarea {
     border-radius: 5px;
 }
 
-#cart-items {
+#cartItems {
     list-style: none;
     padding-left: 0;
     margin: 10px 0;
 }
 
-#cart-items li {
+#cartItems li {
     padding: 5px 0;
     border-bottom: 1px solid var(--color-border-light);
 }
