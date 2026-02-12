@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Per Scholas Tea Index</title>
+        <title>Rewards - Per Scholas Tea</title>
         <link rel="stylesheet" href="style.css" />
         <link rel="icon" href="media/BusinessLogo.jpg" type="image/jpeg" />
     </head>
@@ -93,10 +93,13 @@
                     </section>
 
 
-                <form action="#">
+               
+                    <form action="#" method="POST" aria-label="Rewards Program Signup Form">
+
                     <fieldset>
                         <section class="rewards-info">
                         <legend class="legend-center">Personal Information</legend>
+                        
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="firstName">First Name <span aria-label="required" class="required">*</span></label>
@@ -136,9 +139,9 @@
                                 <input 
                                     type="tel" 
                                     name="contactNumber" 
-                                    id="contactNumber" 
-                                    placeholder="(###) ###-####"
-                                    autocomplete="tel" 
+                                    id="contactNumber"
+                                    placeholder="(123) 456-7890"
+                                    autocomplete="tel"
                                     required>
                             </div>
                         </div>
@@ -155,6 +158,7 @@
                                     required>
 		                    </div>
                         </div>
+                        
                         </section>
                     </fieldset>
 
@@ -218,13 +222,13 @@
                     </fieldset>	
 
                     <fieldset>
-                        <section class="reward-info">
+                        <section class="rewards-info">
                         <legend class="legend-center">Tea Preference</legend>
                         <div class="form-row">
                         <div class="form-group">
-                            <label for="teaPreference">Whatsyour type? <span aria-label="required" class="required">*</span></label>
-                            <select name="teaPreference" id="teaPreference" requied>
-                                <option value="" disabled selected>-- Please choose an option --</option>
+                            <label for="teaPreference">What's your type? <span aria-label="required" class="required">*</span></label>
+                            <select name="teaPreference" id="teaPreference" required>
+                                <option value=" disabled selected>-- Please choose an option --</option>
                                 <option value="CLASSIC TEAS">CLASSIC TEAS</option>
                                 <option value="SLUSH TEAS">SLUSH TEAS</option>
                                 <option value="PUNCHY TEAS">PUNCHY TEAS</option>
@@ -239,29 +243,29 @@
                     </fieldset>
 
                     <fieldset>
-                        <section class="reward-info">
+                        <section class="rewards-info">
                         <legend class="legend-center">Sweetness Preference</legend>
                         <div class="form-row">
                             <div class="form-group">
                                 <div class="radio-group">
-                                    <div style="flex: 1;">
-                                        <input type="radio" name="sweetness" id="sweet0" value="0%" style="margin-bottom: 5px;" requied>
+                                    <div>
+                                        <input type="radio" name="sweetness" id="sweet0" value="0%" required>
                                         <label for="sweet0">0%</label>
                                     </div>
-                                    <div style="flex: 1;">
-                                        <input type="radio" name="sweetness" id="sweet25" value="25%" style="margin-bottom: 5px;" requied>
+                                    <div>
+                                        <input type="radio" name="sweetness" id="sweet25" value="25%" required>
                                         <label for="sweet25">25%</label>
                                     </div>
-                                    <div style="flex: 1;">
-                                        <input type="radio" name="sweetness" id="sweet50" value="50%" style="margin-bottom: 5px;" requied>
+                                    <div>
+                                        <input type="radio" name="sweetness" id="sweet50" value="50%" required>
                                         <label for="sweet50">50%</label> 
                                     </div>
-                                    <div style="flex: 1;">				     
-                                        <input type="radio" name="sweetness" id="sweet75" value="75%" style="margin-bottom: 5px;" requied>
+                                    <div>				     
+                                        <input type="radio" name="sweetness" id="sweet75" value="75%" required>
                                         <label for="sweet75">75%</label>
                                     </div>
-                                    <div style="flex: 1;">
-                                        <input type="radio" name="sweetness" id="sweet100" value="100%" style="margin-bottom: 5px;" requied>
+                                    <div>
+                                        <input type="radio" name="sweetness" id="sweet100" value="100%" required>
                                         <label for="sweet100">100%</label>
                                     </div>
                                 </div>
@@ -271,28 +275,28 @@
                     </fieldset>
 
                     <fieldset>
-                        <section class="reward-info">
+                        <section class="rewards-info">
                         <legend class="legend-center">Toppings Preference</legend>
                         <div class="form-group">
                             <div class="radio-group">
-                                <div style="flex: 1;">
-                                    <input type="checkbox" name="topping" id="no_boba" value="No Toppings" style="margin-bottom: 5px;">
+                                <div>
+                                    <input type="checkbox" name="topping" id="no_boba" value="No Toppings">
                                     <label for="no_boba">No Toppings</label>
                                 </div>
-                                <div style="flex: 1;">
-                                    <input type="checkbox" name="topping" id="top_boba" value="Classic Boba" style="margin-bottom: 5px;">
+                                <div>
+                                    <input type="checkbox" name="topping" id="top_boba" value="Classic Boba">
                                     <label for="top_boba">Classic Boba</label>
                                 </div>
-                                <div style="flex: 1;">
-                                    <input type="checkbox" name="topping" id="top_sug_boba" value="Brown Sugar Boba" style="margin-bottom: 5px;">							            
+                                <div>
+                                    <input type="checkbox" name="topping" id="top_sug_boba" value="Brown Sugar Boba">							            
                                     <label for="top_sug_boba">Brown Sugar Boba</label>
                                 </div>
-                                <div style="flex: 1;">
-                                    <input type="checkbox" name="topping" id="top_pop_boba" value="Popping Boba" style="margin-bottom: 5px;">
+                                <div>
+                                    <input type="checkbox" name="topping" id="top_pop_boba" value="Popping Boba">
                                     <label for="top_pop_boba">Popping Boba</label>
                                 </div>
-                                <div style="flex: 1;">
-                                    <input type="checkbox" name="topping" id="top_jelly" value="Jelly" style="margin-bottom: 5px;">
+                                <div>
+                                    <input type="checkbox" name="topping" id="top_jelly" value="Jelly">
                                     <label for="top_jelly">Jelly</label>
                                 </div>
                             </div>
@@ -301,7 +305,7 @@
                     </fieldset>
 
                     <fieldset>
-                        <section class="reward-info">
+                        <section class="rewards-info">
                         <legend class="legend-center">Account Setup</legend>
                         <div class="form-group">
                             <label for="deUsername">Choose Username <span aria-label="required" class="required">*</span></label>
@@ -325,23 +329,25 @@
                     <hr class="section-hr">
 
                     <fieldset>
-                        <div class="form-group" class="inline-checkboxes" style="align-items: center; display: block">
+                        <div class="form-group inline-checkboxes" style="align-items: center; display: block">
                             <input type="checkbox" name="PromoEmail" id="PromoEmail">
                             <label for="PromoEmail">I agree to receiving recurring autosent emails from Per Scholas Tea at the email address provided above and understand that my concent is not a condition of purchase. <span aria-label="required" class="required">*</span></label><br> 
                             <input type="checkbox" name="TermAgre" id="TermAgre">
                             <label for="TermAgre">I have read and agree to the Per Scholas Tea Rewards Program, the Privacy Policy, and Terms of Service. <span aria-label="required" class="required">*</span></label>
 					    </div>
                     </fieldset>
-                </form>
             </main>
   
 	
 		        
                         <div class="form-group">
+                            <p><span class="required">*</span> indicates required field</p>
+
                             <div class="button-container">
                                 <input type="submit" class="btn btn-submit" value="Join Club">
                                 <input type="reset" class="btn btn-clear" value="Clear Form">
                             </div>
+                            
                         </div>
                     </fieldset>
                 </form>
@@ -353,7 +359,7 @@
                 </div>
             </footer>
         </div>
-        <script src="menu.js" defer></script>
+        <script src="index.js"></script>
         
     </body>
 </html>
