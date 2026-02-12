@@ -48,12 +48,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const clearBtn = document.getElementById('clearFormBtn');
     if (clearBtn) {
         clearBtn.addEventListener('click', function(event) {
-                if (!confirm('Are you sure you want to clear all form data?')) {
-                    event.preventDefault(); // Cancel the reset if user clicks "Cancel"
-                }
-            });
+                if (!confirm('Are you sure you want to clear all form data?')) 
+                    {
+                        event.preventDefault(); // Cancel the reset if user clicks "Cancel"
+                    }
+                });
     }
-});
+
 
 // ===== HELPER FUNCTIONS =====
 
@@ -83,7 +84,7 @@ function formatPhoneNumber(input) {
     
     // Update the input value
     input.value = formatted;
-}
+
 
 /** 
  * Validates that phone number has exactly 10 digits
@@ -106,7 +107,6 @@ function validatePhoneNumber(input) {
         input.reportValidity();
         return false;
     }
-}
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -115,5 +115,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         if (target) {
             target.scrollIntoView({ behavior: 'smooth' });
         }
+
+        });
     });
 });
+})
