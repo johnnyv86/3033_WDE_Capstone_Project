@@ -312,6 +312,13 @@ textarea {
     resize: vertical;
 }
 
+input {
+    border: 1px solid #555;
+}
+
+.input-error {
+    border: 2px solid red !important;
+}
 /* =============================
     BUTTONS 
 ============================= */
@@ -323,7 +330,11 @@ textarea {
     cursor: pointer;
     font-size: 1rem;
     margin-top: 15px;
-    transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    transition: 
+        transform 0.3s ease, 
+        background-color 0.3s ease, 
+        border-color 0.3s ease;
+        outline: 0.3s ease;
 }
 
 .btn-submit, .filterBtn, .selectDrinkBtn {
@@ -363,8 +374,11 @@ textarea {
     outline-offset: 2px;
 }
 
-.topping-item, .teaDes, .selectDrinkBtn, .sweetness-card, .size-row {
-    transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+.topping-item, .teaDes, .sweetness-card, .size-row {
+    transition: 
+        transform 0.3s ease, 
+        background-color 0.3s ease, 
+        border-color 0.3s ease;
 }
 
 .button-container {

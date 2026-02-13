@@ -28,14 +28,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const cartTotalEl = document.getElementById("cartTotal");
     let cartData = [];
     try {
-        const stored = localStorage.getItem("perScholasTeaCart");
+        const stored = localStorage.getItem('perScholasTeaCart');
         if (stored) {
             const parsed = JSON.parse(stored);
-            const timestamp = localStorage.getItem("perScholasTeaCartTimestamp");
+            const timestamp = localStorage.getItem('perScholasTeaCartTimestamp');
             const hourInMs = 3600000;
             if (timestamp && Date.now() - parseInt(timestamp) > hourInMs * 24) {
-                localStorage.removeItem("perScholasTeaCart");
-                localStorage.removeItem("perScholasTeaCartTimestamp");
+                localStorage.removeItem('perScholasTeaCart');
+                localStorage.removeItem('perScholasTeaCartTimestamp');
+                cartData = [];
             } else {
                 cartData = parsed;
             }
@@ -139,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
         row.addEventListener("click", () => {
     // MAKE SELECTABLE ONLY AFTER A DRINK IS SELECTED
             if (!currentSelection) {
-                alert("Please select a drink first!")
+                alert("Please select a drink first!");
                 return;
             }
     // VISUAL UPDATE
@@ -178,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 // TOPPING LISTENER
-    toppingItems.forEach (item => {
+    toppingItems.forEach(item => {
         item.addEventListener("click", () => {
             if (!currentSelection) {
                 alert("Please select a drink first!");
@@ -239,8 +240,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // 2. ADD ITEM TO MASTER DATA LIST
         cartData.push(newItem);
     // 3. SAVE & UPDATE SCREEN
-        localStorage.setItem("perScholasTeaCart", JSON.stringify(cartData));
+        localStorage.setItem('perScholasTeaCart', JSON.stringify(cartData));
+
+        if (cartData.length === 1) {
+            localStorage.setItem('perScholasTeaCartTimestamp', Date.now().toString());
+        }
+
         renderCart();
+
     // 4. SCROLL LOGIC - SCROLL BACK TO DRINK FILTER
         addToCartBtn.textContent = "Add another drink!";
         addToCartBtn.disabled = true;
@@ -294,29 +301,32 @@ document.addEventListener("DOMContentLoaded", () => {
     // 1. EMPTY DATA ARRAY
         cartData = [];
     // 2. UPDATE LOCALSTORAGE
-        localStorage.setItem("perScholasTeaCart", JSON.stringify(cartData));
+        localStorage.setItem('perScholasTeaCart', JSON.stringify(cartData));
     // 3. UPDATE USER INTERFACE & STROAGE
         renderCart();
         alert("Cart has been cleared!");
     });
 // F0RM LISTENER
-    const orderForm = document.getElementById("orderForm");
-    const orderName = document.getElementById("orderName");
-    const orderContact = document.getElementById("orderContact");
-    const orderEmail = document.getElementById("orderEmail");
-    function setButtonLoading(button) {
-        button.disabled = true;
-        button.textContent = "Processing...";
-        button.style.opacity = "0.6";
-        button.style.cursor = "not-allowed";
-    }
-    function resetButton(button, originalText) {
-        button.disabled = false;
-        button.textContent = originalText;
-        button.style.opacity = "1";
-        button.style.cursor = "pointer";
-    }
-    if(orderForm) {
+    const orderForm = document.getElementById('orderForm');
+
+    if (orderForm && orderName && orderContact && orderEmail) {
+        const orderName = document.getElementById('orderName');
+        const orderContact = document.getElementById('orderContact');
+        const orderEmail = document.getElementById('orderEmail');
+
+        function setButtonLoading(button) {
+            button.disabled = true;
+            button.textContent = "Processing...";
+            button.style.opacity = "0.6";
+            button.style.cursor = "not-allowed";
+        }
+        function resetButton(button, originalText) {
+            button.disabled = false;
+            button.textContent = originalText;
+            button.style.opacity = "1";
+            button.style.cursor = "pointer";
+        }
+ 
         orderForm.addEventListener("submit", (event) => {
             event.preventDefault();
     // A1. GET SUBMIT BUTTON & SET LOADING STATE
@@ -329,23 +339,24 @@ document.addEventListener("DOMContentLoaded", () => {
                 resetButton(submitBtn, originalBtnText);
                 return;
             }
-    // 3A. GET FORM VALUES
+    // A3. GET FORM VALUES
             const nameValue = orderName.value.trim();
             const contactValue = orderContact.value.trim();
             const emailValue = orderEmail.value.trim();
-    // B2. STANDARIZE PHONE NUMBER & EMAIL ENTERED
+    // A4. STANDARDIZE PHONE NUMBER & EMAIL ENTERED
             const cleanPhone = contactValue.replace(/\D/g, '');
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    // A4. RE-ENABOLE BUTTON ON VALIDATION FAILURE
+            
+    // A5. RE-ENABLE BUTTON ON VALIDATION FAILURE
             if (nameValue.length < 3) {
                 alert("Please enter a valid name.");
-                orderName.style.border = "2px solid red";
+                orderName.classList.add("input-error");
                 resetButton(submitBtn, originalBtnText)
                 return;
             }
              if (cleanPhone.length < 10) {
                 alert("Please enter a valid 10-digit phone number.");
-                orderContact.style.border = "2px solid red";   
+                orderContact.classList.add("input-error");   
                 // Re-enable button on validation failure
                 resetButton(submitBtn, originalBtnText)
                 return;
@@ -361,12 +372,14 @@ document.addEventListener("DOMContentLoaded", () => {
             // VALIDATION PASSED - SHOW SUCCESS
             alert(`Thank you, ${nameValue}! Your order has been placed.`);
             // 4. RESET BORDERS
-            orderName.style.border = "1px solid #555";
-            orderContact.style.border = "1px solid #555";
-            orderEmail.style.border = "1px solid #555";
+            orderName.classList.remove("input-error");
+            orderContact.classList.remove("input-error");
+            orderEmail.classList.remove("input-error");
+
             // 5. CLEAR CART
             cartData = [];
-            localStorage.setItem("perScholasTeaCart", JSON.stringify(cartData));
+            localStorage.setItem('perScholasTeaCart', JSON.stringify(cartData));
+            localStorage.removeItem('perScholasTeaCartTimestamp');
             renderCart();
             // 6. RESET FORM
             orderForm.reset();
