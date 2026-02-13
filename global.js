@@ -57,17 +57,18 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             // Success Message after submit 
-            const successMsg = document.createElement('div');
-            successMsg.className = 'success-message';
-            // global.js
-            successMsg.textContent = `Thank you! 
-            You'll receive promotional emails at ` + document.getElementById('promoEmail').value;
-                    this.insertAdjacentElement('beforebegin', successMsg);
+            // Get the container
+            const msgContainer = document.getElementById('form-message-container');
+
+            // Set the content
+            const email = document.getElementById('promoEmail').value;
+            msgContainer.innerHTML = `<div class="success-message">Thank you! You'll receive emails at ${email}</div>`;
+     
             
             // Clear form after delay
             setTimeout(() => {
                 promoForm.reset();
-                successMsg.remove();
+                msgContainer.innerHTML = ''; //Clears the message
             }, 3000);
         });
     }
