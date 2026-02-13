@@ -393,6 +393,11 @@ input {
     margin-top: 20px;
 }
 
+.inline-checkboxes label {
+    cursor: pointer;
+    user-select: none;
+}
+
 /* =============================
     MENU PAGE - MAIN DRINK
 ============================= */
