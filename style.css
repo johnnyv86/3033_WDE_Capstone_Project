@@ -182,8 +182,11 @@ legend {
 .mainNav li {
     flex: 1;
     list-style: none; /* removes bullet points on list */
-    border-left: 1px solid var(--color-border-gray);
     border-right: 1px solid var(--color-border-gray);
+}
+
+.mainNav li:last-child {
+    border-right: none;
 }
 
 .mainNav li a {
