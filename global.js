@@ -85,6 +85,11 @@ document.addEventListener('DOMContentLoaded', function() {
  * @param {HTMLInputElement} input - The phone input element 
  */
 function formatPhoneNumber(input) {
+
+    // 1. Save cursor position
+    const cursorPosition = input.selectionStart;
+    const oldLength = input.value.length;
+
     // Remove non-digits
     let value = input.value.replace(/\D/g, '');
 
@@ -111,6 +116,10 @@ function formatPhoneNumber(input) {
     }
     // Update the input value
     input.value = formatted;
+
+    // 2. Restore cursor position 
+    const newLength = input.value.length;
+    input.setSelectionRange(cursorPosition + (newLength - oldLength), cursorPosition + (newLength - oldLength));
 }
 /** 
  * Validates that phone number has exactly 10 digits
