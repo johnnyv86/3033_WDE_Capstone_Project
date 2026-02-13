@@ -9,10 +9,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Set max date for birth date input
+
+    
     const birthDateInput = document.getElementById('birthDate');
     if (birthDateInput) {
         // Set max to today's date
-        const today = new Date().toISOString().split('T')[0];
+        const now = new Date();
+        const today = now.toLocaleDateString('en-CA');
         birthDateInput.setAttribute('max', today);
     }
 
