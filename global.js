@@ -20,13 +20,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // Phone number validation and auto-formatting
     const phoneInput = document.getElementById('contactNumber');
     if (phoneInput) {
-        // Format as user types
+        // 1. INPUT EVENT: Format as they type AND clear errors immediately
         phoneInput.addEventListener('input', function() {
             formatPhoneNumber(this);
+
+            // If the user is typing, assume they are fixing number.
+            // Remove the ugly red border immediately
+            if (this.classList.contains('input-error')) {
+                this.classList.remove('input-error');
+                this.setCustomValidity('');
+            }
         });   
-        // Validate when user leaves the field
+
+        // 2. BLUR EVENT: Validate quietly when user leaves the field (Red border only, no popup)
         phoneInput.addEventListener('blur', function() {
-            validatePhoneNumber(this);
+            // Pass 'false' to say "Don't show the popup bubble yet"
+            validatePhoneNumber(this, false);
         });
     }
 
@@ -37,35 +46,24 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault(); // Prevent form from actually submitting
             
             // Validate phone number before submitting: if error bubble appears
-            if (phoneInput && !validatePhoneNumber(phoneInput)) {
+            if (phoneInput && !validatePhoneNumber(phoneInput, true)) {
                 phoneInput.focus(); // Draw attention to the problem field
 
-                if (phoneInput.value.trim() === '') {
-                    // If empty, standard HTML5 validation will catch it in the next step (checkValidity)
-                    // we want to let checkValidity handle the "Required" error.
-                } else {
-                    phoneInput.reportValidity(); // Show the "Must be 10 digits" error
-                }
                 return; // Exit if validation fails
 
             }
-        }
 
-            // Check if form is valid
-            if (!this.checkValidity()) {
-                this.reportValidity(); // Show validation message
-                return;
-            }
             // Success Message after submit 
             const successMsg = document.createElement('div');
             successMsg.className = 'success-message';
-            successMsg.textContent = 'Thank you! You\'ll receive promotional emails at ' + 
-                document.getElementById('promoEmail').value;
+            // global.js
+            successMsg.textContent = `Thank you! 
+            You'll receive promotional emails at ` + document.getElementById('promoEmail').value;
                     this.insertAdjacentElement('beforebegin', successMsg);
             
             // Clear form after delay
             setTimeout(() => {
-                this.reset();
+                promoForm.reset();
                 successMsg.remove();
             }, 3000);
         });
@@ -87,10 +85,16 @@ document.addEventListener('DOMContentLoaded', function() {
  * @param {HTMLInputElement} input - The phone input element 
  */
 function formatPhoneNumber(input) {
-    // Get only digits
+    // Remove non-digits
     let value = input.value.replace(/\D/g, '');
+
+    // Remove leading '1' if entered by user
+    if (value.length > 10 && value.startsWith('1')) {
+        value = value.substring(1);
+    }
     // Limit to 10 digits
     value = value.substring(0, 10);
+
     // Format based on length
     let formatted = '';
     if (value.length === 0) {
@@ -111,25 +115,40 @@ function formatPhoneNumber(input) {
 /** 
  * Validates that phone number has exactly 10 digits
  * @param {HTMLInputElement} input - The phone input element
+ * @param {boolean} showPopup - Whether to trigger the browser's error bubble immediately
  * @returns {boolean} True if valid, false otherwise
  */
-function validatePhoneNumber(input) {
+function validatePhoneNumber(input, showPopup = true) {
     const value = input.value.trim();
     const digitsOnly = value.replace(/\D/g, '');
 
+    // Case 1: Valid (10 digits)
     if (digitsOnly.length === 10) {
         input.setCustomValidity(''); // Clear any error
+        input.classList.remove('input-error'); // Remove red border
         return true;
-    } else if (digitsOnly.length === 0) {
+    } 
+    // Case 2: Empty (Let HTML 'required' handle this on submit, don't error on blur)
+    else if (digitsOnly.length === 0) {
         // If it's empty, we rely on the HTML 'required' attribute.
         // We explicitly clear custom validity so the browser's native "Required" error can show.
-        input.setCustomValidity(''); 
+        input.setCustomValidity('');
+        input.classList.remove('input-error');
         return true;
-    } else {
+    } 
+    // Case 3: Invalid (Wrong length)
+    else {
+        // Set the error message for the browser to know
         input.setCustomValidity(`Phone number must be 10 digits. You entered ${digitsOnly.length}.`);
-        input.reportValidity();
-        return false;
 
-    
+        // Add visual red border defined in CSS
+        input.classList.add('input-error');
+
+        // Shows annoying popup bubble only when explicitly asked for (e.g., on Submit)
+        if (showPopup) {
+            input.reportValidity();
+        }
+        
+        return false;
     }
 }

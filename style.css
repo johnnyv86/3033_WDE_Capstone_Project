@@ -578,6 +578,10 @@ textarea {
     color: var(--color-text-primary);
 }
 
+.info-group {
+    border: 1px solid white;
+}
+
 .bar-outer, .menu-outer-bar {
     height: 20px;
     background-color: var(--color-border-light);
@@ -695,7 +699,9 @@ textarea {
 } 
 
 .drinkDes1 {
-    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     grid-column: 2;
     margin: 0;
     margin-bottom: 0;
@@ -942,6 +948,7 @@ textarea {
     }
 }
 
+
 /* Tablets */
 @media (max-width: 768px) {
     .businessInfo-container {
@@ -957,9 +964,10 @@ textarea {
     }
 }
 
+
 /* Large tablets/small desktops */
 @media (max-width: 1024px) {
     .drinkSizes {
-        grid-template-columns: 1fr; /* Stack instead of 3 columns */
-    }
+            grid-template-columns: 1fr;
+        }
 }

@@ -4,7 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Per Scholas Tea Index</title>
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="style.css">
+        <script src="global.js" defer></script>
         <link rel="icon" href="media/BusinessLogo.jpg" type="image/jpeg">
     </head>
 
@@ -37,7 +38,7 @@
                                 <h3>Business Address:</h3>
                                 <p>701 S. Miami Ave., Miami, FL 33130</p>
                                 <a target="_blank" rel="noopener noreferrer" 
-                                    href="https://www.google.com/maps/search/?api=1&query=701+S.+Miami+Ave,+Miami,+FL+33130">
+                                    href="https://maps.app.goo.gl/UppSssukHkricunC7">
                                     Click for Directions!
                                 </a>
                             </div>
@@ -96,7 +97,7 @@
                             <legend>Your Details</legend>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="promoFirstName">First Name <span aria-label="required" class="required">*</span></label>
+                                    <label for="promoFirstName">First Name <span aria-hidden="true" class="required">*</span></label>
                                     <input 
                                         type="text"
                                         name="promoFirstName"
@@ -106,7 +107,7 @@
                                         required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="promoLastName">Last Name <span aria-label="required" class="required">*</span></label>
+                                    <label for="promoLastName">Last Name <span aria-hidden="true" class="required">*</span></label>
                                     <input 
                                         type="text"
                                         name="promoLastName"
@@ -119,7 +120,7 @@
 
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="favTea">Favorite Tea Type <span aria-label="required" class="required">*</span></label>
+                                    <label for="favTea">Favorite Tea Type <span aria-hidden="true" class="required">*</span></label>
                                     <select name="favTea" id="favTea" required>
                                         <option value="" disabled selected>-- Please choose an option --</option>
                                         <option value="Milk Teas">Milk Teas</option>
@@ -133,7 +134,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="birthDate">Birthday <span aria-label="required" class="required">*</span></label>
+                                    <label for="birthDate">Birthday <span aria-hidden="true" class="required">*</span></label>
                                     <input 
                                         type="date" 
                                         name="birthDate" 
@@ -146,18 +147,19 @@
 
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="contactNumber">Contact Number <span aria-label="required" class="required">*</span></label>
+                                    <label for="contactNumber">Contact Number <span aria-hidden="true" class="required">*</span></label>
                                     <input 
                                         type="tel" 
                                         name="contactNumber" 
                                         id="contactNumber"
                                         placeholder="(123) 456-7890"
-                                        title="Please enter a valid phone number"
+                                        pattern="\(\d{3}\) \d{3}-\d{4}"
+                                        title="Format: (123) 456-7890"                                        
                                         autocomplete="tel"
                                         required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="promoEmail">Email Address <span aria-label="required" class="required">*</span></label>
+                                    <label for="promoEmail">Email Address <span aria-hidden="true" class="required">*</span></label>
                                     <input 
                                         type="email"
                                         name="promoEmail"
@@ -198,6 +200,5 @@
                 </div>
             </footer>
         </div>
-        <script src="index.js"></script>
     </body>
 </html>
