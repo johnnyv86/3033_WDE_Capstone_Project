@@ -69,6 +69,12 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 promoForm.reset();
                 msgContainer.innerHTML = ''; //Clears the message
+
+                // Remove error class 
+                if (phoneInput) {
+                    phoneInput.classList.remove('input-error');
+                    phoneInput.setCustomValidity(''); // Clear internal error flags
+                }
             }, 3000);
         });
     }
