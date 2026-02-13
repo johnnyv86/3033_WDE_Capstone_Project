@@ -17,7 +17,7 @@
                         alt="Per Scholas Tea Business Logo" 
                         class="business-img"
                         width="300"
-                        height="300" />
+                        height="300">
                     <div class="header-text">
                         <h1 class="businessName">PER SCHOLAS TEA</h1>
                         <p class="businessSlogan">Brewing the Future</p>
@@ -30,13 +30,16 @@
                             </div>
                             <div class="businessInfo">
                                 <h3>Phone Number:</h3>
-                                <p>(305) 515 - 9041</p>
+                                <p>(305) 515-9041</p>
                                 <a href="tel:+1-305-515-9041">Click to call!</a>
                             </div>
                             <div class="businessInfo">
                                 <h3>Business Address:</h3>
                                 <p>701 S. Miami Ave., Miami, FL 33130</p>
-                                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=701+S.+Miami+Ave.+Miami,+FL+33130">Click for Directions!</a>
+                                <a target="_blank" rel="noopener noreferrer" 
+                                    href="https://www.google.com/maps/search/?api=1&query=701+S.+Miami+Ave,+Miami,+FL+33130">
+                                    Click for Directions!
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -61,8 +64,7 @@
                 <div class="box b1-video">
                     <video 
                         class="mainVid" 
-                        autoplay muted loop playsinline poster="media/Video-Placeholder.jpg"
-                        controls>
+                        autoplay muted loop playsinline poster="media/Video-Placeholder.jpg">
                         <source src="media/MainVideo.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
@@ -70,12 +72,12 @@
 
                 <hr class="section-hr">
 
-                <div class="box">
+                <div class="box b2-promo">
                     <h2 class="daily-title">☆ ✩  Daily Specials ✩ ☆</h2>
                     <hr class="section-hr full-width-hr">
-                </div>
+                
 
-                <div class="box b2-promo">
+                
                     <img src="media/Motivation-Monday.jpg" alt="Motivation Monday" width="400" height="300">
                     <img src="media/Tech-Tuesday.jpg" alt="Tech Tuesday" width="400" height="300">
                     <img src="media/Wisdom-Wednesday.jpg" alt="Wisdom Wednesday" width="400" height="300">
@@ -150,6 +152,7 @@
                                         name="contactNumber" 
                                         id="contactNumber"
                                         placeholder="(123) 456-7890"
+                                        title="Please enter a valid phone number"
                                         autocomplete="tel"
                                         required>
                                 </div>
@@ -170,7 +173,7 @@
                             <div class="form-group inline-checkboxes">
                                 <label for="promoAgree">
                                     <input type="checkbox" name="promoAgree" id="promoAgree" required>
-                                        I agree to receiving recurring autosent emails from Per Scholas Tea at the email address provided above and understand that my consent is not a condition of purchase.
+                                        <span class="checkbox-text">I agree to receiving recurring autosent emails from Per Scholas Tea at the email address provided above and understand that my consent is not a condition of purchase.</span>
                                 </label>
                             </div>
 
