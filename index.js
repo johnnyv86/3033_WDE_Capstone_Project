@@ -1,49 +1,64 @@
 
 // Wait for DOM to load
+// Get the current year and display it
 document.addEventListener('DOMContentLoaded', function() {
-    // Set birth date max to today
+    const yearSpan = document.getElementById('currentYear');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
     const birthDateInput = document.getElementById('birthDate');
     if (birthDateInput) {
-        birthDateInput.max = new Date().toISOString().split('T')[0];
+        // Set max to today's date
+        const today = new Date().toISOString().split('T')[0];
+        birthDateInput.setAttribute('max', today);
     }
-    
-    // Set copyright year in footer
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+
+
+    // Get the current year and display it
     const yearSpan = document.getElementById('currentYear');
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
     }
 
-// Phone number validation and auto-formatting
+    // Phone number validation and auto-formatting
     const phoneInput = document.getElementById('contactNumber');
     if (phoneInput) {
         // Format as user types
         phoneInput.addEventListener('input', function() {
             formatPhoneNumber(this);
-        });
-        
+        });   
         // Validate when user leaves the field
         phoneInput.addEventListener('blur', function() {
             validatePhoneNumber(this);
         });
     }
-
     // Form submission handler
     const promoForm = document.getElementById('promoForm');
     if (promoForm) {
         promoForm.addEventListener('submit', function(event) {
                 event.preventDefault(); // Prevent form from actually submitting
-
                 // Validate phone number before submitting
                 if (phoneInput && !validatePhoneNumber(phoneInput)) {
                     return; // Exit if validation fails
                 }
-
-                // Validation passed - submit form
-                alert('Form submitted successfully!');
-                this.reset(); // Clear form after successful submission
+                // Success Message after submit 
+                const successMsg = document.createElement('div');
+                successMsg.className = 'success-message';
+                successMsg.textContent = 'Form submitted successfully!';
+                this.insertAdjacentElement('beforebegin', successMsg);
+                // Clear form after delay
+                setTimeout(() => {
+                    this.reset();
+                    successMsg.remove();
+                }, 3000);
             });
     }
-
     // Clear button confirmation
     const clearBtn = document.getElementById('clearFormBtn');
     if (clearBtn) {
@@ -54,10 +69,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
     }
-
-
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+});
 // ===== HELPER FUNCTIONS =====
-
 /**  
  * Auto-formats phone number to (XXX) XXX-XXXX as user types
  * @param {HTMLInputElement} input - The phone input element 
@@ -65,27 +87,25 @@ document.addEventListener('DOMContentLoaded', function() {
 function formatPhoneNumber(input) {
     // Get only digits
     let value = input.value.replace(/\D/g, '');
-    
     // Limit to 10 digits
     value = value.substring(0, 10);
-    
     // Format based on length
     let formatted = '';
-    
-    if (value.length > 0) {
-        formatted = '(' + value.substring(0, 3);
+    if (value.length === 0) {
+        formatted = '';
+    } else if (value.length <= 3) {
+        // Show just digits until area code complete
+        formatted = value;
+    } else if (value.length <= 6) {
+        // Format: (XXX) XXX
+        formatted = '(' + value.substring(0, 3) + ') ' + value.substring(3);
+    } else {
+        // Format: (XXX) XXX-XXX
+        formatted = '(' + value.substring(0, 3) + ') ' + value.substring(3,6) + '-' + value.substring(6);
     }
-    if (value.length >= 4) {
-        formatted += ') ' + value.substring(3, 6);
-    }
-    if (value.length >= 7) {
-        formatted += '-' + value.substring(6, 10);
-    }
-    
     // Update the input value
     input.value = formatted;
-
-
+}
 /** 
  * Validates that phone number has exactly 10 digits
  * @param {HTMLInputElement} input - The phone input element
@@ -94,7 +114,6 @@ function formatPhoneNumber(input) {
 function validatePhoneNumber(input) {
     const value = input.value.trim();
     const digitsOnly = value.replace(/\D/g, '');
-    
     if (digitsOnly.length === 10) {
         input.setCustomValidity(''); // Clear any error
         return true;
@@ -107,15 +126,4 @@ function validatePhoneNumber(input) {
         input.reportValidity();
         return false;
     }
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        });
-    })
-})}
+}

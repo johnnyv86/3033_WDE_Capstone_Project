@@ -32,6 +32,11 @@
     --color-link: #A5D6A5;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
