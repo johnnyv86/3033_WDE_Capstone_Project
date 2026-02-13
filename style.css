@@ -429,14 +429,6 @@ textarea {
     padding: 10px;
 }
 
-/* Replace fieldset styles */
-.menu-category {
-    border: 1px solid var(--color-text-primary);
-    padding: 15px;
-    margin-bottom: 20px;
-
-}
-
 .category-title {
     font-size: 1.2em;
     font-weight: bold;
@@ -616,6 +608,14 @@ textarea {
     margin-bottom: 10px;
     text-align: center;
 }
+
+.info-box h4 {
+    /* Styles that match your previous legend */
+    color: var(--color-text-white);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
 
 .bar-outer, .menu-outer-bar {
     height: 20px;
