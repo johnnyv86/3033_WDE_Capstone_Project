@@ -92,8 +92,6 @@ legend {
     border: 3px solid var(--color-border-white);
 }
 
-
-
 #section1 {
     display: flex;
     flex-wrap: wrap;
@@ -160,7 +158,6 @@ legend {
     text-decoration: underline;
     color: white;
 }
-
 
 /* =============================
     NAVIGATION BAR
@@ -270,8 +267,6 @@ legend {
     color: var(--color-primary-hover);
 }
 
-
-
 .form-group label {
     margin: 0;
     padding-bottom: 10px;
@@ -293,7 +288,6 @@ legend {
     margin-bottom: 15px;
     flex: 1;
 }
-
 
 input[type="text"],
 input[type="email"],
@@ -369,10 +363,6 @@ textarea {
     outline-offset: 2px;
 }
 
-
-
-
-
 .topping-item, .teaDes, .selectDrinkBtn, .sweetness-card, .size-row {
     transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
@@ -384,21 +374,14 @@ textarea {
     margin-top: 20px;
 }
 
-
-
-
-
-
 /* =============================
     MENU PAGE - MAIN DRINK
 ============================= */
-
 .main-menu-flex {
     flex-wrap: wrap;
     display: flex;
     gap: 20px;
 }
-
 
 #section2 {
     min-width: 400px;
@@ -406,8 +389,6 @@ textarea {
     gap: 10px;
     padding: 10px;
 }
-
-
 
 /* Replace fieldset styles */
 .menu-category {
@@ -455,9 +436,6 @@ textarea {
     align-self: center;
 }
 
-
-
-
  .selectDrinkBtn, .menuTea {
     display: grid;
     grid-template-columns: 120px 1fr;
@@ -492,9 +470,6 @@ textarea {
     font-size: 0.9em;
     color: var(--color-text-light);
 }
-
-
-
 
 /* =============================
     MENU PAGE - SIDE SIZE
@@ -573,6 +548,7 @@ textarea {
     border-radius: 10px;
     overflow: hidden;
 }
+
 .bar-inner {
     height: 100%;
     text-align: right;
@@ -603,6 +579,7 @@ textarea {
 .bar-100 {
     width: 100%;
 }
+
 /* =============================
     MENU PAGE - TOPPINGS
 ============================= */
@@ -663,7 +640,6 @@ textarea {
     margin-top: 10px;
     border-radius: 15px;
 }
-
 
 /* =============================
     ORDER PAGE - Ordering Steps
@@ -757,9 +733,6 @@ textarea {
     box-shadow: 0 0 10px rgba(143, 179, 143, 0.1);
 }
 
-
-
-
 /* =============================
     REWARDS PAGE
 ============================= */
@@ -771,9 +744,11 @@ textarea {
     font-size: 1.5em;
     font-weight: bold;
 }
+
 .rewards-info {
     text-align: left;
 }
+
 .rewards-info h1 {
     margin: 0;
     padding-bottom: 5px;
@@ -839,8 +814,6 @@ textarea {
 .radio-group input[type="checkbox"] {
     margin-bottom: 5px;
 }
-
-
 
 /* =============================
     JAVASCRIPT 

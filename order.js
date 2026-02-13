@@ -1,22 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
-
 // CONSTANT VARIABLE
     const TOPPING_PRICE = 0.50;
-
 // DRINK FILTERING LOGIC
     const filterButtons = document.querySelectorAll("#drinkFilters .filterBtn");
     const drinkGroups = document.querySelectorAll("fieldset[data-type]");
-
     filterButtons.forEach((btn) => {
         btn.addEventListener("click", () => {
             const filterValue = btn.dataset.filter;
-
             filterButtons.forEach((b) => b.classList.remove("active"));
             btn.classList.add("active");
-
             drinkGroups.forEach((group) => {
                 const type = group.dataset.type;
-
                 if (filterValue === "all" || filterValue === type) {
                     group.style.display = "";
                 }
@@ -26,15 +20,12 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     });
-
 // DRINK BUILDER & CART SECTION LOGIC
     const selectedDetails = document.getElementById("selectedDrinkDetails");
     const addToCartBtn = document.getElementById("addToCartBtn");
-
     const cartList = document.getElementById("cartItems");
     const cartEmptyMsg = document.getElementById("cartEmptyMsg");
     const cartTotalEl = document.getElementById("cartTotal");
-
     let cartData = [];
     try {
         const stored = localStorage.getItem("perScholasTeaCart");
@@ -42,8 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const parsed = JSON.parse(stored);
             const timestamp = localStorage.getItem("perScholasTeaCartTimestamp");
             const hourInMs = 3600000;
-
-            if (timestamp && DataTransfer.now() - parseInt(timestamp) > hourInMs * 24) {
+            if (timestamp && Date.now() - parseInt(timestamp) > hourInMs * 24) {
                 localStorage.removeItem("perScholasTeaCart");
                 localStorage.removeItem("perScholasTeaCartTimestamp");
             } else {
@@ -54,10 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Error loading cart from localStorage:", error);
         cartData = [];
     }
-
-    localStorage.setItem("perScholasTeaCart", JSON.stringify(cartData));
-    localStorage.setItem("perScholasTeaCartTimestamp", Date.now().toString());
-
     let cartTotal = 0;
     let currentSelection = null;
     let currentBasePrice = 0;
@@ -65,42 +51,31 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentSizeName = "Small";
     let currentSweetness = "0%";
     let currentToppings = [];
-
     const selectButtons = document.querySelectorAll(".teaDes .selectDrinkBtn");
     const sizeRows = document.querySelectorAll(".size-row");
     const sweetnessCards = document.querySelectorAll(".sweetness-card");
     const toppingItems = document.querySelectorAll(".topping-item");
-
-
 // HELPER: RENDER CART & SAVE TO STORAGE
     function renderCart() {
         cartList.innerHTML = "";
         let runningTotal = 0;
-
     // 1. CREATE DocumentFragment
         const fragment = document.createDocumentFragment();
-
         cartData.forEach((item, index) => {
             const li = document.createElement("li");
             const toppingsString = item.toppings.length > 0
                 ? ` + ${item.toppings.join(", ")}`
                 : "";
-
             li.textContent = `${index + 1}. ${item.name}, ${item.size}, ${item.sweetness}, ${toppingsString} - $${item.price.toFixed(2)}`;
-            li.classList.add("cart-items")
-
+            li.classList.add("cart-items");
     // 2. APPEND to FRAGMENT instead of cartList
             fragment.appendChild(li);
-
             runningTotal += item.price;
         });
-
     // 3. APPEND FRAGMENT to the DOM
         cartList.appendChild(fragment);
-
     // 4. UPDATE TOTAL TEXT
         cartTotalEl.textContent = `Total: $${runningTotal.toFixed(2)}`;
-
     // 5. TOGGLE EMPTY MESSAGE
         if (cartData.length === 0) {
             if (cartEmptyMsg) cartEmptyMsg.style.display = "block";
@@ -108,63 +83,48 @@ document.addEventListener("DOMContentLoaded", () => {
             if (cartEmptyMsg) cartEmptyMsg.style.display = "none";
         }
     }
-
     renderCart();
-
 // HELPER: RECALCULATE TOTAL PRICE
     function recalculateTotal() {
         if (!currentSelection) return;
-
         const toppingsCost = currentToppings.length * TOPPING_PRICE;
         currentSelection.price = currentBasePrice + currentSizePrice + toppingsCost;
     }
-
 // DRINK SELECTION LISTENER
     selectButtons.forEach((btn) => {
         btn.addEventListener("click", () => {
             const drinkCard = btn.closest(".teaDes");
-
             const nameEl = drinkCard.querySelector(".teaType");
             const priceEl = drinkCard.querySelector(".price");
-
             const drinkName = nameEl
                 ? nameEl.childNodes[0].textContent.trim()
                 : "Unknown Drink";
-
         // REMOVE `$` Character BEFORE PARSING
             const priceValue = priceEl
                 ? parseFloat(priceEl.textContent.replace('$', '').trim())
                 : 0;
-
         // RESET LOGIC TO DEFAULT
             currentBasePrice = priceValue;
             currentSizePrice = 0;
             currentSizeName = "Small";
             currentSweetness = "0%";
             currentToppings = [];
-
         // RESET BUTTON FOR NEW SELECTION
             addToCartBtn.textContent = "Add to Cart";
-
         // RESET VISUAL
             sizeRows.forEach(row => row.classList.remove("active"));
             sweetnessCards.forEach(card => card.classList.remove("active"));
             toppingItems.forEach(item => item.classList.remove("active"));
-
         // SET INITIAL SELECTION OBJECT
             currentSelection = { name: drinkName, price: currentBasePrice };
-
         // HELPER FUNCTION TO UPDATE TEXT
             updateDisplay();
-
             addToCartBtn.disabled = false;
-
         // HIGHLIGHT DRINK CARD
             document
                 .querySelectorAll(".teaDes")
                 .forEach((card) => card.classList.remove("selectedDrink"));
             drinkCard.classList.add("selectedDrink");
-
         // SCROLL LOGIC TO DRINK SIZE AFTER SELECT CLICKED
             const sizeSection = document.getElementById("order-size");
             if (sizeSection) {
@@ -174,7 +134,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
-    
 // SIZE SELECTION LISTENER [OUTSIDE OF LOOP]
     sizeRows.forEach(row => {
         row.addEventListener("click", () => {
@@ -183,20 +142,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("Please select a drink first!")
                 return;
             }
-
     // VISUAL UPDATE
             sizeRows.forEach(r => r.classList.remove("active"));
             row.classList.add("active");
-
         // 1. GET PRICE
             currentSizePrice = parseFloat(row.dataset.price);
         // 2. GET SIZE NAME (first row)
             currentSizeName = row.children[0].textContent;
         // 3. UPDATE PRICE
             currentSelection.price = currentBasePrice + currentSizePrice;
-
             updateDisplay();
-
         // SCROLL LOGIC: SIZE TO SWEETNESS LEVEL
             const sweetnessSection = document.getElementById("order-sweetness");
             if (sweetnessSection) {
@@ -204,30 +159,24 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
-    
 // SWEETNESS SECTION LISTENER
     sweetnessCards.forEach(card => {
         card.addEventListener("click", () => {
             if (!currentSelection) {
                 alert("Please select a drink first!");
                 return;
-            }
-            
+            }            
     // VISUAL UPDATE
             sweetnessCards.forEach(c => c.classList.remove("active"));
             card.classList.add("active");
-
     // UPDATE STATE
             currentSweetness = card.dataset.level;
-
             updateDisplay();
-
     // SCROLL LOGIC: SWEETNESS to TOPPING
             const toppingsSection = document.getElementById("toppings-section");
             if (toppingsSection) toppingsSection.scrollIntoView({ behavior: "smooth" });
         });
     });
-
 // TOPPING LISTENER
     toppingItems.forEach (item => {
         item.addEventListener("click", () => {
@@ -235,39 +184,30 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("Please select a drink first!");
                 return;
             }
-
     // VISUAL UPDATE: TOGGLE ACTIVE CLASS
             item.classList.toggle("active");
-
     // GET TOPPING NAME FROM <h4> TAG
             const toppingName = item.querySelector("h4").textContent;
-
     // LOGIC - if ACTIVE ADD to array : REMOVE
             if (item.classList.contains("active")) {
                 currentToppings.push(toppingName);
             } else {
                 currentToppings = currentToppings.filter(t => t !== toppingName);
             }
-
             recalculateTotal();
-
             updateDisplay();
         });
     });
-
 // HELPER FUNCTION to UPDATE SELECTION SECTION
     function updateDisplay() {
         if(currentSelection) {
-
     // CREATE STRING "($0.75) or EMPTY if FREE"
             const costTotal = currentSizePrice > 0
                 ? `(+$${currentSizePrice.toFixed(2)})`
                 : "";
-
             const toppingsText = currentToppings.length > 0
                 ? currentToppings.map(t => `${t} (+$${TOPPING_PRICE.toFixed(2)})`).join(", ")
                 : "None";
-
             selectedDetails.innerHTML = `
                 <p><strong>Drink:</strong> ${currentSelection.name}</p>
                 <p><strong>Size:</strong> ${currentSizeName} ${costTotal}</p>
@@ -277,10 +217,8 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
         }
     }
-
     // ADD TO CART LISTENER
     addToCartBtn.addEventListener("click", () => {
-
     // MODE ONE: ADD ANOTHER DRINK!    
         if (!currentSelection) {
             const drinkSection = document.getElementById("drinkFilters");
@@ -289,9 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             return;
         }
-
     // MODE TWO: CREATE CART ITEM
-
     // 1. CREATE DATA OBJECT FOR NEW ITEM
         const newItem = {
             name: currentSelection.name,
@@ -300,18 +236,14 @@ document.addEventListener("DOMContentLoaded", () => {
             toppings: [...currentToppings],
             price: currentSelection.price
         };
-
     // 2. ADD ITEM TO MASTER DATA LIST
         cartData.push(newItem);
-
     // 3. SAVE & UPDATE SCREEN
         localStorage.setItem("perScholasTeaCart", JSON.stringify(cartData));
         renderCart();
-
     // 4. SCROLL LOGIC - SCROLL BACK TO DRINK FILTER
         addToCartBtn.textContent = "Add another drink!";
         addToCartBtn.disabled = true;
-
     // 5. RESET ALL PREVIOUS SELECTED ITEMS
         currentSelection = null;
         currentBasePrice = 0;
@@ -319,7 +251,6 @@ document.addEventListener("DOMContentLoaded", () => {
         currentSizeName = "Small";
         currentSweetness = "0%";
         currentToppings = [];
-
     // 6. RESET ALL VISUAL 
         document.querySelectorAll(".teaDes").forEach(card => {
             card.classList.remove("selectedDrink");
@@ -327,18 +258,14 @@ document.addEventListener("DOMContentLoaded", () => {
         sizeRows.forEach(row => row.classList.remove("active"));
         sweetnessCards.forEach(card => card.classList.remove("active"));
         toppingItems.forEach(item => item.classList.remove("active"));
-
     // 7. RESET SELECTION SUMMARY DISPLAY
         selectedDetails.innerHTML = `
             <p style="color: var(--color-primary); font-weight: bold;">Drink added to cart!</p>
             <p>Select another drink below.</p>`;
         });
-
 // CLEAR SELECTION SUMMARY SECTION LISTENER
     const clearBtn = document.getElementById("clearSelectionBtn");
-
     clearBtn.addEventListener("click", () => {
-    
     // 1. RESET & CLEAR SELECTED DATA 
         currentSelection = null;
         currentBasePrice = 0;
@@ -346,137 +273,213 @@ document.addEventListener("DOMContentLoaded", () => {
         currentSizeName = "Small";
         currentSweetness = "0%";
         currentToppings = [];
-
     // 2. RESET VISUAL DISPLAY
         document.querySelectorAll(".teaDes").forEach(card => card.classList.remove("selectedDrink"));
         sizeRows.forEach(row => row.classList.remove("active"));
         sweetnessCards.forEach(card => card.classList.remove("active"));
         toppingItems.forEach(item => item.classList.remove("active"));
-
     // 3. RESET TEXT AND BUTTON FUNCTIONALITY
         selectedDetails.innerHTML = "<p>No drink selected yet.</p>";
         addToCartBtn.textContent = "Add to Cart!";
         addToCartBtn.disabled = true;
-
     // 4. SCROLL LOGIC: SCROLL BACK TO TOP - DRINK FILTER SECTION
         const drinkSelection = document.getElementById("drinkFilters");
         if (drinkSelection) {
             drinkSelection.scrollIntoView({ behavior: "smooth" });
         }
     });
-
 // CLEAR CART LISTENER
     const clearOrderBtn = document.getElementById("clearOrderBtn");
-
     clearOrderBtn.addEventListener("click", () => {
-    
     // 1. EMPTY DATA ARRAY
         cartData = [];
-
     // 2. UPDATE LOCALSTORAGE
         localStorage.setItem("perScholasTeaCart", JSON.stringify(cartData));
-        
-
     // 3. UPDATE USER INTERFACE & STROAGE
         renderCart();
-
         alert("Cart has been cleared!");
     });
-
-// FROM LISTENER
+// F0RM LISTENER
     const orderForm = document.getElementById("orderForm");
     const orderName = document.getElementById("orderName");
     const orderContact = document.getElementById("orderContact");
     const orderEmail = document.getElementById("orderEmail");
-
-    
     function setButtonLoading(button) {
         button.disabled = true;
         button.textContent = "Processing...";
         button.style.opacity = "0.6";
         button.style.cursor = "not-allowed";
     }
-
     function resetButton(button, originalText) {
         button.disabled = false;
         button.textContent = originalText;
         button.style.opacity = "1";
         button.style.cursor = "pointer";
     }
-
     if(orderForm) {
         orderForm.addEventListener("submit", (event) => {
             event.preventDefault();
-
-
     // A1. GET SUBMIT BUTTON & SET LOADING STATE
             const submitBtn = orderForm.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn.textContent
-
             setButtonLoading(submitBtn);
-
     // A2. CHECK IF CART IS EMPTY
             if (cartData.length === 0) {
                 alert("Your cart is empty! Please add drinks before submitting.");
-
                 resetButton(submitBtn, originalBtnText);
                 return;
             }
-
     // 3A. GET FORM VALUES
             const nameValue = orderName.value.trim();
             const contactValue = orderContact.value.trim();
             const emailValue = orderEmail.value.trim();
-
     // B2. STANDARIZE PHONE NUMBER & EMAIL ENTERED
             const cleanPhone = contactValue.replace(/\D/g, '');
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
     // A4. RE-ENABOLE BUTTON ON VALIDATION FAILURE
             if (nameValue.length < 3) {
                 alert("Please enter a valid name.");
                 orderName.style.border = "2px solid red";
-
                 resetButton(submitBtn, originalBtnText)
                 return;
             }
-
              if (cleanPhone.length < 10) {
                 alert("Please enter a valid 10-digit phone number.");
-                orderContact.style.border = "2px solid red";
-                
+                orderContact.style.border = "2px solid red";   
                 // Re-enable button on validation failure
                 resetButton(submitBtn, originalBtnText)
                 return;
             }
-
             // Better email validation
             if (!emailPattern.test(emailValue)) {
                 alert("Please enter a valid email address.");
-                orderEmail.style.border = "2px solid red";
-                
+                orderEmail.style.border = "2px solid red";   
                 // Re-enable button on validation failure
                 resetButton(submitBtn, originalBtnText)
                 return;
             }
-
             // VALIDATION PASSED - SHOW SUCCESS
             alert(`Thank you, ${nameValue}! Your order has been placed.`);
-
             // 4. RESET BORDERS
             orderName.style.border = "1px solid #555";
             orderContact.style.border = "1px solid #555";
             orderEmail.style.border = "1px solid #555";
-
             // 5. CLEAR CART
             cartData = [];
             localStorage.setItem("perScholasTeaCart", JSON.stringify(cartData));
             renderCart();
-
             // 6. RESET FORM
             orderForm.reset();
                 resetButton(submitBtn, originalBtnText);
         });
     }
-
+    const birthDateInput = document.getElementById('birthDate');
+    if (birthDateInput) {
+        birthDateInput.max = new Date().toISOString().split('T')[0];
+    }
+    // Set copyright year in footer
+    const yearSpan = document.getElementById('currentYear');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
+    // Phone number validation and auto-formatting
+    const phoneInput = document.getElementById('contactNumber');
+    if (phoneInput) {
+        // Format as user types
+        phoneInput.addEventListener('input', function() {
+            formatPhoneNumber(this);
+        });   
+        // Validate when user leaves the field
+        phoneInput.addEventListener('blur', function() {
+            validatePhoneNumber(this);
+        });
+    }
+    // Form submission handler
+    const promoForm = document.getElementById('promoForm');
+    if (promoForm) {
+        promoForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent form from actually submitting
+                // Validate phone number before submitting
+                if (phoneInput && !validatePhoneNumber(phoneInput)) {
+                    return; // Exit if validation fails
+                }
+                // Success Message after submit 
+                const successMsg = document.createElement('div');
+                successMsg.className = 'success-message';
+                successMsg.textContent = 'Form submitted successfully!';
+                this.insertAdjacentElement('beforebegin', successMsg);
+                // Clear form after delay
+                setTimeout(() => {
+                    this.reset();
+                    successMsg.remove();
+                }, 3000);
+            });
+    }
+    // Clear button confirmation
+    const clearBtn = document.getElementById('clearFormBtn');
+    if (clearBtn) {
+        clearBtn.addEventListener('click', function(event) {
+                if (!confirm('Are you sure you want to clear all form data?')) 
+                    {
+                        event.preventDefault(); // Cancel the reset if user clicks "Cancel"
+                    }
+                });
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
 });
+// ===== HELPER FUNCTIONS =====
+/**  
+ * Auto-formats phone number to (XXX) XXX-XXXX as user types
+ * @param {HTMLInputElement} input - The phone input element 
+ */
+function formatPhoneNumber(input) {
+    // Get only digits
+    let value = input.value.replace(/\D/g, '');
+    // Limit to 10 digits
+    value = value.substring(0, 10);
+    // Format based on length
+    let formatted = '';
+    if (value.length === 0) {
+        formatted = '';
+    } else if (value.length <= 3) {
+        // Show just digits until area code complete
+        formatted = value;
+    } else if (value.length <= 6) {
+        // Format: (XXX) XXX
+        formatted = '(' + value.substring(0, 3) + ') ' + value.substring(3);
+    } else {
+        // Format: (XXX) XXX-XXX
+        formatted = '(' + value.substring(0, 3) + ') ' + value.substring(3,6) + '-' + value.substring(6);
+    }
+    // Update the input value
+    input.value = formatted;
+}
+/** 
+ * Validates that phone number has exactly 10 digits
+ * @param {HTMLInputElement} input - The phone input element
+ * @returns {boolean} True if valid, false otherwise
+ */
+function validatePhoneNumber(input) {
+    const value = input.value.trim();
+    const digitsOnly = value.replace(/\D/g, '');
+    if (digitsOnly.length === 10) {
+        input.setCustomValidity(''); // Clear any error
+        return true;
+    } else if (digitsOnly.length === 0) {
+        input.setCustomValidity('Phone number is required.');
+        input.reportValidity();
+        return false;
+    } else {
+        input.setCustomValidity(`Phone number must be 10 digits. You entered ${digitsOnly.length}.`);
+        input.reportValidity();
+        return false;
+    }
+}
