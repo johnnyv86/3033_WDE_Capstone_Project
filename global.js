@@ -17,8 +17,14 @@ document.addEventListener('DOMContentLoaded', function() {
         birthDateInput.setAttribute('max', today);
     }
 
+    // Set max date for feedback visit date
+    const visitDateInput = document.getElementById('visitDate');
+    if (visitDateInput) {
+        visitDateInput.setAttribute('max', today);
+    }
+
     // Phone number validation and auto-formatting
-    const phoneInput = document.getElementById('contactNumber');
+    const phoneInput = document.getElementById('promoPhone') || document.getElementById('rewardsPhone') || document.getElementById('contactPhone');
     if (phoneInput) {
         // 1. INPUT EVENT: Format as they type AND clear errors immediately
         phoneInput.addEventListener('input', function() {
@@ -46,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault(); // Prevent form from actually submitting
 
             //Get phone input specifically inside index form
-            const currentPhoneInput = document.getElementById('contactNumber');
+            const currentPhoneInput = document.getElementById('promoPhone');
             
             // Validate phone number before submitting: if error bubble appears
             if (currentPhoneInput && !validatePhoneNumber(currentPhoneInput, true)) {
@@ -60,13 +66,20 @@ document.addEventListener('DOMContentLoaded', function() {
             const msgContainer = document.getElementById('form-message-container');
 
             // Set the content
-            const email = document.getElementById('promoEmail').value;
-            msgContainer.innerHTML = `<div class="success-message">Thank you! You'll receive emails at ${email}</div>`;
+            const email = document.getElementById('promoEmail').value; 
+            const name = document.getElementById('promoFName').value;
+
+            msgContainer.innerHTML = '';
+            const successDiv = document.createElement('div');
+            successDiv.className = 'success-message';
+            successDiv.textContent = `Thanks ${name}! You'll receive emails at ${email}.`;
+            msgContainer.appendChild(successDiv);
+
             
             // Clear form after delay
             setTimeout(() => {
                 promoForm.reset();
-                msgContainer.innerHTML = ''; //Clears the message
+                msgContainer.innerHTML = '' //Clears the message
 
                 // Remove error class 
                 if (phoneInput) {
@@ -84,6 +97,8 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault();
 
             // Validate password Elements
+            const name = document.getElementById('rewardsFName').value;
+            const email = document.getElementById('rewardsEmail').value;
             const passwordInput = document.getElementById('dePassword');
             const confirmPassword = document.getElementById('rePassword');
 
@@ -102,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             // Phone number Validation Logic
-            const phoneInput = document.getElementById('contactNumber');
+            const phoneInput = document.getElementById('rewardsPhone');
             if (phoneInput && !validatePhoneNumber(phoneInput, true)) {
                 phoneInput.focus();
                 return;
@@ -111,11 +126,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const msgContainer = document.getElementById('form-message-container');
 
             // Customize the message for the rewards program
-            msgContainer.innerHTML = `<div class="success-message">Welcome to the Club! We've sent a confirmation to your email.</div>`;
+            msgContainer.innerHTML = '';
+            const successDiv = document.createElement('div');
+            successDiv.className = 'success-message';
+            successDiv.textContent = `Welcome to the Club ${name}! We've sent a confirmation to ${email}.`;
+            msgContainer.appendChild(successDiv);
 
             setTimeout(() => {
                 rewardsForm.reset();
-                msgContainer.innerHTML = '';
+                msgContainer.innerHTML = ''
                 if (phoneInput) {
                     phoneInput.classList.remove('input-error');
                     phoneInput.setCustomValidity('');
@@ -131,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault();
 
             // Validate Phone Number
-            const currentPhoneInput = document.getElementById('contactNumber');
+            const currentPhoneInput = contactForm.querySelector('input[name="contactNumber"]');
             if (currentPhoneInput && !validatePhoneNumber(currentPhoneInput, true)) {
                 currentPhoneInput.focus();
                 return;
@@ -139,13 +158,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Success Message
             const msgContainer = document.getElementById('form-message-container');
+            const name = document.getElementById('contactFName').value;
             const email = document.getElementById('contactEmail').value;
 
-            msgContainer.innerHTML = `<div class="success-message">Thanks! We'll be in touch at ${email} shortly.</div>`;
+            msgContainer.innerHTML = '';
+            const successDiv = document.createElement('div');
+            successDiv.className = 'success-message';
+            successDiv.textContent = `Thanks ${name}! We'll be in touch at ${email} shortly.`;
+            msgContainer.appendChild(successDiv);
 
             setTimeout(() => {
                 contactForm.reset();
-                msgContainer.innerHTML = '';
+                msgContainer.innerHTML = ''
                 if (currentPhoneInput) {
                     currentPhoneInput.classList.remove('input-error');
                     currentPhoneInput.setCustomValidity('');
@@ -154,9 +178,6 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     }
     
-
-
-
     // Clear button confirmation
     const clearBtn = document.getElementById('clearFormBtn');
     if (clearBtn) {
@@ -167,7 +188,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
     }
-});
+
+
 // ===== HELPER FUNCTIONS =====
 /**  
  * Auto-formats phone number to (XXX) XXX-XXXX as user types
@@ -219,6 +241,8 @@ function formatPhoneNumber(input) {
  */
 
 function validatePhoneNumber(input, showPopup = true) {
+    if (!input) return false;
+
     const value = input.value.trim();
     const digitsOnly = value.replace(/\D/g, '');
 
@@ -228,6 +252,7 @@ function validatePhoneNumber(input, showPopup = true) {
         input.classList.remove('input-error'); // Remove red border
         return true;
     } 
+
     // Case 2: Empty or Invalid characters (Let HTML 'required' handle this on submit, don't error on blur)
     else if (digitsOnly.length === 0) {
         // If invalid characters entered
@@ -244,6 +269,7 @@ function validatePhoneNumber(input, showPopup = true) {
         input.classList.remove('input-error');
         return true;
     } 
+
     // Case 3: Invalid (Wrong length)
     else {
         // Set the error message for the browser to know
@@ -259,4 +285,5 @@ function validatePhoneNumber(input, showPopup = true) {
         
         return false;
     }
-}
+};
+});
