@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Per Scholas Tea Index</title>
         <link rel="stylesheet" href="style.css" />
+        <script src="global.js" defer></script>
         <link rel="icon" href="media/BusinessLogo.jpg" type="image/jpeg" />
     </head>
 
@@ -38,8 +39,7 @@
                                 <p>701 S. Miami Ave., Miami, FL 33130</p>
                                 <a target="_blank" rel="noopener noreferrer" 
                                     href="https://maps.app.goo.gl/UppSssukHkricunC7">
-                                    Click for Directions!
-                                </a>
+                                    Get Directions to Per Scholas Tea!</a>
                             </div>
                         </div>
                     </div>
@@ -61,8 +61,9 @@
             <hr class="section-hr">
 
             <div class="contactContainer">
-                <h2 class="animatedHeader">We Want to Hear From You! 💬</h2>
-                <form action="#">
+                <h1 class="animatedHeader">We Want to Hear From You! 💬</h1>
+                <div id="form-message-container"></div>
+                <form action="#" id="contactForm">
                     <fieldset>
                         <legend>Your Details</legend>
                         <div class="form-row">
@@ -93,8 +94,7 @@
                                     type="tel" 
                                     name="contactNumber" 
                                     id="contactNumber"
-                                    placeholder="(###) ###-####"
-                                    required>
+                                    placeholder="(###) ###-####">
                             </div>
                             <div class="form-group">
                                 <label for="contactEmail">Email Address <span aria-hidden="true" class="required">*</span></label>
@@ -102,8 +102,7 @@
                                     type="email"
                                     name="contactEmail"
                                     id="contactEmail"
-                                    placeholder="johndoe@domain.com"
-                                    required>
+                                    placeholder="johndoe@domain.com">
                             </div>
                         </div>
                     </fieldset>
@@ -148,8 +147,7 @@
                                 name="feedback"
                                 id="feedback"
                                 placeholder="Input your feedback here..."
-                                required>
-                            </textarea>
+                                required></textarea>
                         </div>
                     </fieldset>
 
@@ -191,7 +189,6 @@
                 </div>
             </footer>
         </div>
-        <script src="index.js"></script>
     </body>
 </html>
 

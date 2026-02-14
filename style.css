@@ -479,7 +479,7 @@ textarea {
 }
 
 
-.teaDes h3, .menuTea h4 {
+.teaDes h3, .teaType {
     display: flex;
     justify-content: space-between;
     align-items: center; /* Add this for vertical alignment */
@@ -487,6 +487,7 @@ textarea {
     margin: 0;
     font-size: 1.1em;
     color: var(--color-primary);
+    font-size: 1.5em;
 }
 
 .teaType {

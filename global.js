@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Form submission handler
+    // promoForm Submission handler
     const promoForm = document.getElementById('promoForm');
     if (promoForm) {
         promoForm.addEventListener('submit', function(event) {
@@ -77,18 +77,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // REWARDS FORM HANDLER
+    // rewardsForm Submission FORM HANDLER
     const rewardsForm = document.getElementById('rewardsForm');
     if (rewardsForm) {
         rewardsForm.addEventListener('submit', function(event) {
             event.preventDefault();
 
-            // Validate password reentry
-            const passwordInput = document.getElementById('dePassword').value;
-            const confirmPassword = document.getElementById('rePassword').value;
+            // Validate password Elements
+            const passwordInput = document.getElementById('dePassword');
+            const confirmPassword = document.getElementById('rePassword');
 
-            if (passwordInput.value !== confirmPassword.value) { // Checks value
+            if (passwordInput.value !== confirmPassword.value) { // Checks value of properties
 
+                // CAll methods on the element
                 confirmPassword.setCustomValidity("Passwords do not match"); // Set error on confirmation field
                 confirmPassword.reportValidity(); // Shows error bubble
 
@@ -122,6 +123,39 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 3000);
         })
     }
+
+    // contactForm Submission Handler
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Validate Phone Number
+            const currentPhoneInput = document.getElementById('contactNumber');
+            if (currentPhoneInput && !validatePhoneNumber(currentPhoneInput, true)) {
+                currentPhoneInput.focus();
+                return;
+            }
+
+            // Success Message
+            const msgContainer = document.getElementById('form-message-container');
+            const email = document.getElementById('contactEmail').value;
+
+            msgContainer.innerHTML = `<div class="success-message">Thanks! We'll be in touch at ${email} shortly.</div>`;
+
+            setTimeout(() => {
+                contactForm.reset();
+                msgContainer.innerHTML = '';
+                if (currentPhoneInput) {
+                    currentPhoneInput.classList.remove('input-error');
+                    currentPhoneInput.setCustomValidity('');
+                }
+            }, 3000);
+        })
+    }
+    
+
+
 
     // Clear button confirmation
     const clearBtn = document.getElementById('clearFormBtn');
