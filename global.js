@@ -9,8 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Set max date for birth date input
-
-    
     const birthDateInput = document.getElementById('birthDate');
     if (birthDateInput) {
         // Set max to today's date
@@ -18,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const today = now.toLocaleDateString('en-CA');
         birthDateInput.setAttribute('max', today);
     }
-
 
     // Phone number validation and auto-formatting
     const phoneInput = document.getElementById('contactNumber');
@@ -47,13 +44,15 @@ document.addEventListener('DOMContentLoaded', function() {
     if (promoForm) {
         promoForm.addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent form from actually submitting
+
+            //Get phone input specifically inside index form
+            const currentPhoneInput = document.getElementById('contactNumber');
             
             // Validate phone number before submitting: if error bubble appears
             if (phoneInput && !validatePhoneNumber(phoneInput, true)) {
                 phoneInput.focus(); // Draw attention to the problem field
 
                 return; // Exit if validation fails
-
             }
 
             // Success Message after submit 
@@ -63,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // Set the content
             const email = document.getElementById('promoEmail').value;
             msgContainer.innerHTML = `<div class="success-message">Thank you! You'll receive emails at ${email}</div>`;
-     
             
             // Clear form after delay
             setTimeout(() => {
@@ -78,6 +76,45 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 3000);
         });
     }
+
+    // REWARDS FORM HANDLER
+    const rewardsForm = document.getElementById('rewardsForm');
+    if (rewardsForm) {
+        rewardsForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Validate password reentry
+            const password1 = document.getElementById('dePassword').value;
+            const password2 = document.getElementById('rePassword').value;
+
+            if (password1 !== password2) {
+                alert("Passwords do not match");
+                return;
+            }
+
+            // Phone number Validation Logic
+            const phoneInput = document.getElementById('contactNumber');
+            if (phoneInput && !validatePhoneNumber(phoneInput, true)) {
+                phoneInput.focus();
+                return;
+            }
+
+            const msgContainer = document.getElementById('form-message-container');
+
+            // Customize the message for the rewards program
+            msgContainer.innerHTML = `<div class="success-message">Welcome to the Club! We've sent a confirmation to your email.</div>`;
+
+            setTimeout(() => {
+                rewardsForm.reset();
+                msgContainer.innerHTML = '';
+                if (phoneInput) {
+                    phoneInput.classList.remove('input-error');
+                    phoneInput.setCustomValidity('');
+                }
+            }, 3000);
+        })
+    }
+
     // Clear button confirmation
     const clearBtn = document.getElementById('clearFormBtn');
     if (clearBtn) {
@@ -131,12 +168,14 @@ function formatPhoneNumber(input) {
     const newLength = input.value.length;
     input.setSelectionRange(cursorPosition + (newLength - oldLength), cursorPosition + (newLength - oldLength));
 }
+
 /** 
  * Validates that phone number has exactly 10 digits
  * @param {HTMLInputElement} input - The phone input element
  * @param {boolean} showPopup - Whether to trigger the browser's error bubble immediately
  * @returns {boolean} True if valid, false otherwise
  */
+
 function validatePhoneNumber(input, showPopup = true) {
     const value = input.value.trim();
     const digitsOnly = value.replace(/\D/g, '');
@@ -147,8 +186,16 @@ function validatePhoneNumber(input, showPopup = true) {
         input.classList.remove('input-error'); // Remove red border
         return true;
     } 
-    // Case 2: Empty (Let HTML 'required' handle this on submit, don't error on blur)
+    // Case 2: Empty or Invalid characters (Let HTML 'required' handle this on submit, don't error on blur)
     else if (digitsOnly.length === 0) {
+        // If invalid characters entered
+        if (input.value.trim().length > 0) {
+            input.setCustomValidity('Please enter a valid 10-digit phone number.');
+            input.classList.add('input-error');
+            if (showPopup) input.reportValidity();
+            return false;
+        }
+
         // If it's empty, we rely on the HTML 'required' attribute.
         // We explicitly clear custom validity so the browser's native "Required" error can show.
         input.setCustomValidity('');

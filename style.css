@@ -819,6 +819,13 @@ textarea {
 /* =============================
     REWARDS PAGE
 ============================= */
+.rewards-subtitle {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--color-border-white);
+    text-align: center;
+    margin-bottom: 10px;
+}
 .legend-center {
     text-align: center;
     padding-bottom: 15px;
@@ -866,7 +873,7 @@ textarea {
 
 .rewardBox {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: 1fr;
     text-align: center;
     padding: 10px;
     background-color: var(--color-bg-card);
@@ -956,6 +963,28 @@ textarea {
 /* =============================
    MEDIA QUERIES
 ============================= */
+/* Large tablets/small desktops */
+@media (max-width: 1024px) {
+    .drinkSizes {
+            grid-template-columns: 1fr;
+        }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .businessInfo-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 2 columns instead of 3 */
+    }
+    
+    .main-menu-flex {
+        flex-direction: column;
+    }
+    
+    .topCol {
+        grid-template-columns: 1fr; /* Stack toppings */
+    }
+}
+
 
 /* Small phones */
 @media (max-width: 480px) {
@@ -984,25 +1013,5 @@ textarea {
 }
 
 
-/* Tablets */
-@media (max-width: 768px) {
-    .businessInfo-container {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 2 columns instead of 3 */
-    }
-    
-    .main-menu-flex {
-        flex-direction: column;
-    }
-    
-    .topCol {
-        grid-template-columns: 1fr; /* Stack toppings */
-    }
-}
 
 
-/* Large tablets/small desktops */
-@media (max-width: 1024px) {
-    .drinkSizes {
-            grid-template-columns: 1fr;
-        }
-}

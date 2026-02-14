@@ -3,9 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Rewards - Per Scholas Tea</title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="icon" href="media/BusinessLogo.jpg" type="image/jpeg" />
+        <title>Per Scholas Tea Rewards</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="global.js" defer></script>
+        <link rel="icon" href="media/BusinessLogo.jpg" type="image/jpeg">
     </head>
 
     <body>
@@ -63,7 +64,7 @@
             <main>
                 <section style="text-align: center;" class="rewards-info">
                     <h1>No Brainer Reward!</h1>
-			        <h5>Join TODAY to Earn points on every sip!</h5>
+			        <p class="rewards-subtitle">Join TODAY to Earn points on every sip!</p>
             
                     <hr class="section-hr">
                         
@@ -100,10 +101,11 @@
                     </div>
                 </section>
 
-                <form action="#" method="POST" aria-label="Rewards Program Signup Form">
+                <form id="rewardsForm" action="#" method="POST" aria-label="Rewards Program Signup Form">
                     <fieldset>
+                        <legend class="legend-center">Personal Information</legend>
                         <section class="rewards-info">
-                            <legend class="legend-center">Personal Information</legend>
+                            
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="firstName">First Name <span aria-hidden="true" class="required">*</span></label>
@@ -128,11 +130,11 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="birthday">Birthday <span aria-hidden="true" class="required">*</span></label>
+                                    <label for="birthDate">Birthday <span aria-hidden="true" class="required">*</span></label>
                                     <input 
                                         type="date" 
-                                        name="birthday" 
-                                        id="birthday"
+                                        name="birthDate" 
+                                        id="birthDate"
                                         autocomplete="bday" 
                                         required>
                                 </div>
@@ -149,11 +151,11 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="email">Email <span aria-hidden="true" class="required">*</span></label>
+                                    <label for="rewardsEmail">Email <span aria-hidden="true" class="required">*</span></label>
                                     <input 
                                         type="email" 
-                                        name="email" 
-                                        id="email" 
+                                        name="rewardsEmail" 
+                                        id="rewardsEmail" 
                                         placeholder="janedoe@outlook.com"
                                         autocomplete="email" 
                                         required>
@@ -163,8 +165,9 @@
                     </fieldset>
 
                     <fieldset>
+                        <legend class="legend-center">Mailing Address</legend>
+
                         <section class="rewards-info">
-                            <legend class="legend-center">Mailing Address</legend>
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="stAddress">Street Address</label>
@@ -202,7 +205,9 @@
                                 <div class="form-group">
                                     <label for="zipCode">Zip Code</label>
                                     <input 
-                                        type="number" 
+                                        type="text"
+                                        inputmode="numeric"
+                                        pattern="[0-9]"
                                         name="zipCode" 
                                         id="zipCode" 
                                         placeholder="33136"
@@ -222,8 +227,9 @@
                     </fieldset>	
 
                     <fieldset>
+                        <legend class="legend-center">Tea Preference</legend>
+
                         <section class="rewards-info">
-                            <legend class="legend-center">Tea Preference</legend>
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="teaPreference">What's your type? <span aria-hidden="true" class="required">*</span></label>
@@ -243,8 +249,9 @@
                     </fieldset>
 
                     <fieldset>
+                        <legend class="legend-center">Sweetness Preference</legend>
                         <section class="rewards-info">
-                            <legend class="legend-center">Sweetness Preference</legend>
+                            
                             <div class="form-row">
                                 <div class="form-group">
                                     <div class="radio-group">
@@ -275,14 +282,11 @@
                     </fieldset>
 
                     <fieldset>
+                        <legend class="legend-center">Toppings Preference</legend>
                         <section class="rewards-info">
-                            <legend class="legend-center">Toppings Preference</legend>
+                            
                             <div class="form-group">
                                 <div class="radio-group">
-                                    <div>
-                                        <input type="checkbox" name="topping" id="no_boba" value="No Toppings">
-                                        <label for="no_boba">No Toppings</label>
-                                    </div>
                                     <div>
                                         <input type="checkbox" name="topping" id="top_boba" value="Classic Boba">
                                         <label for="top_boba">Classic Boba</label>
@@ -305,8 +309,9 @@
                     </fieldset>
 
                     <fieldset>
+                        <legend class="legend-center">Account Setup</legend>
                         <section class="rewards-info">
-                            <legend class="legend-center">Account Setup</legend>
+                            
                             <div class="form-group">
                                 <label for="deUsername">Choose Username <span aria-hidden="true" class="required">*</span></label>
                                 <input type="text" name="deUsername" id="deUsername" required>
@@ -329,19 +334,24 @@
                     <hr class="section-hr">
 
                     <fieldset>
-                        <div class="form-group inline-checkboxes" style="align-items: center; display: block">
-                            <input type="checkbox" name="PromoEmail" id="PromoEmail">
-                            <label for="PromoEmail">I agree to receiving recurring autosent emails from Per Scholas Tea at the email address provided above and understand that my concent is not a condition of purchase. <span aria-hidden="true" class="required">*</span></label><br> 
-                            <input type="checkbox" name="TermAgre" id="TermAgre">
-                            <label for="TermAgre">I have read and agree to the Per Scholas Tea Rewards Program, the Privacy Policy, and Terms of Service. <span aria-hidden="true" class="required">*</span></label>
+                        <div class="form-group inline-checkboxes">
+                            <label for="rewardsEmailAgree">
+                                <input type="checkbox" name="rewardsEmailAgree" id="rewardsEmailAgree">
+                                    I agree to receiving recurring autosent emails from Per Scholas Tea at the email address provided above and understand that my consent is not a condition of purchase. <span aria-hidden="true" class="required">*</span><br> 
+                            </label>
+                            <label for="rewardsTermAgree">
+                                <input type="checkbox" name="rewardsTermAgree" id="rewardsTermAgree">
+                                    I have read and agree to the Per Scholas Tea Rewards Program, the Privacy Policy, and Terms of Service. <span aria-hidden="true" class="required">*</span>
+                            </label>
 					    </div>
                     </fieldset>
             
                     <div class="form-group">
+                        <div id="form-message-container"></div>
                         <p><span class="required">*</span> indicates required field</p>
                         <div class="button-container">
                             <input type="submit" class="btn btn-submit" value="Join Club">
-                            <input type="reset" class="btn btn-clear" value="Clear Form">
+                            <input id="clearFormBtn" type="reset" class="btn btn-clear" value="Clear Form">
                         </div>                            
                     </div>
                 </form>
@@ -355,6 +365,6 @@
                 </div>
             </footer>
         </div>
-        <script src="index.js"></script>
+
     </body>
 </html>
