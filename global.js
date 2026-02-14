@@ -49,8 +49,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const currentPhoneInput = document.getElementById('contactNumber');
             
             // Validate phone number before submitting: if error bubble appears
-            if (phoneInput && !validatePhoneNumber(phoneInput, true)) {
-                phoneInput.focus(); // Draw attention to the problem field
+            if (currentPhoneInput && !validatePhoneNumber(currentPhoneInput, true)) {
+                currentPhoneInput.focus(); // Draw attention to the problem field
 
                 return; // Exit if validation fails
             }
@@ -84,12 +84,20 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault();
 
             // Validate password reentry
-            const password1 = document.getElementById('dePassword').value;
-            const password2 = document.getElementById('rePassword').value;
+            const passwordInput = document.getElementById('dePassword').value;
+            const confirmPassword = document.getElementById('rePassword').value;
 
-            if (password1 !== password2) {
-                alert("Passwords do not match");
-                return;
+            if (passwordInput.value !== confirmPassword.value) { // Checks value
+
+                confirmPassword.setCustomValidity("Passwords do not match"); // Set error on confirmation field
+                confirmPassword.reportValidity(); // Shows error bubble
+
+                // One time listener: clears error once typing starts
+                confirmPassword.addEventListener('input', function() {
+                    confirmPassword.setCustomValidity('');
+                }, { once: true}); // Auto removes listener after running
+
+                return; // Stops submission
             }
 
             // Phone number Validation Logic
