@@ -190,6 +190,10 @@ document.addEventListener("DOMContentLoaded", () => {
             item.classList.toggle("active");
     // GET TOPPING NAME FROM <h4> TAG
             const toppingName = item.querySelector("h4").textContent;
+
+    // GET SPECIFIC PRICE OF THIS TOPPING
+            const toppingPrice = parseFloat(item.querySelector(".selectToppingBtn").dataset.price);
+            
     // LOGIC - if ACTIVE ADD to array : REMOVE
             if (item.classList.contains("active")) {
                 currentToppings.push(toppingName);
