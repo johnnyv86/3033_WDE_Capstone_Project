@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // 2. GET SIZE NAME (first row)
             currentSizeName = row.children[0].textContent;
         // 3. UPDATE PRICE
-            currentSelection.price = currentBasePrice + currentSizePrice;
+            recalculateTotal();
             updateDisplay();
         // SCROLL LOGIC: SIZE TO SWEETNESS LEVEL
             const sweetnessSection = document.getElementById("order-sweetness");
@@ -276,7 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
    
     clearBtn.addEventListener("click", () => {
         // 1. Check added inside Main Listener
-        if (!confirmed("Are you sure you want to clear current selection?")) {
+        if (!confirm("Are you sure you want to clear current selection?")) {
             return;
         }
 
@@ -307,13 +307,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
 // CLEAR CART Confirmation LISTENER
-    document.getElementById('clearOrderBtn').addEventListener('click', function() {
-        if (confirm('Are you sure you want ot clear your cart?')) {
-            
-        }
-    })
-
-// CLEAR CART LISTENER
     const clearOrderBtn = document.getElementById("clearOrderBtn");
     clearOrderBtn.addEventListener("click", (event) => {
     // 1. Ask for confirmation
@@ -341,10 +334,10 @@ document.addEventListener("DOMContentLoaded", () => {
 // F0RM LISTENER
     const orderForm = document.getElementById('orderForm');
     const orderName = document.getElementById('orderName');
-    const orderContact = document.getElementById('orderContact');
+    const orderPhone = document.getElementById('orderPhone');
     const orderEmail = document.getElementById('orderEmail');
 
-    if (orderForm && orderName && orderContact && orderEmail) {
+    if (orderForm && orderName && orderPhone && orderEmail) {
         
 
         function setButtonLoading(button) {
@@ -362,25 +355,34 @@ document.addEventListener("DOMContentLoaded", () => {
  
         orderForm.addEventListener("submit", (event) => {
             event.preventDefault();
-    // A1. GET SUBMIT BUTTON & SET LOADING STATE
+            
+        // A0. RESET ERROR VISUAL AT START OF EVERY ATTEMPT
+            orderName.classList.remove("input-error");
+            orderPhone.classList.remove("inpput-error");
+            orderEmail.classList.remove("input-error");
+
+        // A1. GET SUBMIT BUTTON & SET LOADING STATE
             const submitBtn = orderForm.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn.textContent
-            setButtonLoading(submitBtn);
-    // A2. CHECK IF CART IS EMPTY
+            
+    
+        // A2. CHECK IF CART IS EMPTY
             if (cartData.length === 0) {
                 alert("Your cart is empty! Please add drinks before submitting.");
                 resetButton(submitBtn, originalBtnText);
                 return;
             }
-    // A3. GET FORM VALUES
+    
+        // A3. GET FORM VALUES
             const nameValue = orderName.value.trim();
-            const contactValue = orderContact.value.trim();
+            const contactValue = orderPhone.value.trim();
             const emailValue = orderEmail.value.trim();
-    // A4. STANDARDIZE PHONE NUMBER & EMAIL ENTERED
+    
+        // A4. STANDARDIZE PHONE NUMBER & EMAIL ENTERED
             const cleanPhone = contactValue.replace(/\D/g, '');
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             
-    // A5. RE-ENABLE BUTTON ON VALIDATION FAILURE
+        // A5. RE-ENABLE BUTTON ON VALIDATION FAILURE
             if (nameValue.length < 3) {
                 alert("Please enter a valid name.");
                 orderName.classList.add("input-error");
@@ -389,7 +391,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
              if (cleanPhone.length < 10) {
                 alert("Please enter a valid 10-digit phone number.");
-                orderContact.classList.add("input-error");   
+                orderPhone.classList.add("input-error");   
                 // Re-enable button on validation failure
                 resetButton(submitBtn, originalBtnText)
                 return;
@@ -402,11 +404,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 resetButton(submitBtn, originalBtnText)
                 return;
             }
+
+            setButtonLoading(submitBtn);
+            
             // VALIDATION PASSED - SHOW SUCCESS
             alert(`Thank you, ${nameValue}! Your order has been placed.`);
             // 4. RESET BORDERS
             orderName.classList.remove("input-error");
-            orderContact.classList.remove("input-error");
+            orderPhone.classList.remove("input-error");
             orderEmail.classList.remove("input-error");
 
             // 5. CLEAR CART
