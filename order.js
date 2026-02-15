@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const TOPPING_PRICE = 0.50;
 // DRINK FILTERING LOGIC
     const filterButtons = document.querySelectorAll("#drinkFilters .filterBtn");
-    const drinkGroups = document.querySelectorAll("fieldset[data-type]");
+    const drinkGroups = document.querySelectorAll("section[data-type]");
     filterButtons.forEach((btn) => {
         btn.addEventListener("click", () => {
             const filterValue = btn.dataset.filter;
@@ -251,7 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 4. SCROLL LOGIC - SCROLL BACK TO DRINK FILTER
         addToCartBtn.textContent = "Add another drink!";
-        addToCartBtn.disabled = true;
+ 
     // 5. RESET ALL PREVIOUS SELECTED ITEMS
         currentSelection = null;
         currentBasePrice = 0;
@@ -297,8 +297,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // 4. RESET TEXT AND BUTTON FUNCTIONALITY
             selectedDetails.innerHTML = "<p>No drink selected yet.</p>";
             addToCartBtn.textContent = "Add to Cart!";
-            addToCartBtn.disabled = true;
-
+\
         // 5. SCROLL LOGIC: SCROLL BACK TO TOP - DRINK FILTER SECTION
             const drinkSelection = document.getElementById("drinkFilters");
             if (drinkSelection) {
@@ -358,7 +357,7 @@ document.addEventListener("DOMContentLoaded", () => {
             
         // A0. RESET ERROR VISUAL AT START OF EVERY ATTEMPT
             orderName.classList.remove("input-error");
-            orderPhone.classList.remove("inpput-error");
+            orderPhone.classList.remove("input-error");
             orderEmail.classList.remove("input-error");
 
         // A1. GET SUBMIT BUTTON & SET LOADING STATE
@@ -399,7 +398,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Better email validation
             if (!emailPattern.test(emailValue)) {
                 alert("Please enter a valid email address.");
-                orderEmail.classList.add("input-error") 
+                orderEmail.classList.add("input-error");
                 // Re-enable button on validation failure
                 resetButton(submitBtn, originalBtnText)
                 return;
