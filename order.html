@@ -63,7 +63,7 @@
             <hr class="section-hr">
 
             <main>
-                <fieldset>
+                <section class="box">
                     <h3 class="orderTitle">EASY ORDERING</h3>
                     <article class="easyOrdering">
                         <table class="order-table">
@@ -87,13 +87,13 @@
                             </tbody>
                         </table>
                     </article>
-                </fieldset>
+                </section>
 
                 <hr class="section-hr">
 
-                <fieldset>
-                    <h4 class="orderTitle">DRINKS</h4>
-                    <h3>Filter by Drink Type...</h3>
+                <section class="box" id="filter-box">
+                    <h1 class="orderTitle">DRINKS</h1>
+                    <h2>Filter by Drink Type...</h2>
                     <div id="drinkFilters">
                         <button class="filterBtn active" data-filter="all">ALL</button>
                         <button class="filterBtn" data-filter="CLASSIC TEAS">CLASSIC TEAS</button>
@@ -104,67 +104,69 @@
                         <button class="filterBtn" data-filter="YOGURTS">YOGURTS</button>
                         <button class="filterBtn" data-filter="COFFEE">COFFEE</button>
                     </div>
-                </fieldset>
+                </section>
 
-                <fieldset data-type="CLASSIC TEAS">
-                    <legend>CLASSIC TEAS</legend>
+                <section class="box" data-type="CLASSIC TEAS">
+                    
                     <article class="teaDes">
-                        <button type="button" class="selectDrinkBtn">
+                        <h3>CLASSIC TEAS</h3>
+                        <div class="selectDrinkBtn" tabindex="0" role="button">
                             <img 
                                 class="drinkImage" 
                                 src="media/ClassicGreenTea.jpg" 
                                 alt="Classic Green Tea">
-                            <h5 class="teaType">Classic Green Tea
-                                <span class="price">$6.95</span></h5>
+                            <h4 class="teaType">Classic Green Tea
+                                <span class="price">$6.95</span></h4>
                             <div class="drinkDes1">
-                                <p>Refreshing jasmine green Tea sweetened with cane sugar.</p>
-                                <p>Vegan-Friendly</p>
+                                <span>Refreshing jasmine green Tea sweetened with cane sugar.</span>
+                                <span>Vegan-Friendly</span>
                             </div>
-                        </button>
+                        </div>
                     </article>
                     <article class="teaDes">
-                        <button type="button" class="selectDrinkBtn">
+                        <div class="selectDrinkBtn" tabindex="0" role="button">
                             <img 
                                 class="drinkImage" 
                                 src="media/ClassicBlackTea.jpg" 
                                 alt="Classic Black Tea">
-                            <h3 class="teaType">Classic Black Tea
-                                <span class="price">$6.95</span></h3>
+                            <h4 class="teaType">Classic Black Tea
+                                <span class="price">$6.95</span></h4>
                             <div class="drinkDes1">
-                                <p>Earl grey Tea with bergamot. Bold & citrusy.</p>
-                                <p>Vegan-Friendly</p>
+                                <span>Earl grey Tea with bergamot. Bold & citrusy.</span>
+                                <span>Vegan-Friendly</span>
                             </div>
-                        </button>
+                        </div>
                     </article>
                     <article class="teaDes">
-                        <button type="button" class="selectDrinkBtn">
+                        <div class="selectDrinkBtn" tabindex="0" role="button">
                             <img 
                                 class="drinkImage" 
                                 src="media/ClassicHoneyOolongTea.jpg" 
                                 alt="Classic Honey Oolong Tea">
-                            <h3 class="teaType">Classic Honey Oolong Tea
-                                <span class="price">$6.95</span></h3>
+                            <h4 class="teaType">Classic Honey Oolong Tea
+                                <span class="price">$6.95</span></h4>
                             <div class="drinkDes1">
-                                <p>Rich honey & smooth oolong Tea.</p>
-                                <p>Contains Caffeine</p>
+                                <span>Rich honey & smooth oolong Tea.</span>
+                                <span>Contains Caffeine</span>
                             </div>
-                        </button>
+                        </div>
                     </article>
-                </fieldset>
+                </section>
 
-                <fieldset data-type="SLUSH TEAS">
-                    <legend>SLUSH TEAS</legend>
+                <section class="box" data-type="SLUSH TEAS">
+                    
                     <article class="teaDes">
-                        <button class="selectDrinkBtn" tabindex="0" type="button">
+                        <h3>SLUSH TEAS</h3>
+                        <div class="selectDrinkBtn" tabindex="0" role="button">
                             <img 
                                 class="drinkImage" 
                                 src="media/BerrySlush.jpg" 
                                 alt="Berry Slush">
-                            <h3 class="teaType">Berry Slush
-                                <span class="price">$7.95</span></h3>
+                            <h4 class="teaType">Berry Slush
+                                <span class="price">$7.95</span></h4>
                             <div class="drinkDes1">
-                                <p>An icy blend of sweet prickly pear and tangy lemon.</p>
-                                <p>A citrusy sweet treat!</p>
+                                <span>An icy blend of sweet prickly pear and tangy lemon.</span>
+                                <span>A citrusy sweet treat!</span>
                             </div>
                         </div>
                     </article>
@@ -174,8 +176,8 @@
                                 class="drinkImage" 
                                 src="media/MangoSlush.jpg" 
                                 alt="Mango Slush">
-                            <h3 class="teaType">Mango Slush
-                                <span class="price">$7.95</span></h3>
+                            <h4 class="teaType">Mango Slush
+                                <span class="price">$7.95</span></h4>
                             <div class="drinkDes1">
                                 <p>Sweet & refreshing mango blended with ice. </p>
                                 <p>Caffeine-free & Vegan friendly</p>
@@ -188,26 +190,27 @@
                                 class="drinkImage" 
                                 src="media/StrawberrySlush.jpg" 
                                 alt="Strawberry Slush">
-                            <h3 class="teaType">Strawberry Slush
-                                <span class="price">$7.95</span></h3>
+                            <h4 class="teaType">Strawberry Slush
+                                <span class="price">$7.95</span></h4>
                             <div class="drinkDes1">
                                 <p>Strawberry jam blended with Milk & ice. Sweet & refreshing.</p>
                                 <p>Contains dairy & Caffeine-free</p>
                             </div>
                         </div>
                     </article>
-                </fieldset>
+                </section>
 
-                <fieldset data-type="PUNCHY TEAS">
-                    <legend>PUNCHY TEAS</legend>
+                <section class="box" data-type="PUNCHY TEAS">
+                    
                     <article class="teaDes">
+                        <h3>PUNCHY TEAS</h3>
                         <div class="selectDrinkBtn" tabindex="0" role="button">
                             <img 
                                 class="drinkImage" 
                                 src="media/BerryLemonade.jpg" 
                                 alt="Berry Lemonade">
-                            <h3 class="teaType">Berry Lemonade
-                                <span class="price">$6.95</span></h3>
+                            <h4 class="teaType">Berry Lemonade
+                                <span class="price">$6.95</span></h4>
                             <div class="drinkDes1">
                                 <p>This vibrant magenta lemonade bursts with sweet and tart flavors.</p>
                                 <p>Vegan-friendly</p>
@@ -220,8 +223,8 @@
                                 class="drinkImage" 
                                 src="media/LycheePunch.jpg" 
                                 alt="Lychee Punch">
-                            <h3 class="teaType">Lychee Punch
-                                <span class="price">$6.95</span></h3>
+                            <h4 class="teaType">Lychee Punch
+                                <span class="price">$6.95</span></h4>
                             <div class="drinkDes1">
                                 <p>Sweet lychee & fragrant jasmine green Tea.</p>
                                 <p>Vegan-friendly</p>
@@ -234,26 +237,27 @@
                                 class="drinkImage" 
                                 src="media/PrismTowerPunch.jpg" 
                                 alt="Prism Tower Punch">
-                            <h3 class="teaType">Prism Tower Punch
-                                <span class="price">$6.95</span></h3>
+                            <h4 class="teaType">Prism Tower Punch
+                                <span class="price">$6.95</span></h4>
                             <div class="drinkDes1">
                                 <p>A refreshing tropical punch that's as iconic as Prism Tower! Sweet, blue curaçao blends perfectly with citrus lemonade, and crisp aloe jelly adds the freshing finish!</p>
                                 <p>Vegan-friendly</p>
                             </div>
                         </div>
                     </article>
-                </fieldset>
+                </section>
 
-                <fieldset data-type="MILK TEAS">
-                    <legend>MILK TEAS</legend>
+                <section class="box" data-type="MILK TEAS">
+                    
                     <article class="teaDes">
+                        <h3>MILK TEAS</h3>
                         <div class="selectDrinkBtn" tabindex="0" role="button">
                             <img 
                                 class="drinkImage" 
                                 src="media/ClassicMilkTea.jpg" 
                                 alt="Classic Honey Milk Tea">
-                            <h3 class="teaType">Classic Honey Milk Tea
-                                <span class="price">$6.95</span></h3>
+                            <h4 class="teaType">Classic Honey Milk Tea
+                                <span class="price">$6.95</span></h4>
                             <div class="drinkDes1">
                                 <p>Longan honey, Milk powder, & earl grey Tea.</p>
                                 <p>Sweet & smooth.</p>
@@ -266,8 +270,8 @@
                                 class="drinkImage" 
                                 src="media/HoneyMilkGreenTea.jpg" 
                                 alt="Honey Milk Green Tea">
-                            <h3 class="teaType">Honey Milk Green Tea
-                                <span class="price">$6.95</span></h3>
+                            <h4 class="teaType">Honey Milk Green Tea
+                                <span class="price">$6.95</span></h4>
                             <div class="drinkDes1">
                                 <p>Longan honey, Milk powder, & jasmine green Tea.</p>
                                 <p>Sweet & fragrant.</p>
@@ -280,26 +284,27 @@
                                 class="drinkImage" 
                                 src="media/ThaiMilkTea.jpg" 
                                 alt="Honey Thai Milk Tea">
-                            <h3 class="teaType">Honey Thai Milk Tea
-                                <span class="price">$6.95</span></h3>
+                            <h4 class="teaType">Honey Thai Milk Tea
+                                <span class="price">$6.95</span></h4>
                             <div class="drinkDes1">
                                 <p>A creamy yet bold Thai Tea flavor with a touch of honey.</p>
                                 <p>Contains Caffeine</p>
                             </div>
                         </div>
                     </article>
-                </fieldset>
+                </section>
 
-                <fieldset data-type="MATCHA TEAS">
-                    <legend>MATCHA TEAS</legend>
+                <section class="box" data-type="MATCHA TEAS">
+                    
                     <article class="teaDes">
+                        <h3>MATCHA TEAS</h3>
                         <div class="selectDrinkBtn" tabindex="0" role="button">
                             <img 
                                 class="drinkImage" 
                                 src="media/MatchaMilkTea.jpg" 
                                 alt="Matcha Milk Tea">
-                            <h3 class="teaType">Matcha Milk Tea
-                                <span class="price">$7.95</span></h3>
+                            <h4 class="teaType">Matcha Milk Tea
+                                <span class="price">$7.95</span></h4>
                             <div class="drinkDes1">
                                 <p>Creamy & fragrant Japanese matcha green Tea & Lactose-free Milk.</p>
                                 <p>Contains Dairy & Caffeine.</p>
@@ -312,8 +317,8 @@
                                 class="drinkImage" 
                                 src="media/SesameMatchaMilk.jpg" 
                                 alt="Sesame Matcha Milk">
-                            <h3 class="teaType">Sesame Matcha Milk
-                                <span class="price">$7.95</span></h3>
+                            <h4 class="teaType">Sesame Matcha Milk
+                                <span class="price">$7.95</span></h4>
                             <div class="drinkDes1">
                                 <p>Bitter sweet matcha, toasted sesame, & creamy Lactose-free Milk.</p>
                                 <p>Contains Dairy & Caffeine.</p>
@@ -326,26 +331,27 @@
                                 class="drinkImage" 
                                 src="media/StrawberryMatchaCream.jpg" 
                                 alt="Strawberry Matcha Cream">
-                            <h3 class="teaType">Strawberry Matcha Cream
-                                <span class="price">$8.95</span></h3>
+                            <h4 class="teaType">Strawberry Matcha Cream
+                                <span class="price">$8.95</span></h4>
                             <div class="drinkDes1">
                                 <p>Creamy strawberry Milk topped with a rich, velvety matcha Milk cap, sweet, nostalgic, and berry delightful.</p>
                                 <p>Contains Dairy & Caffeine</p>
                             </div>
                         </div>
                     </article>
-                </fieldset>
+                </section>
 
-                <fieldset data-type="YOGURTS">
-                    <legend>YOGURTS</legend>
+                <section class="box" data-type="YOGURTS">
+                    
                     <article class="teaDes">
+                        <h3>YOGURTS</h3>
                         <div class="selectDrinkBtn" tabindex="0" role="button">
                             <img 
                                 class="drinkImage" 
                                 src="media/YogurtOrangeLemonade.jpg" 
                                 alt="Yogurt Orange Lemonade">
-                            <h3 class="teaType">Yogurt Orange Lemonade
-                                <span class="price">$7.95</span></h3>
+                            <h4 class="teaType">Yogurt Orange Lemonade
+                                <span class="price">$7.95</span></h4>
                             <div class="drinkDes1">
                                 <p>Yakult yogurt paired with fresh-squeezed orange juice. Sweet & tangy.</p>
                                 <p>Caffeine-Free & Contains Dairy</p>
@@ -358,8 +364,8 @@
                                 class="drinkImage" 
                                 src="media/YogurtPeach-ade.jpg" 
                                 alt="Yogurt Peach Lemonade">
-                            <h3 class="teaType">Yogurt Peach Lemonade
-                                <span class="price">$7.95</span></h3>
+                            <h4 class="teaType">Yogurt Peach Lemonade
+                                <span class="price">$7.95</span></h4>
                             <div class="drinkDes1">
                                 <p>Sweet and tart Yakult yogurt paired with delicious chunks of peach and fresh lemonade.</p>
                                 <p>Caffeine-Free & Contains Dairy</p>
@@ -372,26 +378,27 @@
                                 class="drinkImage" 
                                 src="media/YogurtStrawberryLemonade.jpg" 
                                 alt="Yogurt Strawberry Lemonade">
-                            <h3 class="teaType">Yogurt Strawberry Lemonade
-                                <span class="price">$7.95</span></h3>
+                            <h4 class="teaType">Yogurt Strawberry Lemonade
+                                <span class="price">$7.95</span></h4>
                             <div class="drinkDes1">
                                 <p>Yakult yogurt paired with strawberry juice. Smooth & tangy.</p>
                                 <p>Caffeine-Free & Contains Dairy</p>
                             </div>
                         </div>
                     </article>
-                </fieldset>
+                </section>
 
-                <fieldset data-type="COFFEE">
-                    <legend>COFFEE</legend>
+                <section class="box" data-type="COFFEE">
+                    
                     <article class="teaDes">
+                        <h3>COFFEE</h3>
                         <div class="selectDrinkBtn" tabindex="0" role="button">
                             <img 
                                 class="drinkImage" 
                                 src="media/Coffee.jpg" 
                                 alt="Drip Coffee">
-                            <h3 class="teaType">Drip Coffee
-                                <span class="price">$5.95</span></h3>
+                            <h4 class="teaType">Drip Coffee
+                                <span class="price">$5.95</span></h4>
                             <div class="drinkDes1">
                                 <p>Espresso, cane sugar, & Milk powder. Sweet & bold.</p>
                                 <p>Contains Dairy & Caffeine</p>
@@ -404,8 +411,8 @@
                                 class="drinkImage" 
                                 src="media/Latte.jpg" 
                                 alt="Latte">
-                            <h3 class="teaType">Latte
-                                <span class="price">$6.95</span></h3>
+                            <h4 class="teaType">Latte
+                                <span class="price">$6.95</span></h4>
                             <div class="drinkDes1">
                                 <p>Espresso paired with fresh Milk. Sweet & creamy.</p>
                                 <p>Contains Dairy & Caffeine</p>
@@ -418,17 +425,17 @@
                                 class="drinkImage" 
                                 src="media/Macchiato.jpg" 
                                 alt="Macchiato">
-                            <h3 class="teaType">Macchiato
-                                <span class="price">$6.95</span></h3>
+                            <h4 class="teaType">Macchiato
+                                <span class="price">$6.95</span></h4>
                             <div class="drinkDes1">
                                 <p>Bold espresso mixed with caramel, vanilla, & Milk powder. Sweet & bold.</p>
                                 <p>Contains Dairy & Caffeine</p>
                             </div>
                         </div>
                     </article>
-                </fieldset>
+                </section>
 
-                <fieldset>
+                <section id="drink-size" class="box">
                     <h1 class="orderTitle" id="order-size">DRINK SIZES</h1>
                     <article class="drinkSizes">
                         <div style="text-align: center;">
@@ -472,11 +479,11 @@
         
                         </div>
                     </article>
-                </fieldset>
+                </section>
 
                 <hr class="section-hr">
 
-                <fieldset >
+                <section id="sweetness-level" class="box">
                     <h1 class="orderTitle" id="order-sweetness">SWEETNESS LEVEL</h1>
                     <div class="main-menu-flex">
                         <button type="button" class="sweetness-card" data-level="0%">
@@ -514,12 +521,38 @@
                             </div>
                         </button>
                     </div>
-                </fieldset>
+                </section>
 
                 <hr class="section-hr">
 
-                <fieldset>
+                <section id="topping-type" class="box">
                     <h1 class="orderTitle" id="toppings-section">TOPPINGS</h1>
+
+                    <article class="topType">
+                        <fieldset>
+                            <legend>TAPIOCA - BOBA</legend>
+                            <div class="description">
+                                <ul class="topCol2">
+                                    <li class="topping-item">
+                                        <button type="button" class="topping-btn" aria-label="Add Classic Boba">
+                                            <img class="topImage" src="media/BlackPearlTapioca.jpg" alt="">
+                                            </button>
+                                            <h4>Classic Boba</h4>
+                                        
+                                    </li>
+                                    <li class="topping-item">
+                                        <img 
+                                            class="topImage" 
+                                            src="media/BrownSugarBoba.jpg" 
+                                            alt="Brown Sugar Boba">
+                                        <h4>Brown Sugar Boba</h4>
+                                    </li>
+                                </ul>
+                            </div>
+                        </fieldset>
+                    </article>
+                    
+                    
                     <article class="topType">
                         <fieldset>
                             <legend>TAPIOCA - BOBA</legend>
@@ -655,11 +688,11 @@
                             </div>
                         </fieldset>
                     </article>
-                </fieldset>
+                </section>
 
                 <hr class="section-hr">
 
-                <fieldset id="selectedDrinkSection">
+                <section id="selectedDrinkSection" class="box">
                     <h2 class="orderTitle">Check Selection & Add to Cart!</h2>
                     <div id="selectedDrinkDetails">
                         <p>No drink selected yet.</p>
@@ -668,9 +701,9 @@
                         <button class="btn btn-submit" id="addToCartBtn" disabled>Add to Cart</button>
                         <button type="reset" class="btn btn-clear" id="clearSelectionBtn" onclick="return confirm('Are you sure you want to clear all form data?')">Clear Selection!</button>
                     </div>
-                </fieldset>
+                </section>
 
-                <fieldset>
+                <section id="your-cart" class="box">
                     <h2 class="cartTitle">YOUR CART</h2>
                     <div id="cart">
                         <p id="cartEmptyMsg">No drinks in cart.</p>
@@ -724,7 +757,7 @@
                             </div>
                         </div>
                     </form>
-                </fieldset>
+                </section>
             </main>
             
             <hr class="section-hr">
