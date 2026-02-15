@@ -18,8 +18,8 @@
                         src="media/BusinessLogo.jpg" 
                         alt="Per Scholas Tea Business Logo" 
                         class="business-img"
-                        width="300"
-                        height="300">                    
+                        width="225"
+                        height="225">                    
                     <div class="header-text">
                         <h1 class="businessName">PER SCHOLAS TEA</h1>
                         <h2 class="businessSlogan">Brewing the Future</h2>
@@ -814,7 +814,9 @@
                                         type="tel"
                                         name="orderPhone"
                                         id="orderContact" 
-                                        placeholder="123-456-7890" 
+                                        placeholder="(123) 456-7890"
+                                        pattern="(\(\d{3}\) \d{3}-\d{4})|(\d{10})"
+                                        title="Format: (123) 456-7890" 
                                         autocomplete="tel"
                                         required>
                                 </div>
