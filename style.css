@@ -350,7 +350,7 @@ textarea {
 /* =============================
     BUTTONS 
 ============================= */
-.btn, .filterBtn, .selectDrinkBtn {
+.btn, .filterBtn {
     color: white;
     padding: 10px 20px;
     border: none;
@@ -365,7 +365,26 @@ textarea {
         outline 0.3s ease;
 }
 
-.btn-submit, .filterBtn, .selectDrinkBtn {
+.selectDrinkBtn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    border: 2px solid var(--color-bg-darker);
+    border-radius: 5px;
+    background-color: transparent;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 10px 20px;
+    transition: 
+        transform 0.3s ease, 
+        background-color 0.3s ease, 
+        border-color 0.3s ease,
+        outline 0.3s ease;
+}
+
+.btn-submit, .filterBtn {
     background-color: var(--color-primary);
 }
 
@@ -479,7 +498,17 @@ textarea {
     align-self: center;
 }
 
- .selectDrinkBtn, .menuTea {
+.orderDrinkImage {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    margin-right: 15px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    align-self: center;
+}
+
+.menuTea {
     display: grid;
     grid-template-columns: 120px 1fr;
     column-gap: 0px;
@@ -490,26 +519,16 @@ textarea {
     border-radius: 5px;
 }
 
-.teaDes h3, .teaType {
+.teaDes h3 {
     display: flex;
     justify-content: space-between;
     align-items: center; /* Add this for vertical alignment */
     grid-column: 2;
     margin: 0;
-    font-size: 1.1em;
     color: var(--color-text-white);
     font-size: 1.5em;
 }
-.teaDes h3, .teaType {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; /* Add this for vertical alignment */
-    grid-column: 2;
-    margin: 0;
-    font-size: 1.1em;
-    color: var(--color-text-white);
-    font-size: 1.5em;
-}
+
 .teaDes h4 {
     display: flex;
     justify-content: space-between;
@@ -521,12 +540,22 @@ textarea {
     font-size: 1.5em;
 }
 
+.drink-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+}
+
 .teaType {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    width: 100%;
     margin: 0;
-    margin-bottom: 0;
-    font-size: 1.5em;
+    margin-bottom: 5px;
+    font-size: 1.2em;
     color: white;
 }
 
@@ -776,7 +805,6 @@ textarea {
     font-size: 1.3em;
     font-weight: bold;
     color: var(--color-primary);
-
     padding: 20;
     text-align: center;
 }
