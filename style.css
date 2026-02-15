@@ -548,6 +548,10 @@ textarea {
     min-width: 0;
 }
 
+.drink-info h4 {
+    margin-bottom: 10px;
+}
+
 .teaType {
     display: flex;
     justify-content: space-between;
