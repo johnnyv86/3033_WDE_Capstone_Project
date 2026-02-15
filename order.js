@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const selectButtons = document.querySelectorAll(".teaDes .selectDrinkBtn");
     const sizeRows = document.querySelectorAll(".size-row");
     const sweetnessCards = document.querySelectorAll(".sweetness-card");
-    const toppingItems = document.querySelectorAll(".topping-item");
+    const toppingItems = document.querySelectorAll(".topping-items");
 // HELPER: RENDER CART & SAVE TO STORAGE
     function renderCart() {
         cartList.innerHTML = "";
@@ -199,6 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
             updateDisplay();
         });
     });
+
 // HELPER FUNCTION to UPDATE SELECTION SECTION
     function updateDisplay() {
         if(currentSelection) {
@@ -272,36 +273,39 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 // CLEAR SELECTION SUMMARY SECTION LISTENER
     const clearBtn = document.getElementById("clearSelectionBtn");
-
-    clearBtn.addEventListener("click", (event) => {
-        const userConfirmed = confirm("Are you sure you want to clear current selection?");
-        if (!userConfirmed) {
-            event.preventDefault();
-        }
-    })
+   
     clearBtn.addEventListener("click", () => {
-    // 1. RESET & CLEAR SELECTED DATA 
-        currentSelection = null;
-        currentBasePrice = 0;
-        currentSizePrice = 0;
-        currentSizeName = "Small";
-        currentSweetness = "0%";
-        currentToppings = [];
-    // 2. RESET VISUAL DISPLAY
-        document.querySelectorAll(".teaDes").forEach(card => card.classList.remove("selectedDrink"));
-        sizeRows.forEach(row => row.classList.remove("active"));
-        sweetnessCards.forEach(card => card.classList.remove("active"));
-        toppingItems.forEach(item => item.classList.remove("active"));
-    // 3. RESET TEXT AND BUTTON FUNCTIONALITY
-        selectedDetails.innerHTML = "<p>No drink selected yet.</p>";
-        addToCartBtn.textContent = "Add to Cart!";
-        addToCartBtn.disabled = true;
-    // 4. SCROLL LOGIC: SCROLL BACK TO TOP - DRINK FILTER SECTION
-        const drinkSelection = document.getElementById("drinkFilters");
-        if (drinkSelection) {
-            drinkSelection.scrollIntoView({ behavior: "smooth" });
+        // 1. Check added inside Main Listener
+        if (!confirmed("Are you sure you want to clear current selection?")) {
+            return;
         }
-    });
+
+        // 2. Clearing LOGIC - RESET & CLEAR SELECTED DATA 
+            currentSelection = null;
+            currentBasePrice = 0;
+            currentSizePrice = 0;
+            currentSizeName = "Small";
+            currentSweetness = "0%";
+            currentToppings = [];
+
+        // 3. RESET VISUAL DISPLAY
+            document.querySelectorAll(".teaDes").forEach(card => card.classList.remove("selectedDrink"));
+            sizeRows.forEach(row => row.classList.remove("active"));
+            sweetnessCards.forEach(card => card.classList.remove("active"));
+            toppingItems.forEach(item => item.classList.remove("active"));
+
+        // 4. RESET TEXT AND BUTTON FUNCTIONALITY
+            selectedDetails.innerHTML = "<p>No drink selected yet.</p>";
+            addToCartBtn.textContent = "Add to Cart!";
+            addToCartBtn.disabled = true;
+
+        // 5. SCROLL LOGIC: SCROLL BACK TO TOP - DRINK FILTER SECTION
+            const drinkSelection = document.getElementById("drinkFilters");
+            if (drinkSelection) {
+                drinkSelection.scrollIntoView({ behavior: "smooth" });
+            }
+        });
+
 // CLEAR CART Confirmation LISTENER
     document.getElementById('clearOrderBtn').addEventListener('click', function() {
         if (confirm('Are you sure you want ot clear your cart?')) {
@@ -311,22 +315,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // CLEAR CART LISTENER
     const clearOrderBtn = document.getElementById("clearOrderBtn");
-    clearOrderBtn.addEventListener("click", () => {
-    // 1. EMPTY DATA ARRAY
+    clearOrderBtn.addEventListener("click", (event) => {
+    // 1. Ask for confirmation
+        const userConfirmed = confirm("Are you sure you want to clear your cart?");
+
+    // 2. Stop here if Answer: NO - Cancel
+        if(!userConfirmed) {
+            return; // exit function - code below never run
+        }
+
+    // 3. If Answer: YES - function proceed to clear data
+
+        // 3a. EMPTY DATA ARRAY
         cartData = [];
-    // 2. UPDATE LOCALSTORAGE
+
+        // 3b. UPDATE LOCALSTORAGE
         localStorage.setItem('perScholasTeaCart', JSON.stringify(cartData));
-    // 3. UPDATE USER INTERFACE & STROAGE
+        localStorage.removeItem('perScholasTeaCartTimestamp');
+    
+        // 3c. UPDATE USER INTERFACE & STROAGE
         renderCart();
         alert("Cart has been cleared!");
     });
+
 // F0RM LISTENER
     const orderForm = document.getElementById('orderForm');
+    const orderName = document.getElementById('orderName');
+    const orderContact = document.getElementById('orderContact');
+    const orderEmail = document.getElementById('orderEmail');
 
     if (orderForm && orderName && orderContact && orderEmail) {
-        const orderName = document.getElementById('orderName');
-        const orderContact = document.getElementById('orderContact');
-        const orderEmail = document.getElementById('orderEmail');
+        
 
         function setButtonLoading(button) {
             button.disabled = true;
@@ -378,7 +397,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Better email validation
             if (!emailPattern.test(emailValue)) {
                 alert("Please enter a valid email address.");
-                orderEmail.style.border = "2px solid red";   
+                orderEmail.classList.add("input-error") 
                 // Re-enable button on validation failure
                 resetButton(submitBtn, originalBtnText)
                 return;
@@ -400,4 +419,3 @@ document.addEventListener("DOMContentLoaded", () => {
                 resetButton(submitBtn, originalBtnText);
         });
     }
-}

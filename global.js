@@ -24,7 +24,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Phone number validation and auto-formatting
-    const phoneInput = document.getElementById('promoPhone') || document.getElementById('rewardsPhone') || document.getElementById('contactPhone');
+    const phoneInput = document.getElementById('promoPhone') 
+        || document.getElementById('rewardsPhone') 
+        || document.getElementById('contactPhone')
+        || document.getElementById('orderPhone');
     if (phoneInput) {
         // 1. INPUT EVENT: Format as they type AND clear errors immediately
         phoneInput.addEventListener('input', function() {
@@ -188,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
     }
-
+});
 
 // ===== HELPER FUNCTIONS =====
 /**  
@@ -286,4 +289,3 @@ function validatePhoneNumber(input, showPopup = true) {
         return false;
     }
 };
-});
