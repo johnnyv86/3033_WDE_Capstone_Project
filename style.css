@@ -376,7 +376,8 @@ textarea {
     outline-offset: 2px;
 }
 
-
+.selectToppingBtn:hover,
+.selectToppingBtn:focus,
 .filterBtn:hover,
 .filterBtn:focus,
 .selectDrinkBtn:hover,
@@ -398,7 +399,7 @@ textarea {
 
 
 
-.topping-item, .teaDes, .sweetness-card, .size-row {
+.selectToppingBtn, .topping-item, .teaDes, .sweetness-card, .size-row {
     transition: 
         transform 0.3s ease, 
         background-color 0.3s ease, 
@@ -698,7 +699,7 @@ textarea {
 }
 
 
-.topping-item, .menu-topping-item, .topping-btn {
+.selectToppingBtn, .topping-item, .menu-topping-item, .topping-btn {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -709,16 +710,16 @@ textarea {
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.topping-item, .topping-btn {
+.selectToppingBtn, .topping-item, .topping-btn {
     cursor: pointer;
 }
 
-.topping-item.active, .topping-btn.active {
+.selectToppingBtn.active, .topping-item.active, .topping-btn.active {
     border-color: var(--color-primary);
     background-color: rgba(143, 179, 143, 0.1);
 }
 
-.topping-item h4, .menu-topping-item h4 {
+.selectToppingBtn, .topping-item h4, .menu-topping-item h4 {
     color: var(--color-primary);
     font-size: 1em;
     margin: 0;
