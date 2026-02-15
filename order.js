@@ -271,13 +271,14 @@ document.addEventListener("DOMContentLoaded", () => {
             <p>Select another drink below.</p>`;
         });
 // CLEAR SELECTION SUMMARY SECTION LISTENER
-    document.getElementById("clearSelectionBtn").addEventListener("click", function(event) {
-        if (!confirm ('Are you sure you want to clear current selection?')) {
-            event.preventDefault(); // will stop the clearing if user click cacnel
-        }
-
-    
     const clearBtn = document.getElementById("clearSelectionBtn");
+
+    clearBtn.addEventListener("click", (event) => {
+        const userConfirmed = confirm("Are you sure you want to clear current selection?");
+        if (!userConfirmed) {
+            event.preventDefault();
+        }
+    })
     clearBtn.addEventListener("click", () => {
     // 1. RESET & CLEAR SELECTED DATA 
         currentSelection = null;
@@ -301,6 +302,13 @@ document.addEventListener("DOMContentLoaded", () => {
             drinkSelection.scrollIntoView({ behavior: "smooth" });
         }
     });
+// CLEAR CART Confirmation LISTENER
+    document.getElementById('clearOrderBtn').addEventListener('click', function() {
+        if (confirm('Are you sure you want ot clear your cart?')) {
+            
+        }
+    })
+
 // CLEAR CART LISTENER
     const clearOrderBtn = document.getElementById("clearOrderBtn");
     clearOrderBtn.addEventListener("click", () => {
@@ -392,4 +400,4 @@ document.addEventListener("DOMContentLoaded", () => {
                 resetButton(submitBtn, originalBtnText);
         });
     }
-};
+}
