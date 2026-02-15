@@ -386,14 +386,14 @@ document.addEventListener("DOMContentLoaded", () => {
             if (nameValue.length < 3) {
                 alert("Please enter a valid name.");
                 orderName.classList.add("input-error");
-                resetButton(submitBtn, originalBtnText)
+                resetButton(submitBtn, originalBtnText);
                 return;
             }
              if (cleanPhone.length < 10) {
                 alert("Please enter a valid 10-digit phone number.");
                 orderPhone.classList.add("input-error");   
                 // Re-enable button on validation failure
-                resetButton(submitBtn, originalBtnText)
+                resetButton(submitBtn, originalBtnText);
                 return;
             }
             // Better email validation
@@ -401,7 +401,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("Please enter a valid email address.");
                 orderEmail.classList.add("input-error");
                 // Re-enable button on validation failure
-                resetButton(submitBtn, originalBtnText)
+                resetButton(submitBtn, originalBtnText);
                 return;
             }
 
