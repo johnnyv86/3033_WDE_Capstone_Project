@@ -58,6 +58,13 @@ fieldset {
     background-color: var(--color-bg-light);
 }
 
+.box-inner {
+    border: 1px solid var(--color-text-primary);
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: var(--color-bg-light);
+}
+
 legend {
     font-size: 1.2em;
     font-weight: bold;
@@ -369,7 +376,7 @@ textarea {
 
 .btn-clear:hover,
 .btn-clear:focus {
-    transform: scale(1.05);
+    transform: scale(1.01);
     background-color:  var(--color-border-medium);
     border: 1px solid var(--color-danger-hover);
     outline: 2px solid var(--color-danger);
@@ -390,7 +397,7 @@ textarea {
 .topping-item:focus,
 .size-row:hover,
 .size-row:focus {
-    transform: scale(1.05);
+    transform: scale(1.01);
     background-color: var(--color-border-medium);
     border: 1px solid var(--color-primary-hover);
     outline: 2px solid var(--color-primary);
@@ -483,7 +490,6 @@ textarea {
     border-radius: 5px;
 }
 
-
 .teaDes h3, .teaType {
     display: flex;
     justify-content: space-between;
@@ -494,7 +500,16 @@ textarea {
     color: var(--color-text-white);
     font-size: 1.5em;
 }
-
+.teaDes h3, .teaType {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Add this for vertical alignment */
+    grid-column: 2;
+    margin: 0;
+    font-size: 1.1em;
+    color: var(--color-text-white);
+    font-size: 1.5em;
+}
 .teaDes h4 {
     display: flex;
     justify-content: space-between;
@@ -699,7 +714,7 @@ textarea {
 }
 
 
-.selectToppingBtn, .topping-item, .menu-topping-item, .topping-btn {
+.selectToppingBtn, .topping-item, .menu-topping-item {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -710,32 +725,23 @@ textarea {
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.selectToppingBtn, .topping-item, .topping-btn {
+.selectToppingBtn, .topping-item {
     cursor: pointer;
 }
 
-.selectToppingBtn.active, .topping-item.active, .topping-btn.active {
+.selectToppingBtn.active, .topping-item.active {
     border-color: var(--color-primary);
     background-color: rgba(143, 179, 143, 0.1);
 }
 
-.selectToppingBtn, .topping-item h4, .menu-topping-item h4 {
+.selectToppingBtn, .topping-items h4, .menu-topping-item h4 {
     color: var(--color-primary);
     font-size: 1em;
     margin: 0;
     font-weight: normal;
 }
 
-.topping-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    border: 0;
-    border-radius: 10px;
-    padding: 0;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
+
 .topImage {
     width: 80px;
     height: 80px;
@@ -824,28 +830,6 @@ textarea {
     gap: 30px;
 }
 
-.topping-btn {
-    flex: 1;
-    min-width: 150px;
-    cursor: pointer;
-    padding: 0;
-    background-color: var(--color-bg-light);
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    border: 0 solid transparent;
-    text-align: center;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: var(--color-border-white);
-}
-
-.topping-btn:hover,
-.topping-btn:focus {
-    transform: scale(1.05);
-    background-color: var(--color-border-medium);
-    border: 0;
-    outline: 0;
-    outline-offset: 0;
-}
 
 .topCol2 {
     display: grid;
@@ -868,7 +852,9 @@ textarea {
     box-shadow: 0 0 10px rgba(143, 179, 143, 0.1);
 }
 
-#orderForm h3 {
+
+
+#selectedDrinkSection h3, #your-cart h3, #orderForm h3 {
     font-size: 1.5em;
     text-align: center;
     font-weight: bold;

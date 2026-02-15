@@ -63,7 +63,7 @@
             <hr class="section-hr">
 
             <main>
-                <section class="box">
+                <div class="box">
                     <h3 class="orderTitle">EASY ORDERING</h3>
                     <article class="easyOrdering">
                         <table class="order-table">
@@ -87,11 +87,11 @@
                             </tbody>
                         </table>
                     </article>
-                </section>
+                </div>
 
                 <hr class="section-hr">
-
-                <section class="box" id="filter-box">
+            <div class="box">
+                <section id="filter-box">
                     <h1 class="orderTitle">DRINKS</h1>
                     <h2>Filter by Drink Type...</h2>
                     <div id="drinkFilters">
@@ -105,9 +105,9 @@
                         <button class="filterBtn" data-filter="COFFEE">COFFEE</button>
                     </div>
                 </section>
-
-                <section class="box" data-type="CLASSIC TEAS">
-                    
+ <hr class="section-hr">
+                <section class="box-inner" data-type="CLASSIC TEAS">
+        
                     <article class="teaDes">
                         <h3>CLASSIC TEAS</h3>
                         <div class="selectDrinkBtn" tabindex="0" role="button">
@@ -121,7 +121,7 @@
                                 <span>Refreshing jasmine green Tea sweetened with cane sugar.</span>
                                 <span>Vegan-Friendly</span>
                             </div>
-                        </div>
+                  
                     </article>
                     <article class="teaDes">
                         <div class="selectDrinkBtn" tabindex="0" role="button">
@@ -151,9 +151,10 @@
                             </div>
                         </div>
                     </article>
+    
                 </section>
 
-                <section class="box" data-type="SLUSH TEAS">
+                <section class="box-inner" data-type="SLUSH TEAS">
                     
                     <article class="teaDes">
                         <h3>SLUSH TEAS</h3>
@@ -200,7 +201,7 @@
                     </article>
                 </section>
 
-                <section class="box" data-type="PUNCHY TEAS">
+                <section class="box-inner" data-type="PUNCHY TEAS">
                     
                     <article class="teaDes">
                         <h3>PUNCHY TEAS</h3>
@@ -247,7 +248,7 @@
                     </article>
                 </section>
 
-                <section class="box" data-type="MILK TEAS">
+                <section data-type="MILK TEAS">
                     
                     <article class="teaDes">
                         <h3>MILK TEAS</h3>
@@ -294,7 +295,7 @@
                     </article>
                 </section>
 
-                <section class="box" data-type="MATCHA TEAS">
+                <section class="box-inner" data-type="MATCHA TEAS">
                     
                     <article class="teaDes">
                         <h3>MATCHA TEAS</h3>
@@ -341,7 +342,7 @@
                     </article>
                 </section>
 
-                <section class="box" data-type="YOGURTS">
+                <section class="box-inner" data-type="YOGURTS">
                     
                     <article class="teaDes">
                         <h3>YOGURTS</h3>
@@ -388,7 +389,7 @@
                     </article>
                 </section>
 
-                <section class="box" data-type="COFFEE">
+                <section class="box-inner" data-type="COFFEE">
                     
                     <article class="teaDes">
                         <h3>COFFEE</h3>
@@ -435,7 +436,9 @@
                     </article>
                 </section>
 
-                <section id="drink-size" class="box">
+            </div>
+            <hr class="section-hr">
+                <section class="box" id="drink-size">
                     <h1 class="orderTitle" id="order-size">DRINK SIZES</h1>
                     <article class="drinkSizes">
                         <div style="text-align: center;">
@@ -476,7 +479,6 @@
                                 src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHltcmUyOGUxYWN5dThkNWUwYzI1cWFtamVoM29hZmxkZjhzZW5oZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Y4VNo2dIdW8bpDgRXt/giphy.gif" 
                                 class="giphy-embed"
                                 allowFullScreen>
-        
                         </div>
                     </article>
                 </section>
@@ -527,35 +529,9 @@
 
                 <section id="topping-type" class="box">
                     <h1 class="orderTitle" id="toppings-section">TOPPINGS</h1>
-
-                    <article class="topType">
-                        <fieldset>
-                            <legend>TAPIOCA - BOBA</legend>
-                                <ul class="topCol2">
-                                <div class="selectToppingBtn" tabindex="0" role=button>
-                                    <li class="topping-items">
-                                        <img 
-                                            class="topImage" 
-                                            src="media/BlackPearlTapioca.jpg" 
-                                            alt="Classic Boba">
-                                        <h4>Classic Boba</h4>
-                                    </li>
-                                    </div>
-                                    <div class="selectToppingBtn" tabindex="0" role=button>
-                                    <li class="topping-items">
-                                        <img 
-                                            class="topImage" 
-                                            src="media/BrownSugarBoba.jpg" 
-                                            alt="Brown Sugar Boba">
-                                        <h4>Brown Sugar Boba</h4>
-                                    </li>
-                                    </div>
-                                </ul>
-                        </fieldset>
-                    </article>
                     
                     <article class="topType">
-                        <fieldset>
+                        <div class="box-inner">
                             <legend>TAPIOCA - BOBA</legend>
                             <ul class="topCol2">
                                 <div class="selectToppingBtn" tabindex="0" role=button>
@@ -577,13 +553,13 @@
                                     </li>
                                 </div>
                             </ul>
-                        </fieldset>
+                        </div>
                     </article>
 
                     <hr class="separator">
 
                     <article class="topType">
-                        <fieldset>
+                        <div class="box-inner">
                             <legend>POPPING BOBA</legend>
                             <ul class="topCol2">
                                 <div class="selectToppingBtn" tabindex="0" role=button>
@@ -659,13 +635,13 @@
                                     </li>
                                 </div>
                             </ul>
-                        </fieldset>
+                        </div>
                     </article>
 
                     <hr class="separator">
                             
                     <article class="topType">
-                        <fieldset>
+                        <div class="box-inner">
                             <legend>JELLY</legend>
                             <ul class="topCol2">
                                 <div class="selectToppingBtn" tabindex="0" role=button>
@@ -717,33 +693,38 @@
                                     </li>
                                 </ul>
                             </div>
-                        </fieldset>
+                        </div>
                     </article>
                 </section>
 
                 <hr class="section-hr">
 
                 <section id="selectedDrinkSection" class="box">
-                    <h2 class="orderTitle">Check Selection & Add to Cart!</h2>
-                    <div id="selectedDrinkDetails">
+                    <div class="box-inner">
+                    <h3 class="orderTitle">Check Selection & Add to Cart!</h2>
+                    
+                    <div class="box-inner" id="selectedDrinkDetails">
                         <p>No drink selected yet.</p>
                     </div>
+             
                     <div class="button-container">
                         <button class="btn btn-submit" id="addToCartBtn" disabled>Add to Cart</button>
                         <button type="reset" class="btn btn-clear" id="clearSelectionBtn" onclick="return confirm('Are you sure you want to clear all form data?')">Clear Selection!</button>
                     </div>
                 </section>
-
+<hr class="section-hr">
                 <section id="your-cart" class="box">
-                    <h2 class="cartTitle">YOUR CART</h2>
-                    <div id="cart">
+                    <div class="box-inner">
+                    <h3>YOUR CART</h3>
+                    <div class="box-inner" id="cart">
                         <p id="cartEmptyMsg">No drinks in cart.</p>
                         <ul id="cartItems"></ul>
                         <p id="cartTotal">Total: $0.00</p>
                     </div>
+                    </div>
 
                     <hr class="section-hr">
-
+<div class="box-inner">
                     <form id="orderForm">
                         <h3>Complete Your Order</h3>
                         <div class="orderSection">
@@ -785,6 +766,7 @@
                             <div class="button-container">
                                 <button type="submit" class="btn btn-submit" id="submitOrderBtn">Submit Order</button>
                                 <button type="button" class="btn btn-clear" id="clearOrderBtn" onclick="return confirm('Are you sure you want to clear all form data?')">Clear Cart!</button>
+                            </div>
                             </div>
                         </div>
                     </form>
