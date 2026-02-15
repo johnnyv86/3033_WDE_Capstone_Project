@@ -755,6 +755,17 @@ textarea {
     padding: 15px;
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
+.selectToppingBtn {
+    display: flex;
+    background-color: var(--color-bg-light);
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 0 transparent;
+    border-radius: 10px;
+    padding: 15px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
 
 .selectToppingBtn, .topping-items {
     cursor: pointer;
@@ -807,7 +818,7 @@ textarea {
     font-size: 1.3em;
     font-weight: bold;
     color: var(--color-primary);
-    padding: 20;
+    padding: 20px;
     text-align: center;
 }
 
