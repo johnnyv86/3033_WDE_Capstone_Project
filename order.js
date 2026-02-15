@@ -243,9 +243,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // 3. SAVE & UPDATE SCREEN
         localStorage.setItem('perScholasTeaCart', JSON.stringify(cartData));
 
-        if (cartData.length === 1) {
-            localStorage.setItem('perScholasTeaCartTimestamp', Date.now().toString());
-        }
+       
+        localStorage.setItem('perScholasTeaCartTimestamp', Date.now().toString());
+        
 
         renderCart();
 
@@ -320,6 +320,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // 3a. EMPTY DATA ARRAY
         cartData = [];
+        addToCartBtn.disabled = true;
 
         // 3b. UPDATE LOCALSTORAGE
         localStorage.setItem('perScholasTeaCart', JSON.stringify(cartData));
