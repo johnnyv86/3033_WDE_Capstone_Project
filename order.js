@@ -89,7 +89,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function recalculateTotal() {
         if (!currentSelection) return;
         const toppingsCost = currentToppings.length * TOPPING_PRICE;
-        currentSelection.price = currentBasePrice + currentSizePrice + toppingsCost;
+        const rawTotal = currentBasePrice + currentSizePrice + toppingsCost;
+         currentSelection.price = parseFloat(rawTotal.toFixed(2));
     }
 // DRINK SELECTION LISTENER
     selectButtons.forEach((btn) => {
@@ -297,7 +298,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // 4. RESET TEXT AND BUTTON FUNCTIONALITY
             selectedDetails.innerHTML = "<p>No drink selected yet.</p>";
             addToCartBtn.textContent = "Add to Cart!";
-\
+
         // 5. SCROLL LOGIC: SCROLL BACK TO TOP - DRINK FILTER SECTION
             const drinkSelection = document.getElementById("drinkFilters");
             if (drinkSelection) {
