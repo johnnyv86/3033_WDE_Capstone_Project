@@ -155,7 +155,7 @@
                 <fieldset data-type="SLUSH TEAS">
                     <legend>SLUSH TEAS</legend>
                     <article class="teaDes">
-                        <div class="selectDrinkBtn" tabindex="0" role="button">
+                        <button class="selectDrinkBtn" tabindex="0" type="button">
                             <img 
                                 class="drinkImage" 
                                 src="media/BerrySlush.jpg" 
@@ -432,14 +432,10 @@
                     <h1 class="orderTitle" id="order-size">DRINK SIZES</h1>
                     <article class="drinkSizes">
                         <div style="text-align: center;">
-                            <iframe 
+                            <img 
                                 src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHltcmUyOGUxYWN5dThkNWUwYzI1cWFtamVoM29hZmxkZjhzZW5oZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Y4VNo2dIdW8bpDgRXt/giphy.gif" 
-                                width="100%"
-                                frameBorder="0"
                                 class="giphy-embed"
-                                allowFullScreen
-                                style="max-width: 100%; border-radius: 10px;">
-                            </iframe>
+                                allowFullScreen>
                         </div>
                         <table class="size-table">
                             <thead>
@@ -469,14 +465,11 @@
                         </table>
 
                         <div style="text-align: center;">
-                            <iframe 
+                            <img 
                                 src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHltcmUyOGUxYWN5dThkNWUwYzI1cWFtamVoM29hZmxkZjhzZW5oZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Y4VNo2dIdW8bpDgRXt/giphy.gif" 
-                                width="100%"
-                                frameBorder="0"
                                 class="giphy-embed"
-                                allowFullScreen
-                                style="max-width: 100%; border-radius: 10px;">
-                            </iframe>
+                                allowFullScreen>
+        
                         </div>
                     </article>
                 </fieldset>
@@ -486,40 +479,40 @@
                 <fieldset >
                     <h2 class="orderTitle" id="order-sweetness">SWEETNESS LEVEL</h2>
                     <div class="main-menu-flex">
-                        <fieldset class="sweetness-card" data-level="0%">
-                            <legend>0% Sweetness</legend>
+                        <button type="button" class="sweetness-card" data-level="0%">
+                            <h4>0% Sweetness</h4>
                             <div class="bar-outer">
                                 <div class="bar-inner" style="width: 0%;">0%</div>
                             </div>
-                        </fieldset>
+                        </button>
 
-                        <fieldset class="sweetness-card" data-level="25%">
-                            <legend>25% Sweetness</legend>
+                        <button type="button" class="sweetness-card" data-level="25%">
+                            <h4>25% Sweetness</h4>
                             <div class="bar-outer">
                                 <div class="bar-inner" style="width: 25%;">25%</div>
                             </div>
-                        </fieldset>
+                        </button>
 
-                        <fieldset class="sweetness-card" data-level="50%">
-                            <legend>50% Sweetness</legend>
+                        <button type="button" class="sweetness-card" data-level="50%">
+                            <h4>50% Sweetness</h4>
                             <div class="bar-outer">
                                 <div class="bar-inner" style="width: 50%;">50%</div>
                             </div>
-                        </fieldset>
+                        </button>
 
-                        <fieldset class="sweetness-card" data-level="75%">
-                            <legend>75% Sweetness</legend>
+                        <button type="button" class="sweetness-card" data-level="75%">
+                            <h4>75% Sweetness</h4>
                             <div class="bar-outer">
                                 <div class="bar-inner" style="width: 75%;">75%</div>
                             </div>
-                        </fieldset>
+                        </button>
                                 
-                        <fieldset class="sweetness-card" data-level="100%">
-                            <legend>Full Sweetness</legend>
+                        <button type="button" class="sweetness-card" data-level="100%">
+                            <h4>Full Sweetness</h4>
                             <div class="bar-outer">
                                 <div class="bar-inner" style="width: 100%;">100%</div>
                             </div>
-                        </fieldset>
+                        </button>
                     </div>
                 </fieldset>
 
@@ -693,7 +686,8 @@
                             <div class="form-group">
                                 <label for="orderName">Name for the order. <span aria-hidden="true" class="required">*</span></label>
                                 <input 
-                                    type="text" 
+                                    type="text"
+                                    name="orderName"
                                     id="orderName" 
                                     placeholder="Name for the order" 
                                     autocomplete="given-name"
@@ -702,7 +696,8 @@
                             <div class="form-group">
                                 <label for="orderContact">Contact number. <span aria-hidden="true" class="required">*</span></label>
                                 <input 
-                                    type ="tel" 
+                                    type ="tel"
+                                    name="orderPhone"
                                     id="orderContact" 
                                     placeholder="123-456-7890" 
                                     autocomplete="tel"
@@ -711,7 +706,8 @@
                             <div class="form-group">
                                 <label for="orderEmail">Email address for receipt. <span aria-hidden="true" class="required">*</span></label>
                                 <input 
-                                    type="email" 
+                                    type="email"
+                                    name="orderEmail"
                                     id="orderEmail" 
                                     placeholder="Enter email for receipt" 
                                     autocomplete="email"
@@ -724,7 +720,7 @@
                             
                             <div class="button-container">
                                 <button type="submit" class="btn btn-submit" id="submitOrderBtn">Submit Order</button>
-                                <button type="reset" class="btn btn-clear" id="clearOrderBtn" onclick="return confirm('Are you sure you want to clear all form data?')">Clear Cart!</button>
+                                <button type="button" class="btn btn-clear" id="clearOrderBtn" onclick="return confirm('Are you sure you want to clear all form data?')">Clear Cart!</button>
                             </div>
                         </div>
                     </form>
