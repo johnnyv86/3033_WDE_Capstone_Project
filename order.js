@@ -271,6 +271,12 @@ document.addEventListener("DOMContentLoaded", () => {
             <p>Select another drink below.</p>`;
         });
 // CLEAR SELECTION SUMMARY SECTION LISTENER
+    document.getElementById("clearSelectionBtn").addEventListener("click", function(event) {
+        if (!confirm ('Are you sure you want to clear current selection?')) {
+            event.preventDefault(); // will stop the clearing if user click cacnel
+        }
+
+    
     const clearBtn = document.getElementById("clearSelectionBtn");
     clearBtn.addEventListener("click", () => {
     // 1. RESET & CLEAR SELECTED DATA 

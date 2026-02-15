@@ -480,7 +480,7 @@ textarea {
 }
 
 
-.teaDes h3, .teaType {
+.teaDes h5, .teaType {
     display: flex;
     justify-content: space-between;
     align-items: center; /* Add this for vertical alignment */
@@ -818,6 +818,11 @@ textarea {
     box-shadow: 0 0 10px rgba(143, 179, 143, 0.1);
 }
 
+#orderForm h3 {
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: bold;
+}
 /* =============================
     REWARDS PAGE
 ============================= */
