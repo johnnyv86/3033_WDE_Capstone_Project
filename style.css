@@ -376,6 +376,7 @@ textarea {
     outline-offset: 2px;
 }
 
+
 .filterBtn:hover,
 .filterBtn:focus,
 .selectDrinkBtn:hover,
@@ -394,6 +395,8 @@ textarea {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
 }
+
+
 
 .topping-item, .teaDes, .sweetness-card, .size-row {
     transition: 
@@ -694,26 +697,23 @@ textarea {
     padding: 0;
 }
 
-.topping-btn {
-    
-}
 
-.topping-item, .menu-topping-item {
+.topping-item, .menu-topping-item, .topping-btn {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     border: 3px solid transparent;
     border-radius: 10px;
-    padding: 5px;
+    padding: 15px;
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.topping-item {
+.topping-item, .topping-btn {
     cursor: pointer;
 }
 
-.topping-item.active {
+.topping-item.active, .topping-btn.active {
     border-color: var(--color-primary);
     background-color: rgba(143, 179, 143, 0.1);
 }
@@ -725,6 +725,16 @@ textarea {
     font-weight: normal;
 }
 
+.topping-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 0;
+    border-radius: 10px;
+    padding: 0;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
 .topImage {
     width: 80px;
     height: 80px;
@@ -811,6 +821,29 @@ textarea {
     align-items: center;
     width: 100%;
     gap: 30px;
+}
+
+.topping-btn {
+    flex: 1;
+    min-width: 150px;
+    cursor: pointer;
+    padding: 0;
+    background-color: var(--color-bg-light);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    border: 0 solid transparent;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--color-border-white);
+}
+
+.topping-btn:hover,
+.topping-btn:focus {
+    transform: scale(1.05);
+    background-color: var(--color-border-medium);
+    border: 0;
+    outline: 0;
+    outline-offset: 0;
 }
 
 .topCol2 {
