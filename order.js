@@ -98,13 +98,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const drinkCard = btn.closest(".teaDes");
             const nameEl = drinkCard.querySelector(".teaType");
             const priceEl = drinkCard.querySelector(".price");
-            const drinkName = nameEl
-                ? nameEl.childNodes[0].textContent.trim()
-                : "Unknown Drink";
+            const drinkName = btn.dataset.name;
         // REMOVE `$` Character BEFORE PARSING
-            const priceValue = priceEl
-                ? parseFloat(priceEl.textContent.replace('$', '').trim())
-                : 0;
+            const priceValue = parseFloat(btn.dataset.price);
+    
         // RESET LOGIC TO DEFAULT
             currentBasePrice = priceValue;
             currentSizePrice = 0;
@@ -193,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // GET SPECIFIC PRICE OF THIS TOPPING
             const toppingPrice = parseFloat(item.querySelector(".selectToppingBtn").dataset.price);
-            
+
     // LOGIC - if ACTIVE ADD to array : REMOVE
             if (item.classList.contains("active")) {
                 currentToppings.push(toppingName);
