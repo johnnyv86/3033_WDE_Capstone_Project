@@ -402,10 +402,20 @@ textarea {
         outline 0.3s ease;
 }
 
-.btn-submit, .filterBtn {
+.btn-submit {
     background-color: var(--color-primary);
 }
 
+.filterBtn {
+    background-color: var(--color-bg-darker);
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+}
+
+.filterBtn.active {
+    background-color: var(--color-primary);
+    color: white;
+}
 
 .btn-clear {
     background-color: var(--color-danger);

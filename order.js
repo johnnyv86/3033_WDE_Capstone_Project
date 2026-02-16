@@ -43,6 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     } catch (error) {
         console.error("Error loading cart from localStorage:", error);
+        // Clear Corrupted data from LocalStorage
+        localStorage.removeItem('perScholasTeaCart');
         cartData = [];
     }
     let cartTotal = 0;

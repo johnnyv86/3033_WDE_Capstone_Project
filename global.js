@@ -2,23 +2,26 @@
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Get the current year and display it
+
     const yearSpan = document.getElementById('currentYear');
+    const birthDateInput = document.getElementById('birthDate');
+    const visitDateInput = document.getElementById('visitDate');
+
+    const now = new Date();
+    const today = now.toLocaleDateString('en-CA');
+
+    // Get the current year and display it
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
     }
 
     // Set max date for birth date input
-    const birthDateInput = document.getElementById('birthDate');
     if (birthDateInput) {
         // Set max to today's date
-        const now = new Date();
-        const today = now.toLocaleDateString('en-CA');
         birthDateInput.setAttribute('max', today);
     }
 
     // Set max date for feedback visit date
-    const visitDateInput = document.getElementById('visitDate');
     if (visitDateInput) {
         visitDateInput.setAttribute('max', today);
     }
