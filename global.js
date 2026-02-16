@@ -84,10 +84,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 promoForm.reset();
                 msgContainer.innerHTML = ''; //Clears the message
 
+
                 // Remove error class 
-                if (phoneInput) {
-                    phoneInput.classList.remove('input-error');
-                    phoneInput.setCustomValidity(''); // Clear internal error flags
+                if (currentPhoneInput) {
+                    currentPhoneInput.classList.remove('input-error');
+                    currentPhoneInput.setCustomValidity(''); // Clear internal error flags
                 }
             }, 3000);
         });

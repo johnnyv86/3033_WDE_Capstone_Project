@@ -811,7 +811,7 @@
 
                 <section id="selectedDrinkSection" class="box">
                     <div class="box-inner">
-                        <h3 class="orderTitle">Check Selection & Add to Cart!</h3>
+                        <h3 class="orderTitle">Verify Selection</h3>
                     
                         <div class="box-inner" id="selectedDrinkDetails">
                             <p>No drink selected yet.</p>
@@ -823,6 +823,97 @@
                         </div>
                     </div>
                 </section>
+
+                <hr class="section-hr">
+
+                <section class="box orderSection" id="selectedDrinkSection">
+                    <h3>Your Current Selection</h3>
+                    <div id="selectedDrinkDetails">
+                        <p style="text-align: center; color: #888;">
+                            Select a drink above to begin customizing your order.
+                        </p>
+                    </div>
+                    <button
+                        type="button"
+                        id="addToCartBtn"
+                        class="btn btn-submit"
+                        disabled>Add to Cart
+                    </button>
+                </section>
+
+                <hr class="section-hr">
+
+                <section class="box orderSection" id="your-cart">
+                    <h3>Your Cart</h3>
+                    <div id="cart">
+                        <p id="cartEmptyMsg" style="text-align: center; color: #888">
+                            Your cart is empty. Add drinks to get started!
+                        </p>
+                        <ul id="cartItems"></ul>
+                        <p id="cartTotal" style="font-weight: bold; font-size: 1.2em; text-align: right;">
+                            Total: $0.00
+                        </p>
+                    </div>
+                </section>
+
+                <hr class="section-hr">
+
+                <section class="box orderSection" id="checkout-section">
+                    <h3>Complete Your Order</h3>
+                    <form id="orderForm">
+                        <fieldset>
+                            <legend>Your Contact Information</legend>
+                            <div class="form-group">
+                                <label for="orderName">
+                                    Full Name <span aria-hidden="true" class="required">*</span>
+                                </label>
+                                <input 
+                                    type="text"
+                                    id="orderName"
+                                    name="orderName"
+                                    placeholder="John Doe"
+                                    autocomplete="name"
+                                    required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="orderPhone">
+                                        Phone Number <span aria-hidden="true" class="rquired">*</span>
+                                    </label>
+                                    <input 
+                                        type="tel" 
+                                        name="orderPhone" 
+                                        id="orderPhone"
+                                        placeholder="(123) 455-7890"
+                                        autocomplete="tel"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="orderEmail">
+                                        Email <span aria-hidden="true" class="required">*</span>
+                                    </label>
+                                    <input 
+                                        type="email" 
+                                        name="orderEmail" 
+                                        id="orderEmail"
+                                        placeholder="johndoe@email.com"
+                                        autocomplete="email"
+                                        required>
+                                </div>
+                            </div>
+                            <p><span class="required">*</span> indicates required field</p>
+
+                            <div class="button-container">
+                                <button type="submit" class="btn btn-submit">
+                                    Place Order
+                                </button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </section>
+
+
+
                 <hr class="section-hr">
                 <section id="your-cart" class="box">
                     <div class="box-inner">
@@ -838,7 +929,7 @@
 
                     <div class="box-inner">
                         <form id="orderForm">
-                            <h3>Complete Your Order</h3>
+                            <h3>Finalize Your Order!</h3>
                             <div class="orderSection">
                                 <div class="form-group">
                                     <label for="orderName">Name for the order. <span aria-hidden="true" class="required">*</span></label>

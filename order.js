@@ -206,59 +206,71 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 // HELPER FUNCTION to UPDATE SELECTION SECTION
-    function updateDisplay() {
-        if(currentSelection) {
-    // CREATE STRING "($0.75) or EMPTY if FREE"
-            const costTotal = currentSizePrice > 0
-                ? `(+$${currentSizePrice.toFixed(2)})`
-                : "";
-            const toppingsText = currentToppings.length > 0
-                ? currentToppings.map(t => `${t.name} (+$${t.price.toFixed(2)})`).join(", ") 
-                : "None";
+function updateDisplay() {
+    if(currentSelection) {
+        // CREATE STRING "(+$0.75)" or EMPTY if FREE
+        const costTotal = currentSizePrice > 0
+            ? `(+$${currentSizePrice.toFixed(2)})`
+            : "";
+        const toppingsText = currentToppings.length > 0
+            ? currentToppings.map(t => `${t.name} (+$${t.price.toFixed(2)})`).join(", ") 
+            : "None";
 
-            selectedDetails.innerHTML = `
-                <p><strong>Drink:</strong> ${currentSelection.name}</p>
-                <p><strong>Size:</strong> ${currentSizeName} ${costTotal}</p>
-                <p><strong>Sweetness:</strong> ${currentSweetness}</p>
-                <p><strong>Toppings:</strong> ${toppingsText}</p>
-                <p><strong>Total:</strong> $${currentSelection.price.toFixed(2)}</p>
-            `;
-        }
+        // BUILD THE DISPLAY STRING
+        selectedDetails.innerHTML = `
+            <p><strong>Drink:</strong> ${currentSelection.name}</p>
+            <p><strong>Size:</strong> ${currentSizeName} ${costTotal}</p>
+            <p><strong>Sweetness:</strong> ${currentSweetness}</p>
+            <p><strong>Toppings:</strong> ${toppingsText}</p>
+            <p><strong>Current Price:</strong> $${currentSelection.price.toFixed(2)}</p>
+        `;
     }
+}
+
+
     // ADD TO CART LISTENER
     addToCartBtn.addEventListener("click", () => {
     // MODE ONE: ADD ANOTHER DRINK!    
         if (!currentSelection) {
+            alert("Please select a drink first!");
+            return;
+        }
+
+        // Create Cart Item Object
             const drinkSection = document.getElementById("drinkFilters");
             if (drinkSection) {
                 drinkSection.scrollIntoView({ behavior: "smooth" });
             }
             return;
-        }
+
     // MODE TWO: CREATE CART ITEM
     // 1. CREATE DATA OBJECT FOR NEW ITEM
-        const newItem = {
+        const cartItem = {
             name: currentSelection.name,
             size: currentSizeName,
             sweetness: currentSweetness,
             toppings: currentToppings.map(t => t.name),
             price: currentSelection.price
         };
-    // 2. ADD ITEM TO MASTER DATA LIST
-        cartData.push(newItem);
-    // 3. SAVE & UPDATE SCREEN
+    // 2. ADD TO CART ARRAY - ITEM TO MASTER DATA LIST
+        cartData.push(cartItem);
+
+    // 3. SAVE To LocalStorage & UPDATE SCREEN
         localStorage.setItem('perScholasTeaCart', JSON.stringify(cartData));
 
-       
         localStorage.setItem('perScholasTeaCartTimestamp', Date.now().toString());
         
-
+    // Render updated cart
         renderCart();
 
     // 4. SCROLL LOGIC - SCROLL BACK TO DRINK FILTER
-        addToCartBtn.textContent = "Add another drink!";
+        addToCartBtn.textContent = "✓ Added! Select Another?";
  
     // 5. RESET ALL PREVIOUS SELECTED ITEMS
+        setTimeout(() => {
+            addToCartBtn.textContent = "Add to Cart";
+        }, 2000);
+
         currentSelection = null;
         currentBasePrice = 0;
         currentSizePrice = 0;
@@ -277,6 +289,8 @@ document.addEventListener("DOMContentLoaded", () => {
             <p style="color: var(--color-primary); font-weight: bold;">Drink added to cart!</p>
             <p>Select another drink below.</p>`;
         });
+
+
 // CLEAR SELECTION SUMMARY SECTION LISTENER
     const clearBtn = document.getElementById("clearSelectionBtn");
    
@@ -431,5 +445,3 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 }); 
-    console.log('Filter buttons:', document.querySelectorAll("#drinkFilters .filterBtn"));
-console.log('Drink groups:', document.querySelectorAll("section[data-type]"))
