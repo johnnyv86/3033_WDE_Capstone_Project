@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // HELPER: SAVE TO localStorage
     function saveCartToStorage () {
         try {
-            localStorage.setItem('perScholasTeaCaart', JSON.stringify(cartData));
+            localStorage.setItem('perScholasTeaCart', JSON.stringify(cartData));
             localStorage.setItem('perScholasTeaCartTimestamp', Date.now().toString());
         } catch (error) {
             console.error("Error saving cart to localStorage:", error);
@@ -75,23 +75,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // BETTER EXPIRATION HANDLING FOR LOGIC LOADING
-    let cartData = [];
     const CART_EXPIRY_MS = 24 * 3600000; // 24 HOURS
 
     try {
         const stored = localStorage.getItem('perScholasTeaCart');
         const timestamp = localStorage.getItem('perScholasTeaCartTimestamp');
+        
+        if (stored && timestamp) {
+            const age = Date.now() - parseInt(timestamp); // AGE CALCULATED
+    
 
         if (age > CART_EXPIRY_MS) {
             
-            // EXPIRED CART
+            // EXPIRED: CLEAR CART
             console.log("Cart data expired, clearing...");
             localStorage.removeItem('perScholasTeaCart');
             localStorage.removeItem('perScholasTeaCartTimestamp');
             cartData = [];
         } else {
 
-            // FRESH CART
+            // FRESH: LOAD CART
             const parsed = JSON.parse(stored);
 
             // VERIFIY PARSED DATA IS AN ARRAY
@@ -102,23 +105,23 @@ document.addEventListener("DOMContentLoaded", () => {
                 cartData = [];
             }
         }
-    }
+    } 
 } catch (error) {
-    console.error("Error loading cart form localStorage:", error);
+        console.error("Error loading cart form localStorage:", error);
 
-    // CLEAR CORRUPT DATA
-    localStorage.removeItem('perScholasTeaCart');
-    localStorage.removeItem('perScholasTeaCartTimestamp');
-    cartData = [];
-}
+        // CLEAR CORRUPT DATA
+        localStorage.removeItem('perScholasTeaCart');
+        localStorage.removeItem('perScholasTeaCartTimestamp');
+        cartData = [];
+    }
 
 // WHEN cartData changes UPDATE saveCartToStorage()
 // addToCart Function
-function addToCart(item) {
-    cartData.push(item);
-    renderCart();
-    saveCartToStorage(); 
-}
+    function addToCart(item) {
+        cartData.push(item);
+        renderCart();
+        saveCartToStorage(); 
+    }
 
 
 // HELPER: RENDER CART & SAVE TO STORAGE
@@ -287,7 +290,23 @@ function addToCart(item) {
     });
 // TOPPING LISTENER
     toppingItems.forEach(item => {
-        item.addEventListener("click", () => {
+        item.addEventListener('click', function() {
+            const toppingName = this.dataset.name;
+            cont toppingPrice = parseFloat(this.dataset.price) || DEFAULT_TOPPING_PRICE
+
+            // TOGGLE SELECTION
+            if (this.classList.contains('active')) {
+                this.classList.remove('active');
+                currentToppings = currentToppings.filter(t => t.name !== toppingName);
+            } else {
+                this.classList.add('active');
+                currentToppings.push({ name: toppingName, price: toppingPrice });
+            }
+
+            recalculateTotal();
+        });
+    });
+
             if (!currentSelection) {
                 alert("Please select a drink first!");
                 return;

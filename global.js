@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /**
  * GENERIC FORM SUBMISSION HANDLER
- * @parm {HTMLFormElement} form - The form element
+ * @param {HTMLFormElement} form - The form element
  * @param {Function} custom.Validation - Optional custom validation function
  * @param {Function} getSuccess.Message - Function that returns success message
  */
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
         form.addEventListener('submit', function(event) {
             event.preventDefault();
 
-            // Run custom vallidation when provided 
+            // Run custom validation when provided 
             if (customValidation && !customValidation(form)) {
                 return;
             }
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Form Submisssion: promoForm
+    // Form Submission: promoForm
     const promoForm = document.getElementById('promoForm');
     if (promoForm) {
         handleFormSubmit(
@@ -98,13 +98,11 @@ document.addEventListener('DOMContentLoaded', function() {
             null, // no custom validation
             (form) => {
                 const name = form.querySelector('#promoFName').value;
-                const email = form.querySelector('promoEmail').value;
+                const email = form.querySelector('#promoEmail').value;
                 return `Thanks ${name}! You'll receive emails at ${email}.`;
             }
         );
     }
-
-
 
 
     // Form Submisssion: rewardsForm
@@ -136,114 +134,6 @@ document.addEventListener('DOMContentLoaded', function() {
         )
     }
 
-
-    // Form Submisssion: contactForm
-
-    // Form Submisssion: orderForm
-
-
-
-
-
-
-    // promoForm Submission handler
-    const promoForm = document.getElementById('promoForm');
-    if (promoForm) {
-        promoForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form from actually submitting
-
-            //Get phone input specifically inside index form
-            const currentPhoneInput = document.getElementById('promoPhone');
-            
-            // Validate phone number before submitting: if error bubble appears
-            if (currentPhoneInput && !validatePhoneNumber(currentPhoneInput, true)) {
-                currentPhoneInput.focus(); // Draw attention to the problem field
-
-                return; // Exit if validation fails
-            }
-
-            // Success Message after submit 
-            // Get the container
-            const msgContainer = document.getElementById('form-message-container');
-
-            // Set the content
-            const email = document.getElementById('promoEmail').value; 
-            const name = document.getElementById('promoFName').value;
-
-            msgContainer.innerHTML = '';
-            const successDiv = document.createElement('div');
-            successDiv.className = 'success-message';
-            successDiv.textContent = `Thanks ${name}! You'll receive emails at ${email}.`;
-            msgContainer.appendChild(successDiv);
-
-            
-            // Clear form after delay
-            setTimeout(() => {
-                promoForm.reset();
-                msgContainer.innerHTML = ''; //Clears the message
-
-
-                // Remove error class 
-                if (currentPhoneInput) {
-                    currentPhoneInput.classList.remove('input-error');
-                    currentPhoneInput.setCustomValidity(''); // Clear internal error flags
-                }
-            }, 3000);
-        });
-    }
-
-    // rewardsForm Submission FORM HANDLER
-    const rewardsForm = document.getElementById('rewardsForm');
-    if (rewardsForm) {
-        rewardsForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            // Validate password Elements
-            const name = document.getElementById('rewardsFName').value;
-            const email = document.getElementById('rewardsEmail').value;
-            const passwordInput = document.getElementById('dePassword');
-            const confirmPassword = document.getElementById('rePassword');
-
-            if (passwordInput.value !== confirmPassword.value) { // Checks value of properties
-
-                // CAll methods on the element
-                confirmPassword.setCustomValidity("Passwords do not match"); // Set error on confirmation field
-                confirmPassword.reportValidity(); // Shows error bubble
-
-                // One time listener: clears error once typing starts
-                confirmPassword.addEventListener('input', function() {
-                    confirmPassword.setCustomValidity('');
-                }, { once: true}); // Auto removes listener after running
-
-                return; // Stops submission
-            }
-
-            // Phone number Validation Logic
-            const phoneInput = document.getElementById('rewardsPhone');
-            if (phoneInput && !validatePhoneNumber(phoneInput, true)) {
-                phoneInput.focus();
-                return;
-            }
-
-            const msgContainer = document.getElementById('form-message-container');
-
-            // Customize the message for the rewards program
-            msgContainer.innerHTML = '';
-            const successDiv = document.createElement('div');
-            successDiv.className = 'success-message';
-            successDiv.textContent = `Welcome to the Club ${name}! We've sent a confirmation to ${email}.`;
-            msgContainer.appendChild(successDiv);
-
-            setTimeout(() => {
-                rewardsForm.reset();
-                msgContainer.innerHTML = '';
-                if (phoneInput) {
-                    phoneInput.classList.remove('input-error');
-                    phoneInput.setCustomValidity('');
-                }
-            }, 3000);
-        })
-    }
 
     // contactForm Submission Handler
     const contactForm = document.getElementById('contactForm');
@@ -301,7 +191,8 @@ function formatPhoneNumber(input) {
 
     // 1. Save cursor position
     const cursorPosition = input.selectionStart;
-    const oldLength = input.value.length;
+    const oldValue = input.value;
+    const oldLength = oldValue.length;
 
     // Remove non-digits
     let value = input.value.replace(/\D/g, '');
@@ -331,8 +222,18 @@ function formatPhoneNumber(input) {
     input.value = formatted;
 
     // 2. Restore cursor position 
-    const newLength = input.value.length;
-    input.setSelectionRange(cursorPosition + (newLength - oldLength), cursorPosition + (newLength - oldLength));
+    const newLength = formatted.length;
+    const lenthDiff = newLength - oldLength;
+    let newCursorPos = cursorPosition + lengthDiff;
+
+    if (newCursorPos > 0 && formatted[newCursorPos - 1] === ')') {
+        newCursorPos += 1; // to skip past the ')'
+    }
+    if (newCursorPos > 0 && formatted[newCursorPos - 1] === ' ' ) {
+        newCursorPos += 1;
+    }
+    
+    input.setSelectionRange(newCursorPos, newCursorPos);
 }
 
 /** 
