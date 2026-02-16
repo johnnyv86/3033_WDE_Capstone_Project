@@ -50,23 +50,29 @@ document.addEventListener('DOMContentLoaded', function() {
 /**
  * GENERIC FORM SUBMISSION HANDLER
  * @param {HTMLFormElement} form - The form element
- * @param {Function} custom.Validation - Optional custom validation function
- * @param {Function} getSuccess.Message - Function that returns success message
+ * @param {Function} customValidation - Optional custom validation function
+ * @param {Function} getSuccessMessage - Function that returns success message
  */
 
     function handleFormSubmit(form, customValidation, getSuccessMessage) {
         form.addEventListener('submit', function(event) {
             event.preventDefault();
 
+            let isValid = true;
+
             // Run custom validation when provided 
             if (customValidation && !customValidation(form)) {
-                return;
+                isValid = false;
             }
 
             // Validate ALL phone inputs
             const phoneInput = form.querySelector('input[type="tel"]');
             if (phoneInput && !validatePhoneNumber(phoneInput, true)) {
-                phoneInput.focus();
+                isValid = false;
+            }
+
+            // Proceed ONLY when ALL Validations PASSES
+            if (!isValid) {
                 return;
             }
 
@@ -116,15 +122,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 const password = form.querySelector('#dePassword');
                 const confirmPassword = form.querySelector('#rePassword');
 
+                // Clears Error on input (sets up listener first time validation runs)
+                if (!confirmPassword.dataset.listenerAdded) {
+                    confirmPassword.addEventListener('input', function() {
+                        if (this.validity.customError) {
+                            this.setCustomValidity('');
+                        }
+                    });
+                     confirmPassword.dataset.listenerAdded = 'true';
+                }
+
+                // Check if passwords match
                 if (password.value !== confirmPassword.value) {
                     confirmPassword.setCustomValidity("Passwords do not match");
                     confirmPassword.reportValidity();
-                    confirmPassword.addEventListener('input', function() {
-                        confirmPassword.setCustomValidity('');
-                    }, { once: true});
+
+                    // ERROR CLEARS on ANY input
                     return false;
                 }
+
                 return true;
+
             },
             (form) => {
                 const name = form.querySelector('#rewardsFName').value;
@@ -138,37 +156,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // contactForm Submission Handler
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            // Validate Phone Number
-            const currentPhoneInput = contactForm.querySelector('input[name="contactNumber"]');
-            if (currentPhoneInput && !validatePhoneNumber(currentPhoneInput, true)) {
-                currentPhoneInput.focus();
-                return;
+        handleFormSubmit(
+            contactForm,
+            null, // no custom validation
+            (form) => {
+                const name = form.querySelector('#contactName').value;
+                const email = form.querySelector('#contactEmail').value;
+                return `Thanks ${name}! We'll be in touch at ${email} shortly.`;
             }
-
-            // Success Message
-            const msgContainer = document.getElementById('form-message-container');
-            const name = document.getElementById('contactFName').value;
-            const email = document.getElementById('contactEmail').value;
-
-            msgContainer.innerHTML = '';
-            const successDiv = document.createElement('div');
-            successDiv.className = 'success-message';
-            successDiv.textContent = `Thanks ${name}! We'll be in touch at ${email} shortly.`;
-            msgContainer.appendChild(successDiv);
-
-            setTimeout(() => {
-                contactForm.reset();
-                msgContainer.innerHTML = '';
-                if (currentPhoneInput) {
-                    currentPhoneInput.classList.remove('input-error');
-                    currentPhoneInput.setCustomValidity('');
-                }
-            }, 3000);
-        })
+        );
     }
+
+          
     
     // Clear button confirmation
     const clearBtn = document.getElementById('clearFormBtn');
@@ -223,7 +222,7 @@ function formatPhoneNumber(input) {
 
     // 2. Restore cursor position 
     const newLength = formatted.length;
-    const lenthDiff = newLength - oldLength;
+    const lengthDiff = newLength - oldLength;
     let newCursorPos = cursorPosition + lengthDiff;
 
     if (newCursorPos > 0 && formatted[newCursorPos - 1] === ')') {
