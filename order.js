@@ -12,10 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
             drinkGroups.forEach((group) => {
                 const type = group.dataset.type;
                 if (filterValue === "all" || filterValue === type) {
-                    group.style.display = "";
+                    group.classList.remove("hidden-filter");
                 }
                 else {
-                    group.style.display = "none";
+                    group.classList.add("hidden-filter");
                 }
             });
         });
@@ -47,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.removeItem('perScholasTeaCart');
         cartData = [];
     }
-    let cartTotal = 0;
     let currentSelection = null;
     let currentBasePrice = 0;
     let currentSizePrice = 0;
@@ -90,7 +89,11 @@ document.addEventListener("DOMContentLoaded", () => {
 // HELPER: RECALCULATE TOTAL PRICE
     function recalculateTotal() {
         if (!currentSelection) return;
-        const toppingsCost = currentToppings.length * TOPPING_PRICE;
+
+        // Sum of individual topping price
+        const toppingsCost = currentToppings.reduce((sum, topping) => sum + topping.price, 0);
+
+        
         const rawTotal = currentBasePrice + currentSizePrice + toppingsCost;
          currentSelection.price = parseFloat(rawTotal.toFixed(2));
     }
@@ -98,8 +101,6 @@ document.addEventListener("DOMContentLoaded", () => {
     selectButtons.forEach((btn) => {
         btn.addEventListener("click", () => {
             const drinkCard = btn.closest(".teaDes");
-            const nameEl = drinkCard.querySelector(".teaType");
-            const priceEl = drinkCard.querySelector(".price");
             const drinkName = btn.dataset.name;
         // REMOVE `$` Character BEFORE PARSING
             const priceValue = parseFloat(btn.dataset.price);
@@ -195,9 +196,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // LOGIC - if ACTIVE ADD to array : REMOVE
             if (item.classList.contains("active")) {
-                currentToppings.push(toppingName);
+                currentToppings.push({name: toppingName, price: toppingPrice });
             } else {
-                currentToppings = currentToppings.filter(t => t !== toppingName);
+                currentToppings = currentToppings.filter(t => t.name !== toppingName);
             }
             recalculateTotal();
             updateDisplay();
@@ -212,8 +213,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 ? `(+$${currentSizePrice.toFixed(2)})`
                 : "";
             const toppingsText = currentToppings.length > 0
-                ? currentToppings.map(t => `${t} (+$${TOPPING_PRICE.toFixed(2)})`).join(", ")
+                ? currentToppings.map(t => `${t.name} (+$${t.price.toFixed(2)})`).join(", ") 
                 : "None";
+
             selectedDetails.innerHTML = `
                 <p><strong>Drink:</strong> ${currentSelection.name}</p>
                 <p><strong>Size:</strong> ${currentSizeName} ${costTotal}</p>
@@ -239,7 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
             name: currentSelection.name,
             size: currentSizeName,
             sweetness: currentSweetness,
-            toppings: [...currentToppings],
+            toppings: currentToppings.map(t => t.name),
             price: currentSelection.price
         };
     // 2. ADD ITEM TO MASTER DATA LIST
@@ -367,7 +369,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // A1. GET SUBMIT BUTTON & SET LOADING STATE
             const submitBtn = orderForm.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.textContent
+            const originalBtnText = submitBtn.textContent;
             
     
         // A2. CHECK IF CART IS EMPTY
@@ -428,3 +430,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 resetButton(submitBtn, originalBtnText);
         });
     }
+}); 
+    console.log('Filter buttons:', document.querySelectorAll("#drinkFilters .filterBtn"));
+console.log('Drink groups:', document.querySelectorAll("section[data-type]"))

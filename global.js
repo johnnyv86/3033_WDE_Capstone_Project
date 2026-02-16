@@ -27,29 +27,26 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Phone number validation and auto-formatting
-    const phoneInput = document.getElementById('promoPhone') 
-        || document.getElementById('rewardsPhone') 
-        || document.getElementById('contactPhone')
-        || document.getElementById('orderPhone');
-    if (phoneInput) {
-        // 1. INPUT EVENT: Format as they type AND clear errors immediately
+    // Get ALL phone input
+    const phoneInputs = document.querySelectorAll('input[type="tel"]');
+
+    phoneInputs.forEach(phoneInput => {
+        // 1. INPUT EVENT Format as they type AND clear errors immediately
         phoneInput.addEventListener('input', function() {
             formatPhoneNumber(this);
 
-            // If the user is typing, assume they are fixing number.
-            // Remove the ugly red border immediately
             if (this.classList.contains('input-error')) {
                 this.classList.remove('input-error');
                 this.setCustomValidity('');
             }
-        });   
+        });
 
-        // 2. BLUR EVENT: Validate quietly when user leaves the field (Red border only, no popup)
+        // 2. BLUR EVENT
         phoneInput.addEventListener('blur', function() {
-            // Pass 'false' to say "Don't show the popup bubble yet"
             validatePhoneNumber(this, false);
         });
-    }
+    });
+
 
     // promoForm Submission handler
     const promoForm = document.getElementById('promoForm');
@@ -85,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Clear form after delay
             setTimeout(() => {
                 promoForm.reset();
-                msgContainer.innerHTML = '' //Clears the message
+                msgContainer.innerHTML = ''; //Clears the message
 
                 // Remove error class 
                 if (phoneInput) {
@@ -140,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             setTimeout(() => {
                 rewardsForm.reset();
-                msgContainer.innerHTML = ''
+                msgContainer.innerHTML = '';
                 if (phoneInput) {
                     phoneInput.classList.remove('input-error');
                     phoneInput.setCustomValidity('');
@@ -175,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             setTimeout(() => {
                 contactForm.reset();
-                msgContainer.innerHTML = ''
+                msgContainer.innerHTML = '';
                 if (currentPhoneInput) {
                     currentPhoneInput.classList.remove('input-error');
                     currentPhoneInput.setCustomValidity('');

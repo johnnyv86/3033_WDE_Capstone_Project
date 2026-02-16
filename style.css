@@ -417,6 +417,10 @@ textarea {
     color: white;
 }
 
+.hidden-filter {
+    display: none !important;
+}
+
 .btn-clear {
     background-color: var(--color-danger);
 }
