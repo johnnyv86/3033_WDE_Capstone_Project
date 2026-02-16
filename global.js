@@ -47,6 +47,104 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+/**
+ * GENERIC FORM SUBMISSION HANDLER
+ * @parm {HTMLFormElement} form - The form element
+ * @param {Function} custom.Validation - Optional custom validation function
+ * @param {Function} getSuccess.Message - Function that returns success message
+ */
+
+    function handleFormSubmit(form, customValidation, getSuccessMessage) {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Run custom vallidation when provided 
+            if (customValidation && !customValidation(form)) {
+                return;
+            }
+
+            // Validate ALL phone inputs
+            const phoneInput = form.querySelector('input[type="tel"]');
+            if (phoneInput && !validatePhoneNumber(phoneInput, true)) {
+                phoneInput.focus();
+                return;
+            }
+
+            // Show Success Message
+            const msgContainer = document.getElementById('form-message-container');
+            msgContainer.innerHTML = '';
+            const successDiv = document.createElement('div');
+            successDiv.className = 'success-message';
+            successDiv.textContent = getSuccessMessage(form);
+            msgContainer.appendChild(successDiv);
+
+            // Reset Form after a delay
+            setTimeout(() => {
+                form.reset();
+                msgContainer.innerHTML = '';
+                if (phoneInput) {
+                    phoneInput.classList.remove('input-error');
+                    phoneInput.setCustomValidity('');
+                }
+            }, 3000); 
+        });
+    }
+
+    // Form Submisssion: promoForm
+    const promoForm = document.getElementById('promoForm');
+    if (promoForm) {
+        handleFormSubmit(
+            promoForm,
+            null, // no custom validation
+            (form) => {
+                const name = form.querySelector('#promoFName').value;
+                const email = form.querySelector('promoEmail').value;
+                return `Thanks ${name}! You'll receive emails at ${email}.`;
+            }
+        );
+    }
+
+
+
+
+    // Form Submisssion: rewardsForm
+    const rewardsForm = document.getElementById('rewardsForm');
+    if (rewardsForm) {
+        handleFormSubmit(
+            rewardsForm,
+
+            // Custom Password Validation
+            (form) => {
+                const password = form.querySelector('#dePassword');
+                const confirmPassword = form.querySelector('#rePassword');
+
+                if (password.value !== confirmPassword.value) {
+                    confirmPassword.setCustomValidity("Passwords do not match");
+                    confirmPassword.reportValidity();
+                    confirmPassword.addEventListener('input', function() {
+                        confirmPassword.setCustomValidity('');
+                    }, { once: true});
+                    return false;
+                }
+                return true;
+            },
+            (form) => {
+                const name = form.querySelector('#rewardsFName').value;
+                const email = form.querySelector('#rewardsEmail').value;
+                return `Welcome to the Club ${name}! We've sent a confirmation to ${email}.`;
+            }
+        )
+    }
+
+
+    // Form Submisssion: contactForm
+
+    // Form Submisssion: orderForm
+
+
+
+
+
 
     // promoForm Submission handler
     const promoForm = document.getElementById('promoForm');
@@ -267,11 +365,13 @@ function validatePhoneNumber(input, showPopup = true) {
             return false;
         }
 
-        // If it's empty, we rely on the HTML 'required' attribute.
+        // If empty, clear custom errors & rely on the HTML 'required' attribute.
         // We explicitly clear custom validity so the browser's native "Required" error can show.
         input.setCustomValidity('');
         input.classList.remove('input-error');
-        return true;
+
+        // Return false if field is required and empty 
+        return !input.hasAttribute('required');
     } 
 
     // Case 3: Invalid (Wrong length)

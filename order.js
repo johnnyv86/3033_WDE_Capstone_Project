@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     });
+
 // DRINK BUILDER & CART SECTION LOGIC
     const selectedDetails = document.getElementById("selectedDrinkDetails");
     const addToCartBtn = document.getElementById("addToCartBtn");
@@ -57,11 +58,76 @@ document.addEventListener("DOMContentLoaded", () => {
     const sizeRows = document.querySelectorAll(".size-row");
     const sweetnessCards = document.querySelectorAll(".sweetness-card");
     const toppingItems = document.querySelectorAll(".topping-items");
+
+    // HELPER: SAVE TO localStorage
+    function saveCartToStorage () {
+        try {
+            localStorage.setItem('perScholasTeaCaart', JSON.stringify(cartData));
+            localStorage.setItem('perScholasTeaCartTimestamp', Date.now().toString());
+        } catch (error) {
+            console.error("Error saving cart to localStorage:", error);
+
+            // Inform user that cart won't persist
+            if (error.name === 'QuotaExceededError') {
+                console.warn("LocalStorage is full. Cart will not be saved.");
+            }
+        }
+    }
+
+    // BETTER EXPIRATION HANDLING FOR LOGIC LOADING
+    let cartData = [];
+    const CART_EXPIRY_MS = 24 * 3600000; // 24 HOURS
+
+    try {
+        const stored = localStorage.getItem('perScholasTeaCart');
+        const timestamp = localStorage.getItem('perScholasTeaCartTimestamp');
+
+        if (age > CART_EXPIRY_MS) {
+            
+            // EXPIRED CART
+            console.log("Cart data expired, clearing...");
+            localStorage.removeItem('perScholasTeaCart');
+            localStorage.removeItem('perScholasTeaCartTimestamp');
+            cartData = [];
+        } else {
+
+            // FRESH CART
+            const parsed = JSON.parse(stored);
+
+            // VERIFIY PARSED DATA IS AN ARRAY
+            if (Array.isArray(parsed)) {
+                cartData = parsed;
+            } else {
+                console.warn("Invalid cart data structure, resetting");
+                cartData = [];
+            }
+        }
+    }
+} catch (error) {
+    console.error("Error loading cart form localStorage:", error);
+
+    // CLEAR CORRUPT DATA
+    localStorage.removeItem('perScholasTeaCart');
+    localStorage.removeItem('perScholasTeaCartTimestamp');
+    cartData = [];
+}
+
+// WHEN cartData changes UPDATE saveCartToStorage()
+// addToCart Function
+function addToCart(item) {
+    cartData.push(item);
+    renderCart();
+    saveCartToStorage(); 
+}
+
+
 // HELPER: RENDER CART & SAVE TO STORAGE
     function renderCart() {
-        cartList.innerHTML = "";
+  // 1. Calculate everything first (NO DOM CHANGES)
         let runningTotal = 0;
-    // 1. CREATE DocumentFragment
+        const hasItems = cartData.length > 0;
+
+    // 2. CREATE DocumentFragment
         const fragment = document.createDocumentFragment();
         cartData.forEach((item, index) => {
             const li = document.createElement("li");
@@ -70,11 +136,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 : "";
             li.textContent = `${index + 1}. ${item.name}, ${item.size}, ${item.sweetness}, ${toppingsString} - $${item.price.toFixed(2)}`;
             li.classList.add("cart-items");
-    // 2. APPEND to FRAGMENT instead of cartList
+    // 3. APPEND to FRAGMENT instead of cartList
             fragment.appendChild(li);
             runningTotal += item.price;
         });
-    // 3. APPEND FRAGMENT to the DOM
+
+    // 4. APPEND ALL FRAGMENTS to the DOM
+        requestAnimationFrame(() => {
+            cartList.innerHTML = "";
+            cartList.appendChild(fragment);
+            cartTotalEl.textContent = `Total: $${runningTotal.toFixed(2)}`;
+
+            // VISIBILITY
+            if (cartEmptyMsg) {
+                cartEmptyMsg.style.display = hasItems ? "none" : "block";
+            }
+        });
+    }
+
+        
+
+
         cartList.appendChild(fragment);
     // 4. UPDATE TOTAL TEXT
         cartTotalEl.textContent = `Total: $${runningTotal.toFixed(2)}`;
@@ -99,7 +181,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 // DRINK SELECTION LISTENER
     selectButtons.forEach((btn) => {
-        btn.addEventListener("click", () => {
+        btn.addEventListener('click', function() {
+
+            // REMVOE ACTIVE CLASS from ALL buttons
+            selectButtons.forEach(b => {
+                const parent = b.closest('.teaDes');
+                if (parentTeaDes) {
+                    parentTeaDes.classList.add('selectedDrink');
+                }
+
+                // EXTRACT DINK DATA
+                const drinkName = this.dataset.name || "Unknown Drink";
+                const basePrice = parseFloat(this.dataset.price) || 0;
+
+                // STORE SELECTION
+                currentSelection = {
+                    name: drinkName,
+                    price: basePrice
+                };
+                currentBasePrice = basePrice;
+
+                // SHOW CUSTOMIZATION SECTION
+                selectedDetails.style.display = "block";
+                recalculateTotal();
+            });
+        });
             const drinkCard = btn.closest(".teaDes");
             const drinkName = btn.dataset.name;
         // REMOVE `$` Character BEFORE PARSING

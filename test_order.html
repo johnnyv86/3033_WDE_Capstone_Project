@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Per Scholas Tea Order</title>
+        <link rel="stylesheet" href="test_style.css">
+        <script src="global.js" defer></script>
+        <script src="order.js" defer></script>
+        <link rel="icon" href="media/BusinessLogo.jpg" type="image/jpeg">
+    </head>
+
+    <body>
+        <div id="main-container">
+            <header id="section1">
+                <div class="box b0-business">
+                    <img 
+                        src="media/BusinessLogo.jpg" 
+                        alt="Per Scholas Tea Business Logo" 
+                        class="business-img"
+                        width="225"
+                        height="225">                    
+                    <div class="header-text">
+                        <h1 class="businessName">PER SCHOLAS TEA</h1>
+                        <h2 class="businessSlogan">Brewing the Future</h2>
+                        <hr class="section-hr">
+                        <div class="businessInfo-container">
+                            <div class="businessInfo">
+                                <h3>Business Hours:</h3>
+                                <p>Monday - Sunday</p>
+                                <p>12pm - 12am</p>
+                            </div>
+                            <div class="businessInfo">
+                                <h3>Phone Number:</h3>
+                                <p>(305) 515 - 9041</p>
+                                <a href="tel:+13055159041">Click to call!</a>
+                            </div>
+                            <div class="businessInfo">
+                                <h3>Business Address:</h3>
+                               <p>701 S. Miami Ave., Miami, FL 33130</p>
+                               <a target="_blank" rel="noopener noreferrer" 
+                                    href="https://www.google.com/maps/search/?api=1&query=701+S.+Miami+Ave,+Miami,+FL+33130">
+                                    Get Directions to Per Scholas Tea!
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <hr class="section-hr">
+
+            <nav aria-label="Main navigation">
+                <ul class="mainNav">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="menu.html">MENU</a></li>
+                    <li><a class="active" href="order.html" aria-current="page">ORDER</a></li>
+                    <li><a href="rewards.html">REWARDS</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </nav>
+
+            <hr class="section-hr">
+
+            <main>
+                <div class="box">
+                    <div class="box-title">
+                    <h3 class="orderTitle">EASY ORDERING</h3></div>
+                    <article class="easyOrdering">
+                        <ol class="ordering-steps">
+                            <li>
+                                <span class="step-number">1</span>
+                                <span class="step-text">Select Drink</span>
+                            </li>
+                            <li>
+                                <span class="step-number">2</span>
+                                <span class="step-text">Select Size</span>
+                            </li>
+                            <li>
+                                <span class="step-number">3</span>
+                                <span class="step-text">Select Sweetness</span>
+                            </li>
+                            <li>
+                                <span class="step-number">4</span>
+                                <span class="step-text">Select Toppings</span>
+                            </li>
+                            <li>
+                                <span class="step-number">5</span>
+                                <span class="step-text">Add to Cart</span>
+                            </li>
+                            </ol>
+                        
+
+                        
+                    </article>
+                </div>
+
+                <hr class="section-hr">
+            <div class="box">
+                <section id="filter-box">
+                    <div class="box-title">
+                    <h2 class="orderTitle">DRINKS</h2></div>
+                    <h2>Filter by Drink Type...</h2>
+                    <div id="drinkFilters">
+                        <button type="button" class="filterBtn active" data-filter="all">ALL</button>
+                        <button type="button" class="filterBtn" data-filter="CLASSIC TEAS">CLASSIC TEAS</button>
+                        <button type="button" class="filterBtn" data-filter="SLUSH TEAS">SLUSH TEAS</button>
+                        <button type="button" class="filterBtn" data-filter="PUNCHY TEAS">PUNCHY TEAS</button>
+                        <button type="button" class="filterBtn" data-filter="MILK TEAS">MILK TEAS</button>
+                        <button type="button" class="filterBtn" data-filter="MATCHA TEAS">MATCHA TEAS</button>
+                        <button type="button" class="filterBtn" data-filter="YOGURTS">YOGURTS</button>
+                        <button type="button" class="filterBtn" data-filter="COFFEE">COFFEE</button>
+                    </div>
+                </section>
+ <hr class="section-hr">
+                <section data-type="CLASSIC TEAS" class="box-inner">
+        
+                    <article class="teaDes">
+                        <h3>CLASSIC TEAS</h3>
+                        <button type="button" data-name="Classic Green Tea" class="selectDrinkBtn" data-price="6.95">
+                            <img 
+                                class="orderDrinkImage" 
+                                width="110"
+                                height="110"
+                                src="media/ClassicGreenTea.jpg" 
+                                alt="Classic Green Tea">
+                            <div class="drink-info">
+                            <h4 class="teaType">Classic Green Tea
+                                <span class="price">$6.95</span></h4>
+                            <div class="drinkDes1">
+                                <span>Refreshing jasmine green Tea sweetened with cane sugar.</span>
+                                <span>Vegan-Friendly</span>
+                            </div>
+                        </div>
+                    </button>
+                    </article>
+                    <article class="teaDes">
+                        <button type="button" data-name="Classic Black Tea" class="selectDrinkBtn" data-price="6.95">
+                            <img 
+                                class="orderDrinkImage" 
+                                width="110"
+                                height="110"
+                                src="media/ClassicBlackTea.jpg" 
+                                alt="Classic Black Tea">
+    
+                            <div class="drink-info">
+                            <h4 class="teaType">Classic Black Tea
+                                <span class="price">$6.95</span></h4>
+                            <div class="drinkDes1">
+                                <span>Earl grey Tea with bergamot. Bold & citrusy.</span>
+                                <span>Vegan-Friendly</span>
+                            </div>
+                        </div>
+                        </button>
+                    </article>
+                    <article class="teaDes">
+                        <button type="button" data-name="Classic Honey Oolong Tea" class="selectDrinkBtn" data-price="6.95">
+                            <img 
+                                class="orderDrinkImage" 
+                                width="110"
+                                height="110"
+                                src="media/ClassicHoneyOolongTea.jpg" 
+                                alt="Classic Honey Oolong Tea">
+    
+                            <div class="drink-info">
+                            <h4 class="teaType">Classic Honey Oolong Tea
+                                <span class="price">$6.95</span></h4>
+                            <div class="drinkDes1">
+                                <span>Rich honey & smooth oolong Tea.</span>
+                                <span>Contains Caffeine</span>
+                            </div>
+                        </div>
+                        </button>
+                    </article>
+    
+                </section>
+
+                <section class="box-inner" data-type="SLUSH TEAS">
+                    
+                    <article class="teaDes">
+                        <h3>SLUSH TEAS</h3>
+                        <button type="button" data-name="Berry Slush" class="selectDrinkBtn" data-price="7.95">
+                            <img 
+                                class="orderDrinkImage" 
+                                width="110"
+                                height="110"
+                                src="media/BerrySlush.jpg" 
+                                alt="Berry Slush">
+                            <div class="drink-info">
+                            <h4 class="teaType">Berry Slush
+                                <span class="price">$7.95</span></h4>
+                            <div class="drinkDes1">
+                                <span>An icy blend of sweet prickly pear and tangy lemon.</span>
+                                <span>A citrusy sweet treat!</span>
+                            </div>
+                        </button>
+                    </article>
+                    <article class="teaDes">
+                        <button type="button" data-name="Mango Slush" class="selectDrinkBtn" data-price="7.95">
+                            <img 
+                                class="orderDrinkImage" 
+                                width="110"
+                                height="110"
+                                src="media/MangoSlush.jpg" 
+                                alt="Mango Slush">
+                            <div class="drink-info">
+                            <h4 class="teaType">Mango Slush
+                                <span class="price">$7.95</span></h4>
+                            <div class="drinkDes1">
+                                <span>Sweet & refreshing mango blended with ice. </span>
+                                <span>Caffeine-free & Vegan friendly</span>
+                            </div>
+                        </div>
+                    </button>
+                    </article>
+                    <article class="teaDes">
+                        <button type="button" data-name="Strawberry Slush" class="selectDrinkBtn" data-price="7.95">
+                            <img 
+                                class="orderDrinkImage" 
+                                width="110"
+                                height="110"
+                                src="media/StrawberrySlush.jpg" 
+                                alt="Strawberry Slush">
+                            <div class="drink-info">
+                            <h4 class="teaType">Strawberry Slush
+                                <span class="price">$7.95</span></h4>
+                            <div class="drinkDes1">
+                                <span>Strawberry jam blended with Milk & ice. Sweet & refreshing.</span>
+                                <span>Contains dairy & Caffeine-free</span>
+                            </div>
+                        </div>
+                    </button>
+                    </article>
+                </section>
+
+                <section class="box-inner" data-type="PUNCHY TEAS">
+                    
+                    <article class="teaDes">
+                        <h3>PUNCHY TEAS</h3>
+                        <button type="button" data-name="Berry Lemonade" class="selectDrinkBtn" data-price="6.95">
+                            <img 
+                                class="orderDrinkImage" 
+                                width="110"
+                                height="110"
+                                src="media/BerryLemonade.jpg" 
+                                alt="Berry Lemonade">
+                            <div class="drink-info">
+                            <h4 class="teaType">Berry Lemonade
+                                <span class="price">$6.95</span></h4>
+                            <div class="drinkDes1">
+                                <span>This vibrant magenta lemonade bursts with sweet and tart flavors.</span>
+                                <span>Vegan-friendly</span>
+                            </div>
+                        </div>
+                    </button>
+                    </article>
+                    <article class="teaDes">
+                        <button type="button" data-name="Lychee Punch" class="selectDrinkBtn" data-price="6.95">
+                            <img 
+                                class="orderDrinkImage" 
+                                width="110"
+                                height="110"
+                                src="media/LycheePunch.jpg" 
+                                alt="Lychee Punch">
+                            <div class="drink-info">
+                            <h4 class="teaType">Lychee Punch
+                                <span class="price">$6.95</span></h4>
+                            <div class="drinkDes1">
+                                <span>Sweet lychee & fragrant jasmine green Tea.</span>
+                                <span>Vegan-friendly</span>
+                            </div>
+                        </div>
+                    </button>
+                    </article>
+                    <article class="teaDes">
+                        <button type="button" data-name="Prism Tower Punch" class="selectDrinkBtn" data-price="6.95">
+                            <img 
+                                class="orderDrinkImage" 
+                                width="110"
+                                height="110"
+                                src="media/PrismTowerPunch.jpg" 
+                                alt="Prism Tower Punch">
+                            <div class="drink-info">
+                            <h4 class="teaType">Prism Tower Punch
+                                <span class="price">$6.95</span></h4>
+                            <div class="drinkDes1">
+                                <span>A refreshing tropical punch that's as iconic as Prism Tower! Sweet, blue curaçao blends perfectly with citrus lemonade, and crisp aloe jelly adds the refreshing finish!</span>
+                                <span>Vegan-friendly</span>
+                            </div>
+                        </div>
+                    </button>
+                    </article>
+                </section>
+
+                <section class="box-inner" data-type="MILK TEAS">
+                    
+                    <article class="teaDes">
+                        <h3>MILK TEAS</h3>
+                        <button type="button" data-name="Classic Honey Milk Tea" class="selectDrinkBtn" data-price="6.95">
+                            <img 
+                                class="orderDrinkImage" 
+                                width="110"
+                                height="110"
+                                src="media/ClassicMilkTea.jpg" 
+                                alt="Classic Honey Milk Tea">
+                            <div class="drink-info">
+                            <h4 class="teaType">Classic Honey Milk Tea
+                                <span class="price">$6.95</span></h4>
+                            <div class="drinkDes1">
+                                <span>Longan honey, Milk powder, & earl grey Tea.</span>
+                                <span>Sweet & smooth.</span>
+                            </div>
+                        </div>
+                    </button>
+                    </article>
+                    <article class="teaDes">
+                        <button type="button" data-name="Honey Milk Green Tea" class="selectDrinkBtn" data-price="6.95">
+                            <img 
+                                class="orderDrinkImage" 
+                                width="110"
+                                height="110"
+                                src="media/HoneyMilkGreenTea.jpg" 
+                                alt="Honey Milk Green Tea">
+                            <div class="drink-info">
+                            <h4 class="teaType">Honey Milk Green Tea
+                                <span class="price">$6.95</span></h4>
+                            <div class="drinkDes1">
+                                <span>Longan honey, Milk powder, & jasmine green Tea.</span>
+                                <span>Sweet & fragrant.</span>
+                            </div>
+                        </div>
+                    </button>
+                    </article>
+                    <article class="teaDes">
+                        <button type="button" data-name="Honey Thai Milk Tea" class="selectDrinkBtn" data-price="6.95">
+                            <img 
+                                class="orderDrinkImage" 
+                                width="110"
+                                height="110"
+                                src="media/ThaiMilkTea.jpg" 
+                                alt="Honey Thai Milk Tea">
+                            <div class="drink-info">
+                            <h4 class="teaType">Honey Thai Milk Tea
+                                <span class="price">$6.95</span></h4>
+                            <div class="drinkDes1">
+                                <span>A creamy yet bold Thai Tea flavor with a touch of honey.</span>
+                                <span>Contains Caffeine</span>
+                            </div>
+                        </div>
+                    </button>
+                    </article>
+                </section>
+
+                <section class="box-inner" data-type="MATCHA TEAS">
+                    
+                    <article class="teaDes">
+                        <h3>MATCHA TEAS</h3>
+                        <button type="button" data-name="Matcha Milk Tea" class="selectDrinkBtn" data-price="7.95">
+                            <img 
+                                class="orderDrinkImage" 
+                                width="110"
+                                height="110"
+                                src="media/MatchaMilkTea.jpg" 
+                                alt="Matcha Milk Tea">
+                            <div class="drink-info">
+                            <h4 class="teaType">Matcha Milk Tea
+                                <span class="price">$7.95</span></h4>
+                            <div class="drinkDes1">
+                                <span>Creamy & fragrant Japanese matcha green Tea & Lactose-free Milk.</span>
+                                <span>Contains Dairy & Caffeine.</span>
+                            </div>
+                        </div>
+                    </button>
+                    </article>
+                    <article class="teaDes">
+                        <button type="button" data-name="Sesame Matcha Milk" class="selectDrinkBtn" data-price="7.95">
+                            <img 
+                                class="orderDrinkImage" 
+                                width="110"
+                                height="110"
+                                src="media/SesameMatchaMilk.jpg" 
+                                alt="Sesame Matcha Milk">
+                            <div class="drink-info">
+                            <h4 class="teaType">Sesame Matcha Milk
+                                <span class="price">$7.95</span></h4>
+                            <div class="drinkDes1">
+                                <span>Bitter sweet matcha, toasted sesame, & creamy Lactose-free Milk.</span>
+                                <span>Contains Dairy & Caffeine.</span>
+                            </div>
+                        </div>
+                    </button>
+                    </article>
+                    <article class="teaDes">
+                        <button type="button" data-name="Strawberry Matcha Cream" class="selectDrinkBtn" data-price="8.95">
+                            <img 
+                                class="orderDrinkImage" 
+                                width="110"
+                                height="110"
+                                src="media/StrawberryMatchaCream.jpg" 
+                                alt="Strawberry Matcha Cream">
+                            <div class="drink-info">
+                            <h4 class="teaType">Strawberry Matcha Cream
+                                <span class="price">$8.95</span></h4>
+                            <div class="drinkDes1">
+                                <span>Creamy strawberry Milk topped with a rich, velvety matcha Milk cap, sweet, nostalgic, and berry delightful.</span>
+                                <span>Contains Dairy & Caffeine</span>
+                            </div>
+                        </div>
+                    </button>
+                    </article>
+                </section>
+
+                <section class="box-inner" data-type="YOGURTS">
+                    
+                    <article class="teaDes">
+                        <h3>YOGURTS</h3>
+                        <button type="button" data-name="Yogurt Orange Lemonade" class="selectDrinkBtn" data-price="7.95">
+                            <img 
+                                class="orderDrinkImage" 
+                                width="110"
+                                height="110"
+                                src="media/YogurtOrangeLemonade.jpg" 
+                                alt="Yogurt Orange Lemonade">
+                            <div class="drink-info">
+                            <h4 class="teaType">Yogurt Orange Lemonade
+                                <span class="price">$7.95</span></h4>
+                            <div class="drinkDes1">
+                                <span>Yakult yogurt paired with fresh-squeezed orange juice. Sweet & tangy.</span>
+                                <span>Caffeine-Free & Contains Dairy</span>
+                            </div>
+                        </div>
+                    </button>
+                    </article>
+                    <article class="teaDes">
+                        <button type="button" data-name="Yogurt Peach Lemonade" class="selectDrinkBtn" data-price="7.95">
+                            <img 
+                                class="orderDrinkImage" 
+                                width="110"
+                                height="110"
+                                src="media/YogurtPeach-ade.jpg" 
+                                alt="Yogurt Peach Lemonade">
+                            <div class="drink-info">
+                            <h4 class="teaType">Yogurt Peach Lemonade
+                                <span class="price">$7.95</span></h4>
+                            <div class="drinkDes1">
+                                <span>Sweet and tart Yakult yogurt paired with delicious chunks of peach and fresh lemonade.</span>
+                                <span>Caffeine-Free & Contains Dairy</span>
+                            </div>
+                        </div>
+                    </button>
+                    </article>
+                    <article class="teaDes">
+                        <button type="button" data-name="Yogurt Strawberry Lemonade" class="selectDrinkBtn" data-price="7.95">
+                            <img 
+                                class="orderDrinkImage" 
+                                width="110"
+                                height="110"
+                                src="media/YogurtStrawberryLemonade.jpg" 
+                                alt="Yogurt Strawberry Lemonade">
+                            <div class="drink-info">
+                            <h4 class="teaType">Yogurt Strawberry Lemonade
+                                <span class="price">$7.95</span></h4>
+                            <div class="drinkDes1">
+                                <span>Yakult yogurt paired with strawberry juice. Smooth & tangy.</span>
+                                <span>Caffeine-Free & Contains Dairy</span>
+                            </div>
+                        </div>
+                    </button>
+                    </article>
+                </section>
+
+                <section class="box-inner" data-type="COFFEE">
+                    
+                    <article class="teaDes">
+                        <h3>COFFEE</h3>
+                        <button type="button" data-name="Drip Coffee" class="selectDrinkBtn" data-price="5.95">
+                            <img 
+                                class="orderDrinkImage" 
+                                width="110"
+                                height="110"
+                                src="media/Coffee.jpg" 
+                                alt="Drip Coffee">
+                            <div class="drink-info">
+                            <h4 class="teaType">Drip Coffee
+                                <span class="price">$5.95</span></h4>
+                            <div class="drinkDes1">
+                                <span>Espresso, cane sugar, & Milk powder. Sweet & bold.</span>
+                                <span>Contains Dairy & Caffeine</span>
+                            </div>
+                        </div>
+                    </button>
+                    </article>
+                    <article class="teaDes">
+                        <button type="button" data-name="Latte" class="selectDrinkBtn" data-price="6.95">
+                            <img 
+                                class="orderDrinkImage" 
+                                width="110"
+                                height="110"
+                                src="media/Latte.jpg" 
+                                alt="Latte">
+                            <div class="drink-info">
+                            <h4 class="teaType">Latte
+                                <span class="price">$6.95</span></h4>
+                            <div class="drinkDes1">
+                                <span>Espresso paired with fresh Milk. Sweet & creamy.</span>
+                                <span>Contains Dairy & Caffeine</span>
+                            </div>
+                        </div>
+                    </button>
+                    </article>
+                    <article class="teaDes">
+                        <button type="button" data-name="Macchiato" class="selectDrinkBtn" data-price="6.95">
+                            <img 
+                                class="orderDrinkImage" 
+                                width="110"
+                                height="110"
+                                src="media/Macchiato.jpg" 
+                                alt="Macchiato">
+                            <div class="drink-info">
+                            <h4 class="teaType">Macchiato
+                                <span class="price">$6.95</span></h4>
+                            <div class="drinkDes1">
+                                <span>Bold espresso mixed with caramel, vanilla, & Milk powder. Sweet & bold.</span>
+                                <span>Contains Dairy & Caffeine</span>
+                            </div>
+                        </div>
+                    </button>
+                    </article>
+                </section>
+
+            </div>
+            <hr class="section-hr">
+                <section class="box" id="drink-size">
+                    <div class="box-title">
+                    <h2 class="orderTitle" id="order-size">DRINK SIZES</h2></div>
+                    <article class="drinkSizes">
+                        <div style="text-align: center;">
+                            <img 
+                                src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHltcmUyOGUxYWN5dThkNWUwYzI1cWFtamVoM29hZmxkZjhzZW5oZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Y4VNo2dIdW8bpDgRXt/giphy.gif" 
+                                class="giphy-embed"
+                                alt="Animated boba tea sticker">
+                        </div>
+                        <table class="size-table">
+                            <thead>
+                                <tr class="size-header">
+                                    <th>SIZE</th>
+                                    <th>VOL</th>
+                                    <th>ADD</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="size-row" data-price="0" tabindex="0">
+                                    <td>SMALL</td>
+                                    <td>12oz</td>
+                                    <td>$0.00</td>
+                                </tr>
+                                <tr class="size-row" data-price="0.50" tabindex="0">
+                                    <td>MEDIUM</td>
+                                    <td>16oz</td>
+                                    <td>$0.50</td>
+                                </tr>
+                                <tr class="size-row" data-price="1.00" tabindex="0">
+                                    <td>LARGE</td>
+                                    <td>24oz</td>
+                                    <td>$1.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div style="text-align: center;">
+                            <img 
+                                src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHltcmUyOGUxYWN5dThkNWUwYzI1cWFtamVoM29hZmxkZjhzZW5oZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Y4VNo2dIdW8bpDgRXt/giphy.gif" 
+                                class="giphy-embed"
+                                alt="Animated boba tea sticker">
+                        </div>
+                    </article>
+                </section>
+
+                <hr class="section-hr">
+
+                <section id="sweetness-level" class="box">
+                    <div class="box-title">
+                    <h2 class="orderTitle" id="order-sweetness">SWEETNESS LEVEL</h2></div>
+                    <div class="main-menu-flex">
+                        <button type="button" class="sweetness-card" data-level="0%">
+                            <h4>0% Sweetness</h4>
+                            <div class="bar-outer">
+                                <div class="bar-inner" style="width: 0%;">0%</div>
+                            </div>
+                        </button>
+
+                        <button type="button" class="sweetness-card" data-level="25%">
+                            <h4>25% Sweetness</h4>
+                            <div class="bar-outer">
+                                <div class="bar-inner" style="width: 25%;">25%</div>
+                            </div>
+                        </button>
+
+                        <button type="button" class="sweetness-card" data-level="50%">
+                            <h4>50% Sweetness</h4>
+                            <div class="bar-outer">
+                                <div class="bar-inner" style="width: 50%;">50%</div>
+                            </div>
+                        </button>
+
+                        <button type="button" class="sweetness-card" data-level="75%">
+                            <h4>75% Sweetness</h4>
+                            <div class="bar-outer">
+                                <div class="bar-inner" style="width: 75%;">75%</div>
+                            </div>
+                        </button>
+                                
+                        <button type="button" class="sweetness-card" data-level="100%">
+                            <h4>Full Sweetness</h4>
+                            <div class="bar-outer">
+                                <div class="bar-inner" style="width: 100%;">100%</div>
+                            </div>
+                        </button>
+                    </div>
+                </section>
+
+                <hr class="section-hr">
+
+                <section id="topping-type" class="box">
+                    <div class="box-title">
+                    <h2 class="orderTitle" id="toppings-section">TOPPINGS</h2></div>
+                    
+                    <article class="topType">
+                        <div class="box-inner">
+                            <h3>TAPIOCA - BOBA</h3>
+                            <ul class="topCol2">
+                                    <li class="topping-items">
+                                        <button type="button" class="selectToppingBtn" data-price="0.50">
+                                        <img 
+                                            class="topImage" 
+                                            src="media/BlackPearlTapioca.jpg" 
+                                            alt="Classic Boba">
+                                        <h4>Classic Boba</h4>
+                                        </button>
+                                    </li>
+                                    <li class="topping-items">
+                                        <button type="button" class="selectToppingBtn" data-price="0.50">   
+                                    
+                                        <img 
+                                            class="topImage" 
+                                            src="media/BrownSugarBoba.jpg" 
+                                            alt="Brown Sugar Boba">
+                                        <h4>Brown Sugar Boba</h4>
+                                        </button>
+                                    </li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <hr class="separator">
+
+                    <article class="topType">
+                        <div class="box-inner">
+                            <h3>POPPING BOBA</h3>
+                            <ul class="topCol2">
+                                <li class="topping-items">
+                                        <button type="button" class="selectToppingBtn" data-price="0.50">
+                                        <img 
+                                            class="topImage" 
+                                            src="media/PoppingBobaApple.jpg" 
+                                            alt="Popping Boba Apple">
+                                        <h4>Apple</h4>
+                                        </button>
+                                    </li>
+                                    <li class="topping-items">
+                                        <button type="button" class="selectToppingBtn" data-price="0.50">
+                                        <img 
+                                            class="topImage" 
+                                            src="media/PoppingBobaBlueberry.jpg" 
+                                            alt="Popping Boba Blueberry">
+                                        <h4>Blueberry</h4>
+                                        </button>
+                                    </li>
+                                    <li class="topping-items">
+                                        <button type="button" class="selectToppingBtn" data-price="0.50">
+                                        <img 
+                                            class="topImage" 
+                                            src="media/PoppingBobaKiwi.jpg" 
+                                            alt="Popping Boba Kiwi">
+                                        <h4>Kiwi</h4>
+                                        </button>
+                                    </li>
+                                    <li class="topping-items">
+                                        <button type="button" class="selectToppingBtn" data-price="0.50">
+                                        <img 
+                                            class="topImage" 
+                                            src="media/PoppingBobaLemon.jpg" 
+                                            alt="Popping Boba Lemon">
+                                        <h4>Lemon</h4>
+                                        </button>
+                                    </li>
+                                    <li class="topping-items">
+                                        <button type="button" class="selectToppingBtn" data-price="0.50">
+                        
+                                        <img 
+                                            class="topImage" 
+                                            src="media/PoppingBobaLychee.jpg" 
+                                            alt="Popping Boba Lychee">
+                                        <h4>Lychee</h4>
+                                        </button>
+                                    </li>
+                                   <li class="topping-items">
+                                        <button type="button" class="selectToppingBtn" data-price="0.50">
+                                  
+                                        <img 
+                                            class="topImage" 
+                                            src="media/PoppingBobaMango.jpg" 
+                                            alt="Popping Boba Mango">
+                                        <h4>Mango</h4>
+                                        </button>
+                                    </li>
+                                    <li class="topping-items">
+                                        <button type="button" class="selectToppingBtn" data-price="0.50">
+                              
+                                        <img 
+                                            class="topImage" 
+                                            src="media/PoppingBobaPassionFruit.jpg" 
+                                            alt="Popping Boba Passion Fruit">
+                                        <h4>Passion Fruit</h4>
+                                        </button>
+                                    </li>
+                                    <li class="topping-items">
+                                        <button type="button" class="selectToppingBtn" data-price="0.50">
+                    
+                                        <img 
+                                            class="topImage" 
+                                            src="media/PoppingBobaStrawberry.jpg" 
+                                            alt="Popping Boba Strawberry">
+                                        <h4>Strawberry</h4>
+                                        </button>
+                                    </li>
+      
+                            </ul>
+                        </div>
+                    </article>
+
+                    <hr class="separator">
+                            
+                    <article class="topType">
+                        <div class="box-inner">
+                            <h3>JELLY</h3>
+                            <ul class="topCol2">
+                                <li class="topping-items">
+                                <button type="button" class="selectToppingBtn" data-price="0.50">
+       
+                                        <img class="topImage" src="media/Jelly-Aloe.jpg" alt="Jelly-Aloe">                                                   
+                                        <h4>Aloe</h4>
+                                        </button>
+                                    </li>
+                                    <li class="topping-items">
+                                        <button type="button" class="selectToppingBtn" data-price="0.50">
+                                
+                                        <img class="topImage" src="media/Jelly-Coco.jpg" alt="Jelly-Coco">
+                                        <h4>Coconut</h4>
+                                        </button>
+                                    </li>
+                                   <li class="topping-items">
+                                        <button type="button" class="selectToppingBtn" data-price="0.50">
+                             
+                                        <img class="topImage" src="media/Jelly-Grape.jpg" alt="Jelly-Grape">
+                                        <h4>Grape</h4>
+                                        </button>
+                                    </li>
+                                    <li class="topping-items">
+                                        <button type="button" class="selectToppingBtn" data-price="0.50">
+                          
+                                        <img class="topImage" src="media/Jelly-Lychee.jpg" alt="Jelly-Lychee">
+                                        <h4>Lychee</h4>
+                                        </button>
+                                    </li>
+                                    <li class="topping-items">
+                                        <button type="button" class="selectToppingBtn" data-price="0.50">
+                                   
+                                        <img class="topImage" src="media/Jelly-Mango.jpg" alt="Jelly-Mango">
+                                        <h4>Mango</h4>
+                                        </button>
+                                    </li>
+                                    <li class="topping-items">
+                                        <button type="button" class="selectToppingBtn" data-price="0.50">
+                              
+                                        <img class="topImage" src="media/Jelly-PassionFruit.jpg" alt="Jelly-Passion Fruit">
+                                        <h4>Passion Fruit</h4>
+                                        </button>
+                                    </li>
+                                    <li class="topping-items">
+                                        <button type="button" class="selectToppingBtn" data-price="0.50">
+                      
+                                        <img class="topImage" src="media/Jelly-Pineapple.jpg" alt="Jelly-Pineapple">
+                                        <h4>Pineapple</h4>
+                                        </button>
+                                    </li>
+                                    <li class="topping-items">
+                                        <button type="button" class="selectToppingBtn" data-price="0.50">
+                
+                                        <img class="topImage" src="media/Jelly-Strawberry.jpg" alt="Jelly-Strawberry">
+                                        <h4>Strawberry</h4>
+                                        </button>
+                                    </li>
+                                </ul>
+            
+                        </div>
+                    </article>
+                </section>
+
+                <hr class="section-hr">
+
+                <section id="selectedDrinkSection" class="box">
+                    <div class="box-inner">
+                        <h3 class="orderTitle">Verify Selection</h3>
+                    
+                        <div class="box-inner" id="selectedDrinkDetails">
+                            <p>No drink selected yet.</p>
+                        </div>
+             
+                        <div class="button-container">
+                            <button class="btn btn-submit" id="addToCartBtn" disabled>Add to Cart</button>
+                            <button type="button" class="btn btn-clear" id="clearSelectionBtn">Clear Selection!</button>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="section-hr">
+
+                <section class="box orderSection" id="selectedDrinkSection">
+                    <h3>Your Current Selection</h3>
+                    <div id="selectedDrinkDetails">
+                        <p style="text-align: center; color: #888;">
+                            Select a drink above to begin customizing your order.
+                        </p>
+                    </div>
+                    <button
+                        type="button"
+                        id="addToCartBtn"
+                        class="btn btn-submit"
+                        disabled>Add to Cart
+                    </button>
+                </section>
+
+                <hr class="section-hr">
+
+                <section class="box orderSection" id="your-cart">
+                    <h3>Your Cart</h3>
+                    <div id="cart">
+                        <p id="cartEmptyMsg" style="text-align: center; color: #888">
+                            Your cart is empty. Add drinks to get started!
+                        </p>
+                        <ul id="cartItems"></ul>
+                        <p id="cartTotal" style="font-weight: bold; font-size: 1.2em; text-align: right;">
+                            Total: $0.00
+                        </p>
+                    </div>
+                </section>
+
+                <hr class="section-hr">
+
+                <section class="box orderSection" id="checkout-section">
+                    <h3>Complete Your Order</h3>
+                    <form id="orderForm">
+                        <fieldset>
+                            <legend>Your Contact Information</legend>
+                            <div class="form-group">
+                                <label for="orderName">
+                                    Full Name <span aria-hidden="true" class="required">*</span>
+                                </label>
+                                <input 
+                                    type="text"
+                                    id="orderName"
+                                    name="orderName"
+                                    placeholder="John Doe"
+                                    autocomplete="name"
+                                    required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="orderPhone">
+                                        Phone Number <span aria-hidden="true" class="rquired">*</span>
+                                    </label>
+                                    <input 
+                                        type="tel" 
+                                        name="orderPhone" 
+                                        id="orderPhone"
+                                        placeholder="(123) 455-7890"
+                                        autocomplete="tel"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="orderEmail">
+                                        Email <span aria-hidden="true" class="required">*</span>
+                                    </label>
+                                    <input 
+                                        type="email" 
+                                        name="orderEmail" 
+                                        id="orderEmail"
+                                        placeholder="johndoe@email.com"
+                                        autocomplete="email"
+                                        required>
+                                </div>
+                            </div>
+                            <p><span class="required">*</span> indicates required field</p>
+
+                            <div class="button-container">
+                                <button type="submit" class="btn btn-submit">
+                                    Place Order
+                                </button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </section>
+
+
+
+                <hr class="section-hr">
+                <section id="your-cart" class="box">
+                    <div class="box-inner">
+                        <h3>YOUR CART</h3>
+                        <div class="box-inner" id="cart">
+                            <p id="cartEmptyMsg">No drinks in cart.</p>
+                            <ul id="cartItems"></ul>
+                            <p id="cartTotal">Total: $0.00</p>
+                        </div>
+                    </div>
+
+                    <hr class="section-hr">
+
+                    <div class="box-inner">
+                        <form id="orderForm">
+                            <h3>Finalize Your Order!</h3>
+                            <div class="orderSection">
+                                <div class="form-group">
+                                    <label for="orderName">Name for the order. <span aria-hidden="true" class="required">*</span></label>
+                                    <input 
+                                        type="text"
+                                        name="orderName"
+                                        id="orderName" 
+                                        placeholder="Name for the order" 
+                                        autocomplete="given-name"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="orderPhone">Contact number. <span aria-hidden="true" class="required">*</span></label>
+                                    <input 
+                                        type="tel"
+                                        name="orderPhone"
+                                        id="orderPhone" 
+                                        placeholder="(123) 456-7890"                                        title="Format: (123) 456-7890" 
+                                        autocomplete="tel"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="orderEmail">Email address for receipt. <span aria-hidden="true" class="required">*</span></label>
+                                    <input 
+                                        type="email"
+                                        name="orderEmail"
+                                        id="orderEmail" 
+                                        placeholder="Enter email for receipt" 
+                                        autocomplete="email"
+                                        required>
+                                </div>
+                            
+                                <hr class="section-hr">
+                            
+                                <p><span class="required">*</span> indicates required field</p>
+                            
+                                <div class="button-container">
+                                    <button type="submit" class="btn btn-submit" id="submitOrderBtn">Submit Order</button>
+                                    <button type="button" class="btn btn-clear" id="clearOrderBtn">Clear Cart!</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </main>
+            
+            <hr class="section-hr">
+            
+            <footer>
+                <div class="footer-content">
+                    <p class="copyright">&copy; <span id="currentYear"></span> Per Scholas Tea. All rights reserved.</p>
+                </div>
+            </footer>
+        </div> 
+    </body>
+</html>
