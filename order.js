@@ -305,7 +305,11 @@ function updateDisplay() {
 
 
     // ADD TO CART LISTENER
-    addToCartBtn.addEventListener("click", () => {
+    addToCartBtn.addEventListener("click", (event) => {
+        
+        // Prevent button default behavior 
+        event.preventDefault();
+
         // 1. CHECK IF DRINK SELECTED
         if (!currentSelection) {
             alert("Please select a drink first!");
@@ -358,6 +362,12 @@ function updateDisplay() {
         if (drinkSelection) {
             drinkSelection.scrollIntoView({ behavior: "smooth" });
         }
+
+        // 10. SCOLL LOGIC: SCROLL TO CART SECTION 
+        document.getElementById('your-cart').scrollIntoView( {
+            behavior: 'smooth',
+            block: 'start'
+        });
     });
 
     // CLEAR SELECTION SUMMARY SECTION LISTENER
