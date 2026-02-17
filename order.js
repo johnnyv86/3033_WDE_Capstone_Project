@@ -340,6 +340,7 @@ function updateDisplay() {
     // ADD TO CART LISTENER
     //  TRACK BUTTON STATE
     let isCartMode = false
+    let isCheckoutMode = false
 
     addToCartBtn.addEventListener("click", (event) => {
         
@@ -397,16 +398,28 @@ function updateDisplay() {
         addToCartBtn.classList.add('cart-mode');
         isCartMode = true;
 
-        // Scroll to Cart Section
-        document.getElementById('your-cart').scrollIntoView( {
-            behavior: 'smooth',
-            block: 'start'
-    });
+        // CLEAR SELECTION -> BEGIN CHECKOUT
+        const clearBtn = document.getElementById("clearSelectionBtn");
+        clearBtn.textContent = 'Begin Checkout!';
+        clearBtn.classList.add('checkout-mode');
+        isCheckoutMode = true;
+
 });
-    // CLEAR SELECTION SUMMARY SECTION LISTENER
+    // CLEAR SELECTION SUMMARY AND BEGIN CHECKOUT BUTTON SECTION LISTENER
     const clearBtn = document.getElementById("clearSelectionBtn");
    
     clearBtn.addEventListener("click", () => {
+
+        // IF "Begin Checkoout!" -> Scroll to Cart
+        if (isCheckoutMode) {
+            document.getElementById('your-cart').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            return; // Exits without clearing
+        }
+
+        // CLEAR SLECTION! LOGIC
         // 1. Check added inside Main Listener
         if (!confirm("Are you sure you want to clear current selection?")) {
             return;
@@ -430,8 +443,17 @@ function updateDisplay() {
             selectedDetails.innerHTML = "<p>No drink selected yet.</p>";
             addToCartBtn.textContent = "Add to Cart!";
             addToCartBtn.disabled = true;
+            addToCartBtn.classList.remove('cart-mode');
+            isCartMode = false;
 
-        // 5. SCROLL LOGIC: SCROLL BACK TO TOP - DRINK FILTER SECTION
+        // 5. RESET CLEAR BUTTON (if cart is empty)
+        if (cartData.length === 0) {
+            clearBtn.textContent = "Clear Selection!";
+            clearBtn.classList.remove('checkout-mode');
+            isCheckoutMode = false;
+        }    
+
+        // 6. SCROLL LOGIC: SCROLL BACK TO TOP - DRINK FILTER SECTION
             const drinkSelection = document.getElementById("drinkFilters");
             if (drinkSelection) {
                 drinkSelection.scrollIntoView({ behavior: "smooth" });
@@ -458,7 +480,13 @@ function updateDisplay() {
         localStorage.setItem('perScholasTeaCart', JSON.stringify(cartData));
         localStorage.removeItem('perScholasTeaCartTimestamp');
     
-        // 3c. UPDATE USER INTERFACE & STROAGE
+        // 3c. RESET CLEAR SELECTION BUTTON
+        const clearBtn = document.getElementById("clearSelectionBtn");
+        clearBtn.textContent = "Clear Selection!";
+        clearBtn.classList.remove('checkout-mode');
+        isCheckoutMode = false;
+
+        // 3d. UPDATE USER INTERFACE & STROAGE
         renderCart();
         alert("Cart has been cleared!");
     });

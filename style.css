@@ -1110,6 +1110,15 @@ textarea {
     100% { transform: scale(1); }
 }
 
+#clearSelectionBtn.checkout-mode {
+    background-color: #4CAF50; /* Green for checkout */
+    color: white;
+}
+
+#clearSelectionBtn.checkout-mode:hover {
+    background-color: #45a049;
+}
+
 #cart, .orderSection, #selectedDrinkDetails {
     margin-top: 10px;
     padding: 10px;
