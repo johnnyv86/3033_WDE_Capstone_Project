@@ -139,11 +139,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-        
-
-
-
     renderCart();
+
 // HELPER: RECALCULATE TOTAL PRICE
     function recalculateTotal() {
         if (!currentSelection) return;
@@ -155,6 +152,41 @@ document.addEventListener("DOMContentLoaded", () => {
         const rawTotal = currentBasePrice + currentSizePrice + toppingsCost;
          currentSelection.price = parseFloat(rawTotal.toFixed(2));
     }
+
+    // HELPER: DRINK SELECTION RESET
+    function resetSelection() {
+        // CLEAR CURRENT SELECTION OBJECT
+        currentSelection = null;
+
+        // RESET TRACKING VARIABLES
+        currentBasePrice = 0;
+        currentSizePrice = 0;
+        currentSizeName = "Small";
+        currentSweetness = "0%";
+        currentToppings = [];
+
+
+        // CLEAR VISUAL SELECTION STATES
+        document.querySelectorAll('.selectDrinkBtn.selected').forEach(btn => {
+            btn.classList.remove('selected');
+        });
+
+        document.querySelectorAll('.size-row.selected').forEach(row => {
+            row.classList.remove('selected');
+        });
+
+        document.querySelectorAll('.sweetness-card.selected').forEach(card => {
+            card.classList.remove('selected');
+        });
+
+        document.querySelectorAll('.selectToppingBtn.selected').forEach(btn => {
+            btn.classList.remove('selected');
+        });
+
+        // UPDATE DISPLAY
+        updateDisplay();
+    }
+
 // DRINK SELECTION LISTENER
     selectButtons.forEach((btn) => {
         btn.addEventListener('click', function() {
@@ -184,6 +216,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // RESET BUTTON FOR NEW SELECTION
             addToCartBtn.textContent = "Add to Cart";
+            addToCartBtn.classList.remove('cart-mode');
+            isCartMode = false;
 
              // RESET VISUAL
             sizeRows.forEach(row => row.classList.remove("active"));
@@ -303,73 +337,72 @@ function updateDisplay() {
     }
 }
 
-
     // ADD TO CART LISTENER
+    //  TRACK BUTTON STATE
+    let isCartMode = false
+
     addToCartBtn.addEventListener("click", (event) => {
         
         // Prevent button default behavior 
         event.preventDefault();
 
-        // 1. CHECK IF DRINK SELECTED
-        if (!currentSelection) {
-            alert("Please select a drink first!");
+        // "Add Another Drink!" Logic -> Scroll to drinkk filter
+        if (isCartMode) {
+            document.getElementById('filter-box').scrollIntoView({
+                behavior: 'smooth',
+                block:'start'
+            });
+
+            // RESET BUTTON STATE
+            isCartMode = false;
+            addToCartBtn.textContent = 'Add to Cart';
+            addToCartBtn.disabled = true;
+
+            // CLEAR CURRENT SELECTION
+            resetSelection();
             return;
         }
 
-         // 2. CREATE DATA OBJECT FOR NEW ITEM
-        const cartItem = {
+        // "Add to Cart!" Logic - Validation
+        if (!currentSelection) {
+            alert('Please select a drink first!');
+            return;
+        }
+
+        if ((!currentSizeName || currentSizeName === 'Small') && currentSizePrice === 0) {
+            alert('Please select a size!');
+            return;
+        }
+
+        if (!currentSweetness) {
+            alert('Please select a sweetness level!');
+            return;
+        }
+
+        // ADD TO CART PRICE - Calculated by recalculateTotal
+        cartData.push({
             name: currentSelection.name,
             size: currentSizeName,
             sweetness: currentSweetness,
             toppings: currentToppings.map(t => t.name),
             price: currentSelection.price
-        };
-
-        // 3. ADD TO CART (PUSH, RENDER, SAVE)
-        addToCart(cartItem); 
-
-        // 4. UPDATE BUTTON TEXT
-        addToCartBtn.textContent = "✓ Added! Select Another?";
-
-        // 5. RESET ALL PREVIOUS SELECTED ITEMS
-        setTimeout(() => {
-            addToCartBtn.textContent = "Add to Cart";
-        }, 2000);
-
-        // 6. RESET SELECTION STATE
-        currentSelection = null;
-        currentBasePrice = 0;
-        currentSizePrice = 0;
-        currentSizeName = "Small";
-        currentSweetness = "0%";
-        currentToppings = [];
-
-        // 7. RESET ALL VISUAL 
-        document.querySelectorAll(".teaDes").forEach(card => {
-            card.classList.remove("selectedDrink");
         });
-        sizeRows.forEach(row => row.classList.remove("active"));
-        sweetnessCards.forEach(card => card.classList.remove("active"));
-        toppingItems.forEach(item => item.classList.remove("active"));
 
-        // 8. RESET SELECTION SUMMARY DISPLAY
-        selectedDetails.innerHTML = `
-            <p style="color: var(--color-primary); font-weight: bold;">Drink added to cart!</p>
-            <p>Select another drink below.</p>`;
-     
-        // 9. SCROLL LOGIC: SCROLL BACK TO TOP - DRINK FILTER SECTION
-        const drinkSelection = document.getElementById("drinkFilters");
-        if (drinkSelection) {
-            drinkSelection.scrollIntoView({ behavior: "smooth" });
-        }
+        // UPDATE CART DISPLAY
+        renderCart();
+        saveCartToStorage();
 
-        // 10. SCOLL LOGIC: SCROLL TO CART SECTION 
+        // Change button to Add Another Drink!
+        addToCartBtn.textContent = 'Add Another Drink!';
+        addToCartBtn.classList.add('cart-mode');
+        isCartMode = true;
+
+        // Scroll to Cart Section
         document.getElementById('your-cart').scrollIntoView( {
             behavior: 'smooth',
             block: 'start'
-        });
     });
-
+});
     // CLEAR SELECTION SUMMARY SECTION LISTENER
     const clearBtn = document.getElementById("clearSelectionBtn");
    
@@ -396,6 +429,7 @@ function updateDisplay() {
         // 4. RESET TEXT AND BUTTON FUNCTIONALITY
             selectedDetails.innerHTML = "<p>No drink selected yet.</p>";
             addToCartBtn.textContent = "Add to Cart!";
+            addToCartBtn.disabled = true;
 
         // 5. SCROLL LOGIC: SCROLL BACK TO TOP - DRINK FILTER SECTION
             const drinkSelection = document.getElementById("drinkFilters");
