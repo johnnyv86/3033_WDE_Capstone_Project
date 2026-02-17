@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Per Scholas Tea Index</title>
+        <title>Per Scholas Tea Contact</title>
         <link rel="stylesheet" href="style.css" />
         <script src="global.js" defer></script>
         <link rel="icon" href="media/BusinessLogo.jpg" type="image/jpeg" />
@@ -60,9 +60,10 @@
 
             <hr class="section-hr">
 
-            <div class="contactContainer">
-                <h2 class="animatedHeader">We Want to Hear From You! 💬</h2>
-                <div id="form-message-container"><
+            <main>
+                <div class="contactContainer">
+                    <h2 class="animatedHeader">We Want to Hear From You! 💬</h2>
+                    <div id="form-message-container"></div>
                     <form action="#" id="contactForm">
                         <fieldset>
                             <legend>Your Details</legend>
@@ -130,7 +131,7 @@
                             <legend>Feedback & Reason</legend>
                             <div class="form-group">
                                 <label for="contactReason">Reason for contact <span aria-hidden="true" class="required">*</span></label>
-                                <select name="contactReason" id="contactReason" required>
+                                <select name="contactReason" id="contactReason" required>                                    
                                     <option value="" disabled selected>-- Select an option --</option>
                                     <option value="orderIssue">Order Issue</option>
                                     <option value="staffIssue">Staff Issue</option>
@@ -155,7 +156,7 @@
                                 <div class="radio-group">
                                     <div>
                                         <input type="radio" name="contactMethod" id="byPhone" value="phone" required>
-                                        <label for="byPhone">Yes by Phone pleases.</label>
+                                        <label for="byPhone">Yes by Phone please.</label>
                                     </div>
                                     <div>
                                         <input type="radio" name="contactMethod" id="byEmail" value="email">
@@ -177,15 +178,15 @@
                         </div>
                     </form>
                 </div>
+            </main>
 
-                <hr class="section-hr">
+            <hr class="section-hr">
 
-                <footer>
-                    <div class="footer-content">
-                        <p class="copyright">&copy; <span id="currentYear"></span> Per Scholas Tea. All rights reserved.</p>
-                    </div>
-                </footer>
-            </div>
+            <footer>
+                <div class="footer-content">
+                    <p class="copyright">&copy; <span id="currentYear"></span> Per Scholas Tea. All rights reserved.</p>
+                </div>
+            </footer>
         </div>
     </body>
 </html>
