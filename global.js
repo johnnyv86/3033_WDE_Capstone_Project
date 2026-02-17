@@ -114,6 +114,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Form Submisssion: rewardsForm
     const rewardsForm = document.getElementById('rewardsForm');
     if (rewardsForm) {
+
+        // PASSWORD ERROR CLEARING
+        const confirmPassword = rewardsForm.querySelector('#rePassword');
+        if (confirmPassword) {
+            confirmPassword.addEventListener('input', function() {
+                if (this.validity.customError) {
+                    this.setCustomValidity('');
+                }
+            });
+        }
+
         handleFormSubmit(
             rewardsForm,
 
@@ -122,34 +133,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 const password = form.querySelector('#dePassword');
                 const confirmPassword = form.querySelector('#rePassword');
 
-                // Clears Error on input (sets up listener first time validation runs)
-                if (!confirmPassword.dataset.listenerAdded) {
-                    confirmPassword.addEventListener('input', function() {
-                        if (this.validity.customError) {
-                            this.setCustomValidity('');
-                        }
-                    });
-                     confirmPassword.dataset.listenerAdded = 'true';
-                }
-
                 // Check if passwords match
                 if (password.value !== confirmPassword.value) {
                     confirmPassword.setCustomValidity("Passwords do not match");
                     confirmPassword.reportValidity();
 
-                    // ERROR CLEARS on ANY input
+                    // Error will be cleared by input listener
                     return false;
                 }
-
                 return true;
-
             },
             (form) => {
                 const name = form.querySelector('#rewardsFName').value;
                 const email = form.querySelector('#rewardsEmail').value;
                 return `Welcome to the Club ${name}! We've sent a confirmation to ${email}.`;
             }
-        )
+        );
     }
 
 
@@ -160,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
             contactForm,
             null, // no custom validation
             (form) => {
-                const name = form.querySelector('#contactName').value;
+                const name = form.querySelector('#contactFName').value;
                 const email = form.querySelector('#contactEmail').value;
                 return `Thanks ${name}! We'll be in touch at ${email} shortly.`;
             }
@@ -173,11 +172,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const clearBtn = document.getElementById('clearFormBtn');
     if (clearBtn) {
         clearBtn.addEventListener('click', function(event) {
-                if (!confirm('Are you sure you want to clear all form data?')) 
-                    {
-                        event.preventDefault(); // Cancel the reset if user clicks "Cancel"
-                    }
-                });
+                if (!confirm('Are you sure you want to clear all form data?')) {
+                    event.preventDefault(); // Cancel the reset if user clicks "Cancel"
+                }
+            });
     }
 });
 

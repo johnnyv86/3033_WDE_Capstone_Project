@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 // CONSTANT VARIABLE
     const TOPPING_PRICE = 0.50;
+    const CART_EXPIRY_MS = 24 * 3600000; 
+
 // DRINK FILTERING LOGIC
     const filterButtons = document.querySelectorAll("#drinkFilters .filterBtn");
     const drinkGroups = document.querySelectorAll("section[data-type]");
@@ -21,39 +23,23 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-// DRINK BUILDER & CART SECTION LOGIC
+    // CART INITIALIZATION - DRINK BUILDER & CART SECTION LOGIC
     const selectedDetails = document.getElementById("selectedDrinkDetails");
     const addToCartBtn = document.getElementById("addToCartBtn");
     const cartList = document.getElementById("cartItems");
     const cartEmptyMsg = document.getElementById("cartEmptyMsg");
     const cartTotalEl = document.getElementById("cartTotal");
+    
     let cartData = [];
-    try {
-        const stored = localStorage.getItem('perScholasTeaCart');
-        if (stored) {
-            const parsed = JSON.parse(stored);
-            const timestamp = localStorage.getItem('perScholasTeaCartTimestamp');
-            const hourInMs = 3600000;
-            if (timestamp && Date.now() - parseInt(timestamp) > hourInMs * 24) {
-                localStorage.removeItem('perScholasTeaCart');
-                localStorage.removeItem('perScholasTeaCartTimestamp');
-                cartData = [];
-            } else {
-                cartData = parsed;
-            }
-        }
-    } catch (error) {
-        console.error("Error loading cart from localStorage:", error);
-        // Clear Corrupted data from LocalStorage
-        localStorage.removeItem('perScholasTeaCart');
-        cartData = [];
-    }
+    
+    // VARIABLES
     let currentSelection = null;
     let currentBasePrice = 0;
     let currentSizePrice = 0;
     let currentSizeName = "Small";
     let currentSweetness = "0%";
     let currentToppings = [];
+    
     const selectButtons = document.querySelectorAll(".teaDes .selectDrinkBtn");
     const sizeRows = document.querySelectorAll(".size-row");
     const sweetnessCards = document.querySelectorAll(".sweetness-card");
@@ -74,42 +60,38 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // BETTER EXPIRATION HANDLING FOR LOGIC LOADING
-    const CART_EXPIRY_MS = 24 * 3600000; // 24 HOURS
-
+    // LOAD CART FROM localStorage
     try {
         const stored = localStorage.getItem('perScholasTeaCart');
         const timestamp = localStorage.getItem('perScholasTeaCartTimestamp');
-        
+
         if (stored && timestamp) {
             const age = Date.now() - parseInt(timestamp); // AGE CALCULATED
-    
 
-        if (age > CART_EXPIRY_MS) {
-            
-            // EXPIRED: CLEAR CART
-            console.log("Cart data expired, clearing...");
-            localStorage.removeItem('perScholasTeaCart');
-            localStorage.removeItem('perScholasTeaCartTimestamp');
-            cartData = [];
-        } else {
-
-            // FRESH: LOAD CART
-            const parsed = JSON.parse(stored);
-
-            // VERIFIY PARSED DATA IS AN ARRAY
-            if (Array.isArray(parsed)) {
-                cartData = parsed;
-            } else {
-                console.warn("Invalid cart data structure, resetting");
+            if (age > CART_EXPIRY_MS) {
+                
+                // EXPIRED: CLEAR CART
+                console.log("Cart data expired, clearing...");
+                localStorage.removeItem('perScholasTeaCart');
+                localStorage.removeItem('perScholasTeaCartTimestamp');
                 cartData = [];
+            } else {
+
+                // FRESH: LOAD CART
+                const parsed = JSON.parse(stored);
+
+                // VERIFIY PARSED DATA IS AN ARRAY
+                if (Array.isArray(parsed)) {
+                    cartData = parsed;
+                } else {
+                    console.warn("Invalid cart data structure, resetting");
+                    cartData = [];
+                }
             }
         }
-    } 
-} catch (error) {
-        console.error("Error loading cart form localStorage:", error);
-
-        // CLEAR CORRUPT DATA
+    } catch (error) {
+        console.error("Error loading cart from localStorage:", error);
+        // Clear Corrupted data from LocalStorage
         localStorage.removeItem('perScholasTeaCart');
         localStorage.removeItem('perScholasTeaCartTimestamp');
         cartData = [];
@@ -160,16 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
 
 
-        cartList.appendChild(fragment);
-    // 4. UPDATE TOTAL TEXT
-        cartTotalEl.textContent = `Total: $${runningTotal.toFixed(2)}`;
-    // 5. TOGGLE EMPTY MESSAGE
-        if (cartData.length === 0) {
-            if (cartEmptyMsg) cartEmptyMsg.style.display = "block";
-        } else {
-            if (cartEmptyMsg) cartEmptyMsg.style.display = "none";
-        }
-    }
+
     renderCart();
 // HELPER: RECALCULATE TOTAL PRICE
     function recalculateTotal() {
@@ -189,62 +162,50 @@ document.addEventListener("DOMContentLoaded", () => {
             // REMVOE ACTIVE CLASS from ALL buttons
             selectButtons.forEach(b => {
                 const parent = b.closest('.teaDes');
-                if (parentTeaDes) {
-                    parentTeaDes.classList.add('selectedDrink');
+                if (parent) {
+                    parent.classList.remove('selectedDrink');
                 }
-
-                // EXTRACT DINK DATA
-                const drinkName = this.dataset.name || "Unknown Drink";
-                const basePrice = parseFloat(this.dataset.price) || 0;
-
-                // STORE SELECTION
-                currentSelection = {
-                    name: drinkName,
-                    price: basePrice
-                };
-                currentBasePrice = basePrice;
-
-                // SHOW CUSTOMIZATION SECTION
-                selectedDetails.style.display = "block";
-                recalculateTotal();
             });
-        });
-            const drinkCard = btn.closest(".teaDes");
-            const drinkName = btn.dataset.name;
-        // REMOVE `$` Character BEFORE PARSING
-            const priceValue = parseFloat(btn.dataset.price);
-    
-        // RESET LOGIC TO DEFAULT
-            currentBasePrice = priceValue;
+
+            // HIGHLIGHT DRINK CARD
+            const drinkCard = this.closest(".teaDes");
+            drinkCard.classList.add("selectedDrink");
+
+            // EXTRACT DRINK DATA
+            const drinkName = this.dataset.name || "Unknown Drink";
+            const basePrice = parseFloat(this.dataset.price) || 0; // "BASEPRICE"
+
+            // RESET LOGIC TO DEFAULT
+            currentBasePrice = basePrice;
             currentSizePrice = 0;
             currentSizeName = "Small";
             currentSweetness = "0%";
             currentToppings = [];
-        // RESET BUTTON FOR NEW SELECTION
+
+            // RESET BUTTON FOR NEW SELECTION
             addToCartBtn.textContent = "Add to Cart";
-        // RESET VISUAL
+
+             // RESET VISUAL
             sizeRows.forEach(row => row.classList.remove("active"));
             sweetnessCards.forEach(card => card.classList.remove("active"));
             toppingItems.forEach(item => item.classList.remove("active"));
-        // SET INITIAL SELECTION OBJECT
+
+            // SET INITIAL SELECTION OBJECT
             currentSelection = { name: drinkName, price: currentBasePrice };
-        // HELPER FUNCTION TO UPDATE TEXT
+
+            // HELPER FUNCTION TO UPDATE DISPLAY TEXT
             updateDisplay();
             addToCartBtn.disabled = false;
-        // HIGHLIGHT DRINK CARD
-            document
-                .querySelectorAll(".teaDes")
-                .forEach((card) => card.classList.remove("selectedDrink"));
-            drinkCard.classList.add("selectedDrink");
-        // SCROLL LOGIC TO DRINK SIZE AFTER SELECT CLICKED
+            selectedDetails.style.display = "block";
+
+            // SCROLL LOGIC TO DRINK SIZE AFTER SELECT CLICKED
             const sizeSection = document.getElementById("order-size");
             if (sizeSection) {
                 sizeSection.scrollIntoView({ behavior: "smooth" });
-            } else {
-                console.error("ID 'order-size' not found in HTML");
             }
         });
     });
+
 // SIZE SELECTION LISTENER [OUTSIDE OF LOOP]
     sizeRows.forEach(row => {
         row.addEventListener("click", () => {
@@ -291,44 +252,34 @@ document.addEventListener("DOMContentLoaded", () => {
 // TOPPING LISTENER
     toppingItems.forEach(item => {
         item.addEventListener('click', function() {
-            const toppingName = this.dataset.name;
-            cont toppingPrice = parseFloat(this.dataset.price) || DEFAULT_TOPPING_PRICE
-
-            // TOGGLE SELECTION
-            if (this.classList.contains('active')) {
-                this.classList.remove('active');
-                currentToppings = currentToppings.filter(t => t.name !== toppingName);
-            } else {
-                this.classList.add('active');
-                currentToppings.push({ name: toppingName, price: toppingPrice });
-            }
-
-            recalculateTotal();
-        });
-    });
-
             if (!currentSelection) {
                 alert("Please select a drink first!");
                 return;
             }
-    // VISUAL UPDATE: TOGGLE ACTIVE CLASS
+
+            // VISUAL UPDATE: TOGGLE ACTIVE CLASS
             item.classList.toggle("active");
-    // GET TOPPING NAME FROM <h4> TAG
+            
+            // GET TOPPING NAME FROM <h4> TAG
             const toppingName = item.querySelector("h4").textContent;
 
-    // GET SPECIFIC PRICE OF THIS TOPPING
-            const toppingPrice = parseFloat(item.querySelector(".selectToppingBtn").dataset.price);
+            // GET SPECIFIC PRICE OF THIS TOPPING
+            const toppingPrice = parseFloat(item.dataset.price) || TOPPING_PRICE;
 
-    // LOGIC - if ACTIVE ADD to array : REMOVE
+            // LOGIC - if ACTIVE ADD to array : REMOVE
             if (item.classList.contains("active")) {
                 currentToppings.push({name: toppingName, price: toppingPrice });
             } else {
                 currentToppings = currentToppings.filter(t => t.name !== toppingName);
             }
+            
             recalculateTotal();
             updateDisplay();
         });
     });
+
+
+
 
 // HELPER FUNCTION to UPDATE SELECTION SECTION
 function updateDisplay() {
@@ -355,21 +306,13 @@ function updateDisplay() {
 
     // ADD TO CART LISTENER
     addToCartBtn.addEventListener("click", () => {
-    // MODE ONE: ADD ANOTHER DRINK!    
+        // 1. CHECK IF DRINK SELECTED
         if (!currentSelection) {
             alert("Please select a drink first!");
             return;
         }
 
-        // Create Cart Item Object
-            const drinkSection = document.getElementById("drinkFilters");
-            if (drinkSection) {
-                drinkSection.scrollIntoView({ behavior: "smooth" });
-            }
-            return;
-
-    // MODE TWO: CREATE CART ITEM
-    // 1. CREATE DATA OBJECT FOR NEW ITEM
+         // 2. CREATE DATA OBJECT FOR NEW ITEM
         const cartItem = {
             name: currentSelection.name,
             size: currentSizeName,
@@ -377,46 +320,47 @@ function updateDisplay() {
             toppings: currentToppings.map(t => t.name),
             price: currentSelection.price
         };
-    // 2. ADD TO CART ARRAY - ITEM TO MASTER DATA LIST
-        cartData.push(cartItem);
 
-    // 3. SAVE To LocalStorage & UPDATE SCREEN
-        localStorage.setItem('perScholasTeaCart', JSON.stringify(cartData));
+        // 3. ADD TO CART (PUSH, RENDER, SAVE)
+        addToCart(cartItem); 
 
-        localStorage.setItem('perScholasTeaCartTimestamp', Date.now().toString());
-        
-    // Render updated cart
-        renderCart();
-
-    // 4. SCROLL LOGIC - SCROLL BACK TO DRINK FILTER
+        // 4. UPDATE BUTTON TEXT
         addToCartBtn.textContent = "✓ Added! Select Another?";
- 
-    // 5. RESET ALL PREVIOUS SELECTED ITEMS
+
+        // 5. RESET ALL PREVIOUS SELECTED ITEMS
         setTimeout(() => {
             addToCartBtn.textContent = "Add to Cart";
         }, 2000);
 
+        // 6. RESET SELECTION STATE
         currentSelection = null;
         currentBasePrice = 0;
         currentSizePrice = 0;
         currentSizeName = "Small";
         currentSweetness = "0%";
         currentToppings = [];
-    // 6. RESET ALL VISUAL 
+
+        // 7. RESET ALL VISUAL 
         document.querySelectorAll(".teaDes").forEach(card => {
             card.classList.remove("selectedDrink");
         });
         sizeRows.forEach(row => row.classList.remove("active"));
         sweetnessCards.forEach(card => card.classList.remove("active"));
         toppingItems.forEach(item => item.classList.remove("active"));
-    // 7. RESET SELECTION SUMMARY DISPLAY
+
+        // 8. RESET SELECTION SUMMARY DISPLAY
         selectedDetails.innerHTML = `
             <p style="color: var(--color-primary); font-weight: bold;">Drink added to cart!</p>
             <p>Select another drink below.</p>`;
-        });
+     
+        // 9. SCROLL LOGIC: SCROLL BACK TO TOP - DRINK FILTER SECTION
+        const drinkSelection = document.getElementById("drinkFilters");
+        if (drinkSelection) {
+            drinkSelection.scrollIntoView({ behavior: "smooth" });
+        }
+    });
 
-
-// CLEAR SELECTION SUMMARY SECTION LISTENER
+    // CLEAR SELECTION SUMMARY SECTION LISTENER
     const clearBtn = document.getElementById("clearSelectionBtn");
    
     clearBtn.addEventListener("click", () => {
@@ -462,7 +406,6 @@ function updateDisplay() {
         }
 
     // 3. If Answer: YES - function proceed to clear data
-
         // 3a. EMPTY DATA ARRAY
         cartData = [];
         addToCartBtn.disabled = true;
@@ -484,7 +427,6 @@ function updateDisplay() {
 
     if (orderForm && orderName && orderPhone && orderEmail) {
         
-
         function setButtonLoading(button) {
             button.disabled = true;
             button.textContent = "Processing...";
