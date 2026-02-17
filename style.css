@@ -767,8 +767,7 @@ textarea {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border: 3px solid transparent;
-    border-radius: 10px;
+    background-color: var(--color-bg-light);
     padding: 15px;
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
@@ -778,7 +777,7 @@ textarea {
     align-items: center;
     text-align: center;
     background-color: var(--color-bg-light);
-    border: 0;
+    border: 3px solid transparent;
     border-radius: 10px;
     padding: 15px;
     cursor: pointer;
@@ -789,9 +788,15 @@ textarea {
     cursor: pointer;
 }
 
-.selectToppingBtn.active, .topping-items.active {
+.topping-items.active .selectToppingBtn {
     border-color: var(--color-primary);
     background-color: rgba(143, 179, 143, 0.1);
+}
+
+.topping-items.active .selectToppingBtn:hover,
+.topping-items.active .selectToppingBtn:focus {
+    border-color: var(--color-primary) !important;
+    background-color: rgba(143, 179, 143, 0.1) !important;
 }
 
 .selectToppingBtn, .topping-items h4, .menu-topping-item h4 {
@@ -1118,7 +1123,6 @@ textarea {
 #clearSelectionBtn.checkout-mode:hover {
     background-color: #45a049;
 }
-
 #cart, .orderSection, #selectedDrinkDetails {
     margin-top: 10px;
     padding: 10px;

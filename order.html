@@ -64,44 +64,43 @@
 
             <main>
                 <div class="box">
-                    <div class="box-title">
-                        <h3 class="orderTitle">EASY ORDERING</h3>
+                    <h3 class="orderTitle">EASY ORDERING</h3>
+                    <div class="box-inner
+                        <article class="easyOrdering">
+                            <ol class="ordering-steps">
+                                <li>
+                                    <span class="step-number">1</span>
+                                    <span class="step-text">Select Drink</span>
+                                </li>
+                                <li>
+                                    <span class="step-number">2</span>
+                                    <span class="step-text">Select Size</span>
+                                </li>
+                                <li>
+                                    <span class="step-number">3</span>
+                                    <span class="step-text">Select Sweetness</span>
+                                </li>
+                                <li>
+                                    <span class="step-number">4</span>
+                                    <span class="step-text">Select Toppings</span>
+                                </li>
+                                <li>
+                                    <span class="step-number">5</span>
+                                    <span class="step-text">Add to Cart</span>
+                                </li>
+                            </ol>
+                        </article>
                     </div>
-
-                    <article class="easyOrdering">
-                        <ol class="ordering-steps">
-                            <li>
-                                <span class="step-number">1</span>
-                                <span class="step-text">Select Drink</span>
-                            </li>
-                            <li>
-                                <span class="step-number">2</span>
-                                <span class="step-text">Select Size</span>
-                            </li>
-                            <li>
-                                <span class="step-number">3</span>
-                                <span class="step-text">Select Sweetness</span>
-                            </li>
-                            <li>
-                                <span class="step-number">4</span>
-                                <span class="step-text">Select Toppings</span>
-                            </li>
-                            <li>
-                                <span class="step-number">5</span>
-                                <span class="step-text">Add to Cart</span>
-                            </li>
-                        </ol>
-                    </article>
                 </div>
 
                 <hr class="section-hr">
 
                 <div class="box">
                     <section id="filter-box">
-                        <div class="box-title">
-                            <h2 class="orderTitle">DRINKS</h2>
-                        </div>
+                        <h2 class="orderTitle">DRINKS</h2>
+                    <div class="box-inner">
                         <h2>Filter by Drink Type...</h2>
+                        <hr class="section-hr">
                         <div id="drinkFilters">
                             <button type="button" class="filterBtn active" data-filter="all">ALL</button>
                             <button type="button" class="filterBtn" data-filter="CLASSIC TEAS">CLASSIC TEAS</button>
@@ -111,6 +110,7 @@
                             <button type="button" class="filterBtn" data-filter="MATCHA TEAS">MATCHA TEAS</button>
                             <button type="button" class="filterBtn" data-filter="YOGURTS">YOGURTS</button>
                             <button type="button" class="filterBtn" data-filter="COFFEE">COFFEE</button>
+                        </div>
                         </div>
                     </section>
                     
@@ -529,96 +529,97 @@
                 <hr class="section-hr">
 
                 <section class="box" id="drink-size">
-                    <div class="box-title">
-                    <h2 class="orderTitle" id="order-size">DRINK SIZES</h2></div>
-                    <article class="drinkSizes">
-                        <div style="text-align: center;">
-                            <img 
-                                src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHltcmUyOGUxYWN5dThkNWUwYzI1cWFtamVoM29hZmxkZjhzZW5oZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Y4VNo2dIdW8bpDgRXt/giphy.gif" 
-                                class="giphy-embed"
-                                alt="Animated boba tea sticker">
-                        </div>
-                        <table class="size-table">
-                            <thead>
-                                <tr class="size-header">
-                                    <th>SIZE</th>
-                                    <th>VOL</th>
-                                    <th>ADD</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="size-row" data-price="0" tabindex="0">
-                                    <td>SMALL</td>
-                                    <td>12oz</td>
-                                    <td>$0.00</td>
-                                </tr>
-                                <tr class="size-row" data-price="0.50" tabindex="0">
-                                    <td>MEDIUM</td>
-                                    <td>16oz</td>
-                                    <td>$0.50</td>
-                                </tr>
-                                <tr class="size-row" data-price="1.00" tabindex="0">
-                                    <td>LARGE</td>
-                                    <td>24oz</td>
-                                    <td>$1.00</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div style="text-align: center;">
-                            <img 
-                                src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHltcmUyOGUxYWN5dThkNWUwYzI1cWFtamVoM29hZmxkZjhzZW5oZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Y4VNo2dIdW8bpDgRXt/giphy.gif" 
-                                class="giphy-embed"
-                                alt="Animated boba tea sticker">
-                        </div>
-                    </article>
+                    <h2 class="orderTitle" id="order-size">DRINK SIZES</h2>
+                    <div class="box-inner">
+                        <article class="drinkSizes">
+                            <div style="text-align: center;">
+                                <img 
+                                    src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHltcmUyOGUxYWN5dThkNWUwYzI1cWFtamVoM29hZmxkZjhzZW5oZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Y4VNo2dIdW8bpDgRXt/giphy.gif" 
+                                    class="giphy-embed"
+                                    alt="Animated boba tea sticker">
+                            </div>
+                            <table class="size-table">
+                                <thead>
+                                    <tr class="size-header">
+                                        <th>SIZE</th>
+                                        <th>VOL</th>
+                                        <th>ADD</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="size-row" data-price="0" tabindex="0">
+                                        <td>SMALL</td>
+                                        <td>12oz</td>
+                                        <td>$0.00</td>
+                                    </tr>
+                                    <tr class="size-row" data-price="0.50" tabindex="0">
+                                        <td>MEDIUM</td>
+                                        <td>16oz</td>
+                                        <td>$0.50</td>
+                                    </tr>
+                                    <tr class="size-row" data-price="1.00" tabindex="0">
+                                        <td>LARGE</td>
+                                        <td>24oz</td>
+                                        <td>$1.00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div style="text-align: center;">
+                                <img 
+                                    src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHltcmUyOGUxYWN5dThkNWUwYzI1cWFtamVoM29hZmxkZjhzZW5oZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Y4VNo2dIdW8bpDgRXt/giphy.gif" 
+                                    class="giphy-embed"
+                                    alt="Animated boba tea sticker">
+                            </div>
+                        </article>
+                    </div>
                 </section>
 
                 <hr class="section-hr">
 
                 <section id="sweetness-level" class="box">
-                    <div class="box-title">
-                        <h2 class="orderTitle" id="order-sweetness">SWEETNESS LEVEL</h2>
-                    </div>
-                    <div class="main-menu-flex">
-                        <button type="button" class="sweetness-card" data-level="0%">
-                            <h4>0% Sweetness</h4>
-                            <div class="bar-outer">
-                                <div class="bar-inner" style="width: 0%;">0%</div>
-                            </div>
-                        </button>
-                        <button type="button" class="sweetness-card" data-level="25%">
-                            <h4>25% Sweetness</h4>
-                            <div class="bar-outer">
-                                <div class="bar-inner" style="width: 25%;">25%</div>
-                            </div>
-                        </button>
-                        <button type="button" class="sweetness-card" data-level="50%">
-                            <h4>50% Sweetness</h4>
-                            <div class="bar-outer">
-                                <div class="bar-inner" style="width: 50%;">50%</div>
-                            </div>
-                        </button>
-                        <button type="button" class="sweetness-card" data-level="75%">
-                            <h4>75% Sweetness</h4>
-                            <div class="bar-outer">
-                                <div class="bar-inner" style="width: 75%;">75%</div>
-                            </div>
-                        </button>
-                        <button type="button" class="sweetness-card" data-level="100%">
-                            <h4>Full Sweetness</h4>
-                            <div class="bar-outer">
-                                <div class="bar-inner" style="width: 100%;">100%</div>
-                            </div>
-                        </button>
+                    <h2 class="orderTitle" id="order-sweetness">SWEETNESS LEVEL</h2>
+                    <div class="box-inner">
+                        <div class="main-menu-flex">
+                            <button type="button" class="sweetness-card" data-level="0%">
+                                <h4>0% Sweetness</h4>
+                                <div class="bar-outer">
+                                    <div class="bar-inner" style="width: 0%;">0%</div>
+                                </div>
+                            </button>
+                            <button type="button" class="sweetness-card" data-level="25%">
+                                <h4>25% Sweetness</h4>
+                                <div class="bar-outer">
+                                    <div class="bar-inner" style="width: 25%;">25%</div>
+                                </div>
+                            </button>
+                            <button type="button" class="sweetness-card" data-level="50%">
+                                <h4>50% Sweetness</h4>
+                                <div class="bar-outer">
+                                    <div class="bar-inner" style="width: 50%;">50%</div>
+                                </div>
+                            </button>
+                            <button type="button" class="sweetness-card" data-level="75%">
+                                <h4>75% Sweetness</h4>
+                                <div class="bar-outer">
+                                    <div class="bar-inner" style="width: 75%;">75%</div>
+                                </div>
+                            </button>
+                            <button type="button" class="sweetness-card" data-level="100%">
+                                <h4>Full Sweetness</h4>
+                                <div class="bar-outer">
+                                    <div class="bar-inner" style="width: 100%;">100%</div>
+                                </div>
+                            </button>
+                        </div>
                     </div>
                 </section>
 
                 <hr class="section-hr">
 
                 <section id="topping-type" class="box">
-                    <div class="box-title">
+               
                         <h2 class="orderTitle" id="toppings-section">TOPPINGS</h2>
-                    </div>  
+       
                     <article class="topType">
                         <div class="box-inner">
                             <h3>TAPIOCA - BOBA</h3>
@@ -805,7 +806,9 @@
 
                 <section class="box" id="your-cart">
                     <div class="box-inner">
-                        <h3>Your Cart</h3>
+                        <h3 id="cartTotal" style="font-weight: bold; text-align: center;">
+                            Cart Total: $0.00
+                        </h3>
                         <hr class="section-hr">
                         <div class="box-inner" id="cart">
                             <p id="cartEmptyMsg" style="text-align: center; color: #888">
@@ -813,9 +816,12 @@
                             </p>
                             <ul id="cartItems"></ul>
                         </div>
-                        <p id="cartTotal" style="font-weight: bold; font-size: 1.2em; text-align: right;">
-                            Total: $0.00
-                        </p>
+                        
+                                             
+                           <div class="button-container">
+                        <button type="button" class="btn btn-clear" id="clearOrderBtn">Clear Cart!</button>
+                            </div>
+                            </div>
                     </div>
 
                     <div class="box-inner">
