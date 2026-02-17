@@ -337,6 +337,7 @@ textarea {
     text-align: center;
     font-weight: bold;
     animation: slideIn 0.3s ease-out;
+    animation: fadeOut 6s forwards; 
 }
 
 @keyframes slideIn {
@@ -350,6 +351,13 @@ textarea {
         transform: translateY(0);
     }
 }
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
 /* =============================
     BUTTONS 
 ============================= */
@@ -483,9 +491,6 @@ textarea {
     gap: 10px;
     padding: 10px;
 }
-
-
-
 
 
 .menu-col {
@@ -1116,7 +1121,7 @@ textarea {
 }
 
 #clearSelectionBtn.checkout-mode {
-    background-color: #4CAF50; /* Green for checkout */
+    background-color: #4CAF50;
     color: white;
 }
 
@@ -1174,7 +1179,7 @@ textarea {
 /* Small phones */
 @media (max-width: 480px) {
     .businessName {
-        font-size: 2em; /* Down from 3.5em */
+        font-size: 2em;
     }
     
     .businessInfo-container {

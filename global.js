@@ -1,7 +1,6 @@
 
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
-    
 
     const yearSpan = document.getElementById('currentYear');
     const birthDateInput = document.getElementById('birthDate');
@@ -53,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function() {
  * @param {Function} customValidation - Optional custom validation function
  * @param {Function} getSuccessMessage - Function that returns success message
  */
-
     function handleFormSubmit(form, customValidation, getSuccessMessage) {
         form.addEventListener('submit', function(event) {
             event.preventDefault();
@@ -84,6 +82,14 @@ document.addEventListener('DOMContentLoaded', function() {
             successDiv.textContent = getSuccessMessage(form);
             msgContainer.appendChild(successDiv);
 
+            // Scroll to message once it displays
+            setTimeout(() => {
+                msgContainer.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 100);
+            
             // Reset Form after a delay
             setTimeout(() => {
                 form.reset();
@@ -92,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     phoneInput.classList.remove('input-error');
                     phoneInput.setCustomValidity('');
                 }
-            }, 3000); 
+            }, 9000); 
         });
     }
 
@@ -109,7 +115,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         );
     }
-
 
     // Form Submisssion: rewardsForm
     const rewardsForm = document.getElementById('rewardsForm');
@@ -151,9 +156,9 @@ document.addEventListener('DOMContentLoaded', function() {
         );
     }
 
-
     // contactForm Submission Handler
     const contactForm = document.getElementById('contactForm');
+
     if (contactForm) {
         handleFormSubmit(
             contactForm,
@@ -161,13 +166,11 @@ document.addEventListener('DOMContentLoaded', function() {
             (form) => {
                 const name = form.querySelector('#contactFName').value;
                 const email = form.querySelector('#contactEmail').value;
-                return `Thanks ${name}! We'll be in touch at ${email} shortly.`;
+                return `Thanks ${name} for the feedback! If requested, one of our Management Team will be reaching out to you within two to three business days.`;
             }
         );
     }
 
-          
-    
     // Clear button confirmation
     const clearBtn = document.getElementById('clearFormBtn');
     if (clearBtn) {
@@ -175,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (!confirm('Are you sure you want to clear all form data?')) {
                     event.preventDefault(); // Cancel the reset if user clicks "Cancel"
                 }
-            });
+        });
     }
 });
 
