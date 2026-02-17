@@ -58,6 +58,7 @@ fieldset {
     background-color: var(--color-bg-light);
 }
 
+
 .box-inner {
     border: 1px solid var(--color-text-primary);
     padding: 15px;
@@ -983,7 +984,7 @@ textarea {
     text-align: left;
 }
 
-.rewards-info h1 {
+.rewards-info h2 {
     margin: 0;
     padding-bottom: 5px;
     padding-top: 5px;
