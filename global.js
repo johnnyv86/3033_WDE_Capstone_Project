@@ -48,9 +48,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     promoImages.forEach(img => {
         img.addEventListener('click', () => {
-            img.classList.toggle('expanded');
-        })
-    })
+            if (img.classList.contains('expanded')) {
+                promoImages.forEach(i => i.classList.remove('expanded'));
+                return;
+            }
+
+            promoImages.forEach(i => i.classList.remove('expanded'));
+            img.classList.add('expanded');
+        });
+    });
 
 
 
