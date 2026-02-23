@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const yearSpan = document.getElementById('currentYear');
     const birthDateInput = document.getElementById('birthDate');
     const visitDateInput = document.getElementById('visitDate');
+    const promoImages = document.querySelectorAll('.b2-promo .promo-img');
 
     const now = new Date();
     const today = now.toLocaleDateString('en-CA');
@@ -44,6 +45,14 @@ document.addEventListener('DOMContentLoaded', function() {
             validatePhoneNumber(this, false);
         });
     });
+
+    promoImages.forEach(img => {
+        img.addEventListener('click', () => {
+            img.classList.toggle('expanded');
+        })
+    })
+
+
 
 /**
  * GENERIC FORM SUBMISSION HANDLER

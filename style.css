@@ -254,11 +254,23 @@ legend {
     gap: 10px;
     background-color: var(--color-bg-card);
     margin-bottom: 15px;
+    position: relative;
 }
 
 .b2-promo img {
     max-width: 275px;
     height: auto;
+}
+
+.promo-img {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.promo-img.expanded {
+    transform: scale(1.5);
+    z-index: 10;
+    box-shadow: 0 0 15px rbga(0,0,0,0.6);
 }
 
 /* =============================
