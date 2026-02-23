@@ -410,13 +410,15 @@ function updateDisplay() {
         isCheckoutMode = true;
 
 });
+// FINALIZE BUTTON
+
     // CLEAR SELECTION SUMMARY SECTION LISTENER
     // CLEAR SELECTION SUMMARY AND BEGIN CHECKOUT BUTTON SECTION LISTENER
     const clearBtn = document.getElementById("clearSelectionBtn");
 
     clearBtn.addEventListener("click", () => {
 
-        // IF "Begin Checkoout!" -> Scroll to Cart
+        // IF "Begin Checkout!" -> Scroll to Cart
         if (isCheckoutMode) {
             document.getElementById('your-cart').scrollIntoView({
                 behavior: 'smooth',
