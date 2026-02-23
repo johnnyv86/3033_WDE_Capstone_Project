@@ -29,9 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const cartList = document.getElementById("cartItems");
     const cartEmptyMsg = document.getElementById("cartEmptyMsg");
     const cartTotalEl = document.getElementById("cartTotal");
-
+    
     let cartData = [];
-
+    
     // VARIABLES
     let currentSelection = null;
     let currentBasePrice = 0;
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentSizeName = "Small";
     let currentSweetness = "0%";
     let currentToppings = [];
-
+    
     const selectButtons = document.querySelectorAll(".teaDes .selectDrinkBtn");
     const sizeRows = document.querySelectorAll(".size-row");
     const sweetnessCards = document.querySelectorAll(".sweetness-card");
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const age = Date.now() - parseInt(timestamp); // AGE CALCULATED
 
             if (age > CART_EXPIRY_MS) {
-
+                
                 // EXPIRED: CLEAR CART
                 console.log("Cart data expired, clearing...");
                 localStorage.removeItem('perScholasTeaCart');
@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Sum of individual topping price
         const toppingsCost = currentToppings.reduce((sum, topping) => sum + topping.price, 0);
 
-
+        
         const rawTotal = currentBasePrice + currentSizePrice + toppingsCost;
          currentSelection.price = parseFloat(rawTotal.toFixed(2));
     }
@@ -220,6 +220,9 @@ document.addEventListener("DOMContentLoaded", () => {
             isCartMode = false;
 
              // RESET VISUAL
+             resetCurrentSelection();
+             clearSelectionUI();
+             clearSummaryBox();
             sizeRows.forEach(row => row.classList.remove("active"));
             sweetnessCards.forEach(card => card.classList.remove("active"));
             toppingItems.forEach(item => item.classList.remove("active"));
@@ -293,7 +296,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // VISUAL UPDATE: TOGGLE ACTIVE CLASS
             item.classList.toggle("active");
-
+            
             // GET TOPPING NAME FROM <h4> TAG
             const toppingName = item.querySelector("h4").textContent;
 
@@ -306,7 +309,7 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 currentToppings = currentToppings.filter(t => t.name !== toppingName);
             }
-
+            
             recalculateTotal();
             updateDisplay();
         });
@@ -343,7 +346,7 @@ function updateDisplay() {
     let isCheckoutMode = false
 
     addToCartBtn.addEventListener("click", (event) => {
-
+        
         // Prevent button default behavior 
         event.preventDefault();
 
@@ -389,6 +392,35 @@ function updateDisplay() {
             price: currentSelection.price
         });
 
+        // CLEAR SELECTED IN FLOATING SELECTION SECTION
+            let selectedDrink = null;
+            let selectedSize = null;
+            let slectedSweetness = null;
+            let selectedToppings = [];
+            let currentTotal = 0;
+    
+
+        function clearSectionUI() {
+            document.querySelectorAll('.selectDrinkbtn.selected, .size-row.selected, .sweetness-card.selected, .selectToppingBtn.selected')
+            .foreach(el => el.classList.remove('selected'));
+        }
+
+        function clearSummaryBox() {
+            document.getElementById('summary-drink').textContent = 'No drink selected';
+            document.getElementById('summary-size').textContent = 'No size selected';
+            document.getElementById('summary-sweetness').textContent = 'No sweetness level selected';
+            document.getElementById('summary-toppiings').textContent = 'No toppings selected';
+            document.getElementById('summary-total').textContent = '$0.00';
+        }
+
+        function resetCurrentSelection() {
+            resetCurrentSelection();
+            clearSelectionUI();
+            clearSummaryBox();
+            selectedToppings = [];
+            currentTotal = 0;
+        }
+
         // UPDATE CART DISPLAY
         renderCart();
         saveCartToStorage();
@@ -398,22 +430,16 @@ function updateDisplay() {
         addToCartBtn.classList.add('cart-mode');
         isCartMode = true;
 
-        // Scroll to Cart Section
-        document.getElementById('your-cart').scrollIntoView( {
-            behavior: 'smooth',
-            block: 'start'
-    });
         // CLEAR SELECTION -> BEGIN CHECKOUT
         const clearBtn = document.getElementById("clearSelectionBtn");
-        clearBtn.textContent = 'Begin Checkout!';
+        clearBtn.textContent = 'View Cart';
         clearBtn.classList.add('checkout-mode');
         isCheckoutMode = true;
 
 });
-    // CLEAR SELECTION SUMMARY SECTION LISTENER
     // CLEAR SELECTION SUMMARY AND BEGIN CHECKOUT BUTTON SECTION LISTENER
     const clearBtn = document.getElementById("clearSelectionBtn");
-
+   
     clearBtn.addEventListener("click", () => {
 
         // IF "Begin Checkoout!" -> Scroll to Cart
@@ -452,7 +478,6 @@ function updateDisplay() {
             addToCartBtn.classList.remove('cart-mode');
             isCartMode = false;
 
-        // 5. SCROLL LOGIC: SCROLL BACK TO TOP - DRINK FILTER SECTION
         // 5. RESET CLEAR BUTTON (if cart is empty)
         if (cartData.length === 0) {
             clearBtn.textContent = "Clear Selection!";
@@ -486,8 +511,7 @@ function updateDisplay() {
         // 3b. UPDATE LOCALSTORAGE
         localStorage.setItem('perScholasTeaCart', JSON.stringify(cartData));
         localStorage.removeItem('perScholasTeaCartTimestamp');
-
-        // 3c. UPDATE USER INTERFACE & STROAGE
+    
         // 3c. RESET CLEAR SELECTION BUTTON
         const clearBtn = document.getElementById("clearSelectionBtn");
         clearBtn.textContent = "Clear Selection!";
@@ -506,7 +530,7 @@ function updateDisplay() {
     const orderEmail = document.getElementById('orderEmail');
 
     if (orderForm && orderName && orderPhone && orderEmail) {
-
+        
         function setButtonLoading(button) {
             button.disabled = true;
             button.textContent = "Processing...";
@@ -519,10 +543,10 @@ function updateDisplay() {
             button.style.opacity = "1";
             button.style.cursor = "pointer";
         }
-
+ 
         orderForm.addEventListener("submit", (event) => {
             event.preventDefault();
-
+            
         // A0. RESET ERROR VISUAL AT START OF EVERY ATTEMPT
             orderName.classList.remove("input-error");
             orderPhone.classList.remove("input-error");
@@ -531,24 +555,24 @@ function updateDisplay() {
         // A1. GET SUBMIT BUTTON & SET LOADING STATE
             const submitBtn = orderForm.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn.textContent;
-
-
+            
+    
         // A2. CHECK IF CART IS EMPTY
             if (cartData.length === 0) {
                 alert("Your cart is empty! Please add drinks before submitting.");
                 resetButton(submitBtn, originalBtnText);
                 return;
             }
-
+    
         // A3. GET FORM VALUES
             const nameValue = orderName.value.trim();
             const contactValue = orderPhone.value.trim();
             const emailValue = orderEmail.value.trim();
-
+    
         // A4. STANDARDIZE PHONE NUMBER & EMAIL ENTERED
             const cleanPhone = contactValue.replace(/\D/g, '');
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+            
         // A5. RE-ENABLE BUTTON ON VALIDATION FAILURE
             if (nameValue.length < 3) {
                 alert("Please enter a valid name.");
@@ -573,7 +597,7 @@ function updateDisplay() {
             }
 
             setButtonLoading(submitBtn);
-
+            
             // VALIDATION PASSED - SHOW SUCCESS
             alert(`Thank you, ${nameValue}! Your order has been placed.`);
             // 4. RESET BORDERS
@@ -590,5 +614,5 @@ function updateDisplay() {
             orderForm.reset();
                 resetButton(submitBtn, originalBtnText);
         });
-    };
-});
+    }
+});  
