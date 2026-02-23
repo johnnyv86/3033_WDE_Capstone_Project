@@ -981,6 +981,22 @@ textarea {
     text-align: center;
     font-weight: bold;
 }
+
+#verify-selection {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 260px;
+    max-height: 70vh;
+    overflow-y: auto;
+    background-color: #ffffff;
+    border: 2px solid #f0b76b;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    padding: 12px;
+    z-index: 1000;
+    font-size: 0.9rem;
+}
 /* =============================
     REWARDS PAGE
 ============================= */
